@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Articles | Benedikt Deicke - Software Engineer</title>
+<link href="/feed.xml" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="articles">
+    <header><h1>
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </h1>
+      <nav><ul>
+<li><a href="/archives">Archives</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="mailto:benedikt@synatic.net">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+    <li><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></li>
+    <li><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></li>
+    <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
+    <li><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">HowTo: Phusion Passenger aka mod_rails for Apache</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a href="/linux/">Linux</a></li>
+    <li><a href="/server/">Server</a></li>
+    <li><a href="/howto/">HowTo</a></li>
+    <li><a href="/ruby/">Ruby</a></li>
+    <li><a href="/rails/">Rails</a></li>
+    <li><a href="/activerecord/">ActiveRecord</a></li>
+    <li><a href="/processing/">Processing</a></li>
+    <li><a href="/rspec/">RSpec</a></li>
+    <li><a href="/javascript/">JavaScript</a></li>
+    <li><a href="/touch/">Touch</a></li>
+    <li><a href="/other/">Other</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article><h2><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></h2>
+  <div class="meta">
+    Posted on November 01, 2010
+    — Tagged with:
+    <a href="/other/">Other</a>
+  </div>
+  <p><a href="http://flinc.org"><img src="/assets/2010/11/flinc.png" style="float: right"></a></p>
+
+<p>Today’s my first day as a full-time employee at
+<a href="http://flinc.org">flinc</a> where I’ll mainly be doing Ruby on Rails
+development. I got in contact with <a href="http://twitter.com/m_ic">Michael</a> a
+few months back when he joined the <a href="http://webdevfulda.de">Web Development
+Fulda</a> group on Xing. We met at the meetup in
+september and a few days later he invited me to their offices in
+Dieburg. I was impressed by their product and the spirit of the
+<a href="http://flinc.org/theflincteam">team</a>, so I agreed on
+doing trial work for a week. Obviously they liked me and my work and
+offered me a job.</p>
+
+<p>
+  </p>
+<p><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">→ Read the full article</a></p>
+</article><article><h2><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></h2>
+  <div class="meta">
+    Posted on June 24, 2010
+    — Tagged with:
+    <a href="/javascript/">JavaScript</a>, <a href="/ruby/">Ruby</a>, <a href="/touch/">Touch</a>
+  </div>
+  <p><img src="/assets/2010/06/icon.png" style="float: right"></p>
+  
+  <p>During the last couple weeks I've been playing around with the iPad and
+  Mobile Safari. I built a little tool to familiarize myself with the
+  Multitouch JavaScript API provided by Mobile Safari as well as web
+  applications for the iPad in general. I named the result <a href="/assets/2010/06/index.html">Multitouch
+  Inspector</a> because
+  that's what it does: Inspect the TouchEvents fired by the JavaScript
+  API. ;-) Today I decided to rewrite the tool to drop the dependency on
+  <a href="http://prototypejs.org">Prototype.js</a> and I published it on
+  <a href="http://github.com/benedikt/multitouch-inspector">GitHub</a>.</p>
+  
+  <p>
+  </p>
+<p><a href="/2010/06/multitouch-inspector-for-ipad/">→ Read the full article</a></p>
+</article><article><h2><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></h2>
+  <div class="meta">
+    Posted on August 25, 2009
+    — Tagged with:
+    <a href="/ruby/">Ruby</a>, <a href="/rails/">Rails</a>, <a href="/rspec/">RSpec</a>
+  </div>
+  <p>When testing helper methods that use Rails' output buffer (for example
+by calling <code>concat</code>) with RSpec, be sure to add this to your specs:</p>
+
+<pre class="sunburst">before (<span class="Constant"><span class="Constant">:</span>each</span>) <span class="Keyword">do </span>
+  helper.<span class="Entity">output_buffer</span> <span class="Keyword">=</span> <span class="String"><span class="String">"</span><span class="String">"</span></span>
+<span class="Keyword">end</span>
+</pre>
+
+<p>Took me a while to figure this one out. Apparently RSpec doesn't
+initialize the output buffer and you end up with a <code>NoMethodError</code> on <code>nil</code>.</p>
+  <p><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">→ Read the full article</a></p>
+</article><article><h2><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></h2>
+  <div class="meta">
+    Posted on March 19, 2009
+    — Tagged with:
+    <a href="/ruby/">Ruby</a>
+  </div>
+  <p>I'm currently building a tool to help managing severals servers
+  simultaneously for <a href="http://www.softvision-media.de/">Softvision Media</a>.
+  As I decided to write the tool in Ruby, I've been looking for a
+  framework to create command-line executables. On GitHub I stumbled over
+  <a href="http://github.com/visionmedia/commander/tree/master">commander</a> by TJ
+  Holowaychuk of <a href="http://vision-media.ca/">VisionMedia</a> that provides a
+  </p>
+<p><a href="/2009/03/commander-command-line-executables-in-ruby/">→ Read the full article</a></p>
+</article><article><h2><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">HowTo: Phusion Passenger aka mod_rails for Apache</a></h2>
+  <div class="meta">
+    Posted on August 08, 2008
+    — Tagged with:
+    <a href="/ruby/">Ruby</a>, <a href="/rails/">Rails</a>, <a href="/server/">Server</a>, <a href="/howto/">HowTo</a>
+  </div>
+  <p>Yesterday I decided to give <a href="http://www.modrails.com">Phusion Passenger aka
+  mod_rails</a> a try and installed it. It was dead
+  simple to set it up and to deploy rails applications with it. I'm now
+  using it for several “small” applications, for which the whole overhead
+  of setting up a cluster of mongrels and a proxy doesn't seem to be
+  adequate. I'll give you a short summary on how to install mod_rails for
+  </p>
+<p><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">→ Read the full article</a></p>
+</article><article><h2><a href="/2008/08/my-day-to-day-resources-on-ruby-and-rails/">My day-to-day resources on Ruby and Rails</a></h2>
+  <div class="meta">
+    Posted on August 04, 2008
+    — Tagged with:
+    <a href="/ruby/">Ruby</a>, <a href="/rails/">Rails</a>
+  </div>
+  <h3 id="toc_0">News</h3>
+  
+  <p>I try to keep up with Ruby and Ruby on Rails, even if I’m not working
+  with one of them at the moment. These are the three feeds helping me to
+  get the latest news:</p>
+  
+  <p><img src="/assets/2008/08/planetrubyonrails.png" alt="image">:<a href="http://planetrubyonrails.com">http://planetrubyonrails.com</a></p>
+  
+  <p>PlanetRubyOnRails.com, not to be mixed up with
+  PlanetRubyOnRails.<strong>org</strong>, is a simple feed aggregator with a set of
+  </p>
+<p><a href="/2008/08/my-day-to-day-resources-on-ruby-and-rails/">→ Read the full article</a></p>
+</article><article><h2><a href="/2008/07/script-aculo-us-should-have-effect-emerge/">Script.aculo.us should have Effect.Emerge</a></h2>
+  <div class="meta">
+    Posted on July 24, 2008
+    — Tagged with:
+    <a href="/javascript/">JavaScript</a>
+  </div>
+  <p><a href="http://script.aculo.us">Script.aculo.us</a> includes a nice effect called <a href="http://github.com/madrobby/scriptaculous/wikis/effect-dropout"><code>Effect.DropOut</code></a>,
+which let's the element fall in an “invisible trap” underneath. Surprisingly there isn't an opposite effect.
+Calling <code>Effect.DropOut</code> with <code>Effect.Transitions.reverse</code> as transition, doesn’t work either. So what to do?
+  </p>
+<p><a href="/2008/07/script-aculo-us-should-have-effect-emerge/">→ Read the full article</a></p>
+</article><article><h2><a href="/2008/04/using-rspactor-with-linux/">Using RSpactor with Linux</a></h2>
+  <div class="meta">
+    Posted on April 10, 2008
+    — Tagged with:
+    <a href="/ruby/">Ruby</a>, <a href="/rspec/">RSpec</a>, <a href="/linux/">Linux</a>
+  </div>
+  <p><a href="http://rubyphunk.com/">Andreas Wolff</a> recently released
+  <a href="http://rubyphunk.com/2008/3/11/hello-world-introducing-rspactor">RSpactor</a>,
+  a (up to now) command line tool similar to
+  <a href="http://www.zenspider.com/ZSS/Products/ZenTest/">autotest</a>. Nevertheless
+  it differs from autotest in two points. First it's focused on
+  <a href="http://rspec.info/">RSpec</a> and secondly it’s using Mac OS' FSEvents to
+  </p>
+<p><a href="/2008/04/using-rspactor-with-linux/">→ Read the full article</a></p>
+</article><article><h2><a href="/2008/03/easy-ssh-authentication-with-keychain/">Easy SSH authentication with keychain</a></h2>
+  <div class="meta">
+    Posted on March 29, 2008
+    — Tagged with:
+    <a href="/server/">Server</a>, <a href="/linux/">Linux</a>, <a href="/howto/">HowTo</a>
+  </div>
+  <p>Typing SSH passwords again and again can be a real pain. For example:
+Lately I started to use <a href="http://www.capify.org/">Capistrano</a> to deploy
+my rails applications. If I want to set up the maintenance-page on the
+server I'll type <code>cap deploy:web:disable</code> which of course
+prompts me for the SSH password. Then I want to deploy my application
+with <code>cap deploy</code> and again will be prompted for the
+password. Finally I have to <code>cap deploy:web:enable</code> to remove
+the maintenance page which as mindful readers might have guessed
+already prompts for the password. This was just one reason for me to
+set up SSH authentication keys. At first I was a little worried that
+setting it up might be a bit complicated. Luckily I was disabused. If
+you want to switch to key based authentication too follow these simple
+steps.</p>
+
+<p>
+  </p>
+<p><a href="/2008/03/easy-ssh-authentication-with-keychain/">→ Read the full article</a></p>
+</article><article><h2><a href="/2008/01/fuzzy-controlled-jet-with-processing/">Fuzzy-controlled jet with Processing</a></h2>
+  <div class="meta">
+    Posted on January 14, 2008
+    — Tagged with:
+    <a href="/processing/">Processing</a>
+  </div>
+  <p>This one started as an homework for university but I really started to
+  like it. The original task was to built a fuzzy controller using
+  <a href="http://de.wikipedia.org/wiki/MATLAB">Matlab</a> in groups of 2 or 3
+  students.</p>
+  
+  <p>
+  </p>
+<p><a href="/2008/01/fuzzy-controlled-jet-with-processing/">→ Read the full article</a></p>
+</article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p>© 2012 Benedikt Deicke, Haardtring 230a, 64295 Darmstadt, Germany</p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>

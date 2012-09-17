@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Script.aculo.us should have Effect.Emerge | Benedikt Deicke - Software Engineer</title>
+<link href="/feed.xml" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="2008">
+    <header><h1>
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </h1>
+      <nav><ul>
+<li><a href="/archives">Archives</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="mailto:benedikt@synatic.net">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+    <li><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></li>
+    <li><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></li>
+    <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
+    <li><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">HowTo: Phusion Passenger aka mod_rails for Apache</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a href="/linux/">Linux</a></li>
+    <li><a href="/server/">Server</a></li>
+    <li><a href="/howto/">HowTo</a></li>
+    <li><a href="/ruby/">Ruby</a></li>
+    <li><a href="/rails/">Rails</a></li>
+    <li><a href="/activerecord/">ActiveRecord</a></li>
+    <li><a href="/processing/">Processing</a></li>
+    <li><a href="/rspec/">RSpec</a></li>
+    <li><a href="/javascript/">JavaScript</a></li>
+    <li><a href="/touch/">Touch</a></li>
+    <li><a href="/other/">Other</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article><h2><a href="/2008/07/script-aculo-us-should-have-effect-emerge/">Script.aculo.us should have Effect.Emerge</a></h2>
+  <div class="meta">
+    Posted on July 24, 2008
+    — Tagged with:
+    <a href="/javascript/">JavaScript</a>
+  </div>
+  <p><a href="http://script.aculo.us">Script.aculo.us</a> includes a nice effect called <a href="http://github.com/madrobby/scriptaculous/wikis/effect-dropout"><code>Effect.DropOut</code></a>,
+which let's the element fall in an “invisible trap” underneath. Surprisingly there isn't an opposite effect.
+Calling <code>Effect.DropOut</code> with <code>Effect.Transitions.reverse</code> as transition, doesn’t work either. So what to do?
+<code>Effect.Emerge</code> to the rescue!</p>
+
+<pre class="sunburst"><span class="Support">Effect</span>.<span class="Entity">Emerge</span> = <span class="Storage">function</span>(<span class="Variable">element</span>) {
+  element <span class="Keyword">=</span> <span class="Keyword">$</span>(element);
+  <span class="Storage">var</span> oldStyle <span class="Keyword">=</span> {
+    top: element.getStyle(<span class="String"><span class="String">'</span>top<span class="String">'</span></span>),
+    left: element.getStyle(<span class="String"><span class="String">'</span>left<span class="String">'</span></span>) };
+  <span class="Storage">var</span> position <span class="Keyword">=</span> element.positionedOffset();
+  <span class="Keyword">return</span> <span class="Keyword">new</span> <span class="JEntityNameType">Effect.Parallel</span>(
+    [ <span class="Keyword">new</span> <span class="JEntityNameType">Effect.Move</span>(element, {x: <span class="Constant">0</span>, y: <span class="Keyword">-</span><span class="Constant">100</span>, sync: <span class="Constant">true</span> }), 
+      <span class="Keyword">new</span> <span class="JEntityNameType">Effect.Opacity</span>(element, { sync: <span class="Constant">true</span>, from: <span class="Constant">0.0</span>, to: <span class="Constant">1.0</span> }) ],
+    <span class="Support">Object</span>.extend(
+      { duration: <span class="Constant">0.5</span>,
+        <span class="Entity">beforeSetup</span>: <span class="Storage">function</span>(<span class="Variable">effect</span>) {
+          effect.effects[<span class="Constant">0</span>].element.show().makePositioned().setStyle( { top: (position.<span class="SupportConstant">top</span> <span class="Keyword">+</span> <span class="Constant">100</span>) <span class="Keyword">+</span> <span class="String"><span class="String">'</span>px<span class="String">'</span></span> }); 
+        },
+        <span class="Entity">afterFinishInternal</span>: <span class="Storage">function</span>(<span class="Variable">effect</span>) {
+          effect.effects[<span class="Constant">0</span>].element.undoPositioned().setStyle(oldStyle);
+        } 
+      }, arguments[<span class="Constant">1</span>] <span class="Keyword">||</span> { }));
+};
+</pre>
+
+<p>Basically it’s just a modified version of <code>Effect.DropOut</code> toreverse the effect. Try it in compination with
+<a href="http://github.com/madrobby/scriptaculous/wikis/effect-multiple"><code>Effect.multiple</code></a>!</p>
+</article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p>© 2012 Benedikt Deicke, Haardtring 230a, 64295 Darmstadt, Germany</p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>

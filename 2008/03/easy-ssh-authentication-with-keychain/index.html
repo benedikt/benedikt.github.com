@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Easy SSH authentication with keychain | Benedikt Deicke - Software Engineer</title>
+<link href="/feed.xml" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="2008">
+    <header><h1>
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </h1>
+      <nav><ul>
+<li><a href="/archives">Archives</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="mailto:benedikt@synatic.net">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+    <li><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></li>
+    <li><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></li>
+    <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
+    <li><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">HowTo: Phusion Passenger aka mod_rails for Apache</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a href="/linux/">Linux</a></li>
+    <li><a href="/server/">Server</a></li>
+    <li><a href="/howto/">HowTo</a></li>
+    <li><a href="/ruby/">Ruby</a></li>
+    <li><a href="/rails/">Rails</a></li>
+    <li><a href="/activerecord/">ActiveRecord</a></li>
+    <li><a href="/processing/">Processing</a></li>
+    <li><a href="/rspec/">RSpec</a></li>
+    <li><a href="/javascript/">JavaScript</a></li>
+    <li><a href="/touch/">Touch</a></li>
+    <li><a href="/other/">Other</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article><h2><a href="/2008/03/easy-ssh-authentication-with-keychain/">Easy SSH authentication with keychain</a></h2>
+  <div class="meta">
+    Posted on March 29, 2008
+    — Tagged with:
+    <a href="/server/">Server</a>, <a href="/linux/">Linux</a>, <a href="/howto/">HowTo</a>
+  </div>
+  <p>Typing SSH passwords again and again can be a real pain. For example:
+Lately I started to use <a href="http://www.capify.org/">Capistrano</a> to deploy
+my rails applications. If I want to set up the maintenance-page on the
+server I'll type <code>cap deploy:web:disable</code> which of course
+prompts me for the SSH password. Then I want to deploy my application
+with <code>cap deploy</code> and again will be prompted for the
+password. Finally I have to <code>cap deploy:web:enable</code> to remove
+the maintenance page which as mindful readers might have guessed
+already prompts for the password. This was just one reason for me to
+set up SSH authentication keys. At first I was a little worried that
+setting it up might be a bit complicated. Luckily I was disabused. If
+you want to switch to key based authentication too follow these simple
+steps.</p>
+
+<p></p>
+
+<h3 id="toc_0">Key generation</h3>
+
+<p>The first thing you need is - of course - a pair of keys: your private
+key and the associated public key. To generate both fire up our favorite
+shell (for me it’s <code>bash</code>) and type:</p>
+
+<pre class="sunburst">ssh-keygen
+</pre>
+
+<p>This will generate both keys and ask you where to store it. Usually the
+default would be something like <code>~/.ssh/id_rsa</code>. Simply
+accept the default by pressing return. Next you'll have to enter a
+password for your key and confirm it. Afterwards you've to tell the
+server to accept your key on authentication. Do so by uploading the
+public key to the server.</p>
+
+<pre class="sunburst">scp <span class="Keyword">~</span>/.ssh/id_rsa.pub
+yourserver.com:<span class="Keyword">~</span>/.ssh/authenticated_keys2
+</pre>
+
+<p>If you want to add multiple keys, be sure to append it to the
+<code>authenticated_keys2</code> file and don't overwrite it.</p>
+
+<h3 id="toc_1">First login</h3>
+
+<p>That's all you have to do to switch to key based SSH authentication. Try
+to log in as usual by typing:</p>
+
+<pre class="sunburst">ssh yourserver.com
+</pre>
+
+<p>This will prompt you for your key's password and log you in to your
+server afterwards. “But wait! I'm still having to type my password every
+time I want to log in!” you shout, and you’re right - up to now. What
+you need to do is running <code>ssh-agent</code>, adding your key and
+typing your password. <code>ssh-agent</code> will then ask for the
+password and store it until you shut it down. You'll have to do this
+everytime you open up a new shell or put the commands into your i.e.
+<code>~/.bash_profile</code>. Quite comfortable but we can do better.</p>
+
+<h3 id="toc_2">Keychain</h3>
+
+<p>There is a nice little tool called <code>keychain</code> that will
+smooth the process a little for you. It's originally developed by the
+<a href="http://www.gentoo.org/">Gentoo</a> people but it’s available on other
+linux distributions (as well as Mac OS X), too. Simply install it by
+typing your system's equivalent to</p>
+
+<pre class="sunburst"><span class="Comment"><span class="Comment">#</span> Gentoo</span>
+emerge keychain
+<span class="Comment"><span class="Comment">#</span> Debian</span>
+aptitude install keychain
+</pre>
+
+<p>and it'll be available in no time. To set it up you need to put these
+two lines in our <code>~/.bash_profile</code>:</p>
+
+<pre class="sunburst">keychain <span class="Keyword">~</span>/.ssh/id_rsa
+source <span class="Keyword">~</span>/.keychain/<span class="Variable"><span class="Variable">$</span>HOSTNAME</span>-sh
+</pre>
+
+<p>That's it. The first time you open up a shell <code>keychain</code> will
+start <code>ssh-agent</code>, prompt you for your keys password and
+remember the running <code>ssh-agent</code> for all new shells. On your
+next SSH authentication no more password typing is required. Wasn’t
+complicated at all, was it?</p>
+
+<p><strong>Update:</strong> Thanks to <a href="http://www.michael-kolb.co.uk/">Michael</a> for
+pointing out that the public key file is named <code>id_rsa.pub</code>
+instead of <code>id_rsa</code>. Fixed it.</p>
+</article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p>© 2012 Benedikt Deicke, Haardtring 230a, 64295 Darmstadt, Germany</p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>

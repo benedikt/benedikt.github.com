@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Getting a class' subclasses | Benedikt Deicke - Software Engineer</title>
+<link href="/feed.xml" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="2007">
+    <header><h1>
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </h1>
+      <nav><ul>
+<li><a href="/archives">Archives</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="mailto:benedikt@synatic.net">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+    <li><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></li>
+    <li><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></li>
+    <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
+    <li><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">HowTo: Phusion Passenger aka mod_rails for Apache</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a href="/linux/">Linux</a></li>
+    <li><a href="/server/">Server</a></li>
+    <li><a href="/howto/">HowTo</a></li>
+    <li><a href="/ruby/">Ruby</a></li>
+    <li><a href="/rails/">Rails</a></li>
+    <li><a href="/activerecord/">ActiveRecord</a></li>
+    <li><a href="/processing/">Processing</a></li>
+    <li><a href="/rspec/">RSpec</a></li>
+    <li><a href="/javascript/">JavaScript</a></li>
+    <li><a href="/touch/">Touch</a></li>
+    <li><a href="/other/">Other</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article><h2><a href="/2007/07/getting-a-class-subclasses/">Getting a class' subclasses</a></h2>
+  <div class="meta">
+    Posted on July 10, 2007
+    — Tagged with:
+    <a href="/ruby/">Ruby</a>
+  </div>
+  <p>I needed a way to get a list of the subclasses that inherit a specific.
+Unfortunately there is no method like <code>Class.subclasses</code>
+(there is <code>Class.superclass</code>, though) so I had to look for
+another way to achieve this. Let's say, we want to have an array
+containing all subclasses as a class variable of our superclass
+<code>Strategy</code>. In order to fill the array we'll overwrite the
+<code>inherited</code> class method of <code>Class</code>.</p>
+
+<p></p>
+
+<pre class="sunburst"><span class="Keyword">class</span> <span class="JEntityNameType">Strategy</span>
+  <span class="Variable"><span class="Variable">@</span>subclasses</span> <span class="Keyword">=</span> <span class="Support">Array</span>.<span class="Entity">new</span>
+  <span class="Keyword">class</span> <span class="JEntityNameType"><span class="Variable"><span class="Variable">&lt;&lt;</span> self</span></span>
+    <span class="Keyword">def</span> <span class="Entity">inherited</span>(<span class="Variable">klass</span>)
+       <span class="Variable"><span class="Variable">@</span>subclasses</span> <span class="Keyword">&lt;&lt;</span> klass
+    <span class="Keyword">end</span>
+
+    <span class="Keyword">def</span> <span class="Entity">subclasses</span>
+      <span class="Variable"><span class="Variable">@</span>subclasses</span>.<span class="Entity">join</span>(<span class="String"><span class="String">'</span>, <span class="String">'</span></span>)
+    <span class="Keyword">end</span>
+  <span class="Keyword">end</span>
+<span class="Keyword">end</span>
+</pre>
+
+<p>Now, every time a class extends <code>Strategy</code> our new
+<code>inherited</code> method is called and adds the class to our array.</p>
+
+<pre class="sunburst"><span class="Keyword">class</span> <span class="JEntityNameType">StrategyA<span class="EntityInheritedClass"> <span class="EntityInheritedClass">&lt;</span> Strategy</span></span>; <span class="Keyword">end</span>
+<span class="Keyword">class</span> <span class="JEntityNameType">StrategyB<span class="EntityInheritedClass"> <span class="EntityInheritedClass">&lt;</span> Strategy</span></span>; <span class="Keyword">end</span>
+<span class="Keyword">class</span> <span class="JEntityNameType">StrategyC<span class="EntityInheritedClass"> <span class="EntityInheritedClass">&lt;</span> Strategy</span></span>; <span class="Keyword">end</span>
+
+<span class="Comment"><span class="Comment">#</span> Let's get the current list of subclasses</span>
+puts <span class="Support">Strategy</span>.<span class="Entity">subclasses</span> <span class="Comment"><span class="Comment">#</span> will output StrategyA, StrategyB, StrategyC</span>
+</pre>
+
+<p>What happens if a class inherits any of our subclasses? Well, as long as
+you don't overwrite the <code>inherited</code> method again it's also
+added to the array.</p>
+</article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p>© 2012 Benedikt Deicke, Haardtring 230a, 64295 Darmstadt, Germany</p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Commander: command-line executables in Ruby | Benedikt Deicke - Software Engineer</title>
+<link href="/feed.xml" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="2009">
+    <header><h1>
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </h1>
+      <nav><ul>
+<li><a href="/archives">Archives</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="mailto:benedikt@synatic.net">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+    <li><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></li>
+    <li><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></li>
+    <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
+    <li><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">HowTo: Phusion Passenger aka mod_rails for Apache</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a href="/linux/">Linux</a></li>
+    <li><a href="/server/">Server</a></li>
+    <li><a href="/howto/">HowTo</a></li>
+    <li><a href="/ruby/">Ruby</a></li>
+    <li><a href="/rails/">Rails</a></li>
+    <li><a href="/activerecord/">ActiveRecord</a></li>
+    <li><a href="/processing/">Processing</a></li>
+    <li><a href="/rspec/">RSpec</a></li>
+    <li><a href="/javascript/">JavaScript</a></li>
+    <li><a href="/touch/">Touch</a></li>
+    <li><a href="/other/">Other</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article><h2><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></h2>
+  <div class="meta">
+    Posted on March 19, 2009
+    — Tagged with:
+    <a href="/ruby/">Ruby</a>
+  </div>
+  <p>I'm currently building a tool to help managing severals servers
+simultaneously for <a href="http://www.softvision-media.de/">Softvision Media</a>.
+As I decided to write the tool in Ruby, I've been looking for a
+framework to create command-line executables. On GitHub I stumbled over
+<a href="http://github.com/visionmedia/commander/tree/master">commander</a> by TJ
+Holowaychuk of <a href="http://vision-media.ca/">VisionMedia</a> that provides a
+simple DSL for this task. It integrates with OptionParser and the
+Highline gem for user interaction. It automatically creates common
+options such as <code>--help</code> and <code>--version</code>, as well as detailed
+descriptions about possible commands.</p>
+
+<p>A simple executable could be something like this (taken from commander's
+readme):</p>
+
+<pre class="sunburst"><span class="Keyword">require</span> <span class="String"><span class="String">'</span>rubygems<span class="String">'</span></span>
+<span class="Keyword">require</span> <span class="String"><span class="String">'</span>commander<span class="String">'</span></span>
+
+program <span class="Constant"><span class="Constant">:</span>name</span>, <span class="String"><span class="String">'</span>Foo Bar<span class="String">'</span></span>
+program <span class="Constant"><span class="Constant">:</span>version</span>, <span class="String"><span class="String">'</span>1.0.0<span class="String">'</span></span>
+program <span class="Constant"><span class="Constant">:</span>description</span>, <span class="String"><span class="String">'</span>Stupid command that prints foo or bar.<span class="String">'</span></span>
+
+command <span class="Constant"><span class="Constant">:</span>foo</span> <span class="Keyword">do </span>|<span class="Variable">c</span>|
+  c.<span class="Entity">syntax</span> <span class="Keyword">=</span> <span class="String"><span class="String">'</span>foobar foo<span class="String">'</span></span>
+  c.<span class="Entity">description</span> <span class="Keyword">=</span> <span class="String"><span class="String">'</span>Displays foo<span class="String">'</span></span>
+  c.<span class="Entity">when_called</span> <span class="Keyword">do </span>|<span class="Variable">args</span>, <span class="Variable">options</span>|
+    say <span class="String"><span class="String">'</span>foo<span class="String">'</span></span>
+  <span class="Keyword">end</span>
+<span class="Keyword">end</span>
+
+command <span class="Constant"><span class="Constant">:</span>bar</span> <span class="Keyword">do </span>|<span class="Variable">c</span>|
+  c.<span class="Entity">syntax</span> <span class="Keyword">=</span> <span class="String"><span class="String">'</span>foobar bar [options]<span class="String">'</span></span>
+  c.<span class="Entity">description</span> <span class="Keyword">=</span> <span class="String"><span class="String">'</span>Display bar with optional prefix and suffix<span class="String">'</span></span>
+  c.<span class="Entity">option</span> <span class="String"><span class="String">'</span>--prefix STRING<span class="String">'</span></span>, <span class="Variable">String</span>, <span class="String"><span class="String">'</span>Adds a prefix to bar<span class="String">'</span></span>
+  c.<span class="Entity">option</span> <span class="String"><span class="String">'</span>--suffix STRING<span class="String">'</span></span>, <span class="Variable">String</span>, <span class="String"><span class="String">'</span>Adds a suffix to bar<span class="String">'</span></span>
+  c.<span class="Entity">when_called</span> <span class="Keyword">do </span>|<span class="Variable">args</span>, <span class="Variable">options</span>|
+    options.<span class="Entity">default</span> <span class="Constant"><span class="Constant">:</span>prefix</span> =&gt; <span class="String"><span class="String">'</span>(<span class="String">'</span></span>, <span class="Constant"><span class="Constant">:</span>suffix</span> =&gt; <span class="String"><span class="String">'</span>)<span class="String">'</span></span>
+    say <span class="String"><span class="String">"</span><span class="StringEmbeddedSource"><span class="StringEmbeddedSource">#{</span>options<span class="StringEmbeddedSource"><span class="StringEmbeddedSource">.</span><span class="Entity">prefix</span></span><span class="StringEmbeddedSource">}</span></span>bar<span class="StringEmbeddedSource"><span class="StringEmbeddedSource">#{</span>options<span class="StringEmbeddedSource"><span class="StringEmbeddedSource">.</span><span class="Entity">suffix</span></span><span class="StringEmbeddedSource">}</span></span><span class="String">"</span></span>
+  <span class="Keyword">end</span>
+<span class="Keyword">end</span>
+</pre>
+
+<p>There are still some rough edges, but in general it works pretty well.</p>
+</article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p>© 2012 Benedikt Deicke, Haardtring 230a, 64295 Darmstadt, Germany</p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>

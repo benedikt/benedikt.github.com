@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Benedikt Deicke - Software Engineer</title>
+  <id>http://benediktdeicke.com/</id>
+  <link href="http://benediktdeicke.com/"/>
+  <link href="http://benediktdeicke.com/feed.xml" rel="self"/>
+  <updated>2010-11-01T00:00:00Z</updated>
+  <author>
+    <name>Benedikt Deicke</name>
+  </author>
+  <entry>
+    <title>I'm joining flinc as a Rails developer</title>
+    <link rel="alternate" href="/2010/11/i-m-joining-flinc-as-a-rails-developer/"/>
+    <id>/2010/11/i-m-joining-flinc-as-a-rails-developer/</id>
+    <published>2010-11-01T00:00:00Z</published>
+    <updated>2010-11-01T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;&lt;a href="http://flinc.org"&gt;&lt;img src="/assets/2010/11/flinc.png" style="float: right" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Today’s my first day as a full-time employee at
+&lt;a href="http://flinc.org"&gt;flinc&lt;/a&gt; where I’ll mainly be doing Ruby on Rails
+development. I got in contact with &lt;a href="http://twitter.com/m_ic"&gt;Michael&lt;/a&gt; a
+few months back when he joined the &lt;a href="http://webdevfulda.de"&gt;Web Development
+Fulda&lt;/a&gt; group on Xing. We met at the meetup in
+september and a few days later he invited me to their offices in
+Dieburg. I was impressed by their product and the spirit of the
+&lt;a href="http://flinc.org/theflincteam"&gt;team&lt;/a&gt;, so I agreed on
+doing trial work for a week. Obviously they liked me and my work and
+offered me a job.&lt;/p&gt;
+
+&lt;p&gt;</summary>
+    <content type="html">&lt;p&gt;&lt;a href="http://flinc.org"&gt;&lt;img src="/assets/2010/11/flinc.png" style="float: right" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Today’s my first day as a full-time employee at
+&lt;a href="http://flinc.org"&gt;flinc&lt;/a&gt; where I’ll mainly be doing Ruby on Rails
+development. I got in contact with &lt;a href="http://twitter.com/m_ic"&gt;Michael&lt;/a&gt; a
+few months back when he joined the &lt;a href="http://webdevfulda.de"&gt;Web Development
+Fulda&lt;/a&gt; group on Xing. We met at the meetup in
+september and a few days later he invited me to their offices in
+Dieburg. I was impressed by their product and the spirit of the
+&lt;a href="http://flinc.org/theflincteam"&gt;team&lt;/a&gt;, so I agreed on
+doing trial work for a week. Obviously they liked me and my work and
+offered me a job.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id="toc_0"&gt;About flinc&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“flinc arranges spontaneous rideshares in realtime. Directly on your
+navigation system in your car.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The idea of &lt;a href="http://flinc.org"&gt;flinc&lt;/a&gt; is to connect smartphones with
+satellite navigation systems to arrange rideshares in realtime. For
+riders this results in an alternative to an own car, for drivers it’s an
+easy way to reduce their costs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://flinc.org/"&gt;&lt;img src="/assets/2010/11/how_flinc_works_en.png" alt="image"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;flinc is currently tested in the city of Friedrichshafen and is planned
+to be rolled out in several innovation regions in 2011. Head over to
+&lt;a href="http://flinc.org"&gt;flinc.org&lt;/a&gt; to register and get more information.&lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;Pair with me!&lt;/h3&gt;
+
+&lt;p&gt;As I’m the third developer at flinc, we’re looking for another Ruby on
+Rails developer to join the team. If you’re interested in pair
+programming with me (or of course one of the other developers) while
+working on an exciting product, send a mail to
+&lt;a href="mailto:michael.huebl@flincteam.org"&gt;Michael&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Multitouch Inspector for iPad</title>
+    <link rel="alternate" href="/2010/06/multitouch-inspector-for-ipad/"/>
+    <id>/2010/06/multitouch-inspector-for-ipad/</id>
+    <published>2010-06-24T00:00:00Z</published>
+    <updated>2010-06-24T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;&lt;img src="/assets/2010/06/icon.png" style="float: right" /&gt;&lt;/p&gt;
+
+&lt;p&gt;During the last couple weeks I&amp;#39;ve been playing around with the iPad and
+Mobile Safari. I built a little tool to familiarize myself with the
+Multitouch JavaScript API provided by Mobile Safari as well as web
+applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/index.html"&gt;Multitouch
+Inspector&lt;/a&gt; because
+that&amp;#39;s what it does: Inspect the TouchEvents fired by the JavaScript
+API. ;-) Today I decided to rewrite the tool to drop the dependency on
+&lt;a href="http://prototypejs.org"&gt;Prototype.js&lt;/a&gt; and I published it on
+&lt;a href="http://github.com/benedikt/multitouch-inspector"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;</summary>
+    <content type="html">&lt;p&gt;&lt;img src="/assets/2010/06/icon.png" style="float: right" /&gt;&lt;/p&gt;
+
+&lt;p&gt;During the last couple weeks I&amp;#39;ve been playing around with the iPad and
+Mobile Safari. I built a little tool to familiarize myself with the
+Multitouch JavaScript API provided by Mobile Safari as well as web
+applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/index.html"&gt;Multitouch
+Inspector&lt;/a&gt; because
+that&amp;#39;s what it does: Inspect the TouchEvents fired by the JavaScript
+API. ;-) Today I decided to rewrite the tool to drop the dependency on
+&lt;a href="http://prototypejs.org"&gt;Prototype.js&lt;/a&gt; and I published it on
+&lt;a href="http://github.com/benedikt/multitouch-inspector"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id="toc_0"&gt;Using Multitouch Events from JavaScript&lt;/h3&gt;
+
+&lt;p&gt;There are four events that are related to touch: &lt;code&gt;TouchStart&lt;/code&gt;, &lt;code&gt;TouchMove&lt;/code&gt;,
+&lt;code&gt;TouchEnd&lt;/code&gt; and &lt;code&gt;TouchCancel&lt;/code&gt;. I&amp;#39;m not sure about what situation would
+trigger &lt;code&gt;TouchCancel&lt;/code&gt; so I decided to skip it for now. Working with the
+touch events is straight forward:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::javascript
+document.addEventListener(&amp;#39;touchstart&amp;#39;, function(event) {
+  // Do whatever you&amp;#39;d like to do with the event
+}, false);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course you can add the listener to any element just like you would
+with &lt;code&gt;Click&lt;/code&gt; or &lt;code&gt;MouseOver&lt;/code&gt; events. The function gets passed an object
+of type &lt;code&gt;TouchEvent&lt;/code&gt;. There are several properties on this object, but
+the most interesting ones are &lt;code&gt;Touches&lt;/code&gt;, &lt;code&gt;changedTouches&lt;/code&gt; and
+&lt;code&gt;targetTouches&lt;/code&gt;. They all are of type &lt;code&gt;TouchList&lt;/code&gt; and contain several
+&lt;code&gt;Touch&lt;/code&gt; objects. The &lt;code&gt;touches&lt;/code&gt; property lists all touches currently on
+the screen. The &lt;code&gt;changedTouches&lt;/code&gt; list contains the touches that changed
+and caused the event to fire. The touches in the &lt;code&gt;targetTouches&lt;/code&gt; list
+are those that are currently within the target element.&lt;/p&gt;
+
+&lt;p&gt;Every &lt;code&gt;Touch&lt;/code&gt; has an &lt;code&gt;identifier&lt;/code&gt; property as well as &lt;code&gt;pageX&lt;/code&gt; and &lt;code&gt;pageY&lt;/code&gt;
+properties. As you might have guessed already, the &lt;code&gt;pageX&lt;/code&gt; and &lt;code&gt;pageY&lt;/code&gt;
+properties include the touch&amp;#39;s position on the screen. The &lt;code&gt;identifier&lt;/code&gt;
+property provides an unique integer for this touch. It stays the the
+same for this touch as long it is on the screen. This is particularly
+useful as removing one finger will trigger a &lt;code&gt;TouchEnd&lt;/code&gt; event that implies
+that all fingers were removed, immediately followed by a &lt;code&gt;TouchStart&lt;/code&gt;
+event including the remaining fingers. Luckily the identifier property
+stays the same for those fingers that weren&amp;#39;t removed from the screen.&lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;Offline Application Caching&lt;/h3&gt;
+
+&lt;p&gt;In order to use the application without having an active internet
+connection or simply while the development server isn&amp;#39;t running I&amp;#39;m
+using &lt;a href="http://www.w3.org/TR/offline-webapps/#offline"&gt;HTML5 Offline Application
+Caching&lt;/a&gt;. It works by
+defining a manifest file and referencing it in the html-tag:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::html
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html manifest=&amp;quot;application.manifest&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The manifest file itself looks like this and defines what files are
+required to view the application while offline:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CACHE MANIFEST
+
+# c94640e9114e05f16e189605e5b65ba2357117712c949cae92cc29bc1bbd3c47
+/images/background.png
+/images/icon.png
+/index.html
+/javascripts/application.js
+/stylesheets/application.css
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You might wonder about the random string at the top. As the browser will
+reload everything when it can&amp;#39;t find one file in it&amp;#39;s cache, I&amp;#39;m using
+this string to force a reload during development. I built a small
+Sinatra app (see the listing below this paragraph) that generates the
+manifest and resets this string for every request. As a result, the
+browser reloads everything while online but falls back to the cached
+files when offline.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+require &amp;#39;sinatra&amp;#39;
+require &amp;#39;digest/sha2&amp;#39;
+require &amp;#39;pathname&amp;#39;
+
+get &amp;#39;/application.manifest&amp;#39; do
+  content_type &amp;#39;text/cache-manifest&amp;#39;
+
+  manifest = &amp;quot;CACHE MANIFEST\n\n&amp;quot;
+  manifest &amp;lt;&amp;lt; &amp;quot;#&amp;quot; &amp;lt;&amp;lt; Digest::SHA2.hexdigest(Time.now.to_s + Time.now.usec.to_s) &amp;lt;&amp;lt; &amp;quot;\n&amp;quot;
+
+  root = Pathname.new(settings.public)
+  Pathname.glob(File.join(root, &amp;quot;**&amp;quot;, &amp;quot;*&amp;quot;)).each do |p|
+    manifest &amp;lt;&amp;lt; &amp;quot;/&amp;quot; &amp;lt;&amp;lt; p.relative_path_from(root) &amp;lt;&amp;lt; &amp;quot;\n&amp;quot; if p.file?
+  end
+
+  manifest
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="toc_2"&gt;Issues&lt;/h3&gt;
+
+&lt;p&gt;There are some issues that I couldn&amp;#39;t resolve while building the
+application. The startup image will only work while in portrait
+orientation and its dimension has to be exactly 1004x768. Currently
+there isn&amp;#39;t a way to define a startup image for horizontal orientation.&lt;/p&gt;
+
+&lt;p&gt;While the tracking of the touches works on the iPhone (with iOS 4.0) as
+well for some reason it isn&amp;#39;t possible to press the buttons in the
+toolbar. At the moment I have no explanation for this rather strange
+behavior, but I might take another look at it in the future.&lt;/p&gt;
+
+&lt;h3 id="toc_3"&gt;Screenshot &amp;amp; Demo&lt;/h3&gt;
+
+&lt;p&gt;Now that you have some insights on the internals of the application,
+here&amp;#39;s a screenshot as well as a link on it to a demo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/assets/2010/06/index.html"&gt;&lt;img src="/assets/2010/06/multitouch-inspector_medium.png" alt="Screenshot of the Multitouch Inspector"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id="toc_4"&gt;Fork it on GitHub&lt;/h3&gt;
+
+&lt;p&gt;I published the source code on
+&lt;a href="http://github.com/benedikt/multitouch-inspector"&gt;GitHub&lt;/a&gt;. Feel free to
+fork it!&lt;/p&gt;
+
+&lt;h3 id="toc_5"&gt;Further reading&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt; &lt;a href="http://developer.apple.com/safari/library/documentation/appleapplications/reference/safariwebcontent/handlingevents/handlingevents.html#//apple_ref/doc/uid/TP40006511-SW22"&gt;Safari Web Content Guide: Handling
+Events&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt; &lt;a href="http://mir.aculo.us/2010/06/04/making-an-ipad-html5-app-making-it-really-fast/"&gt;Making an iPad HTML5 App &amp;amp; making it really
+fast&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+  </entry>
+  <entry>
+    <title>RSpec and Rails Helpers using the output buffer</title>
+    <link rel="alternate" href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/"/>
+    <id>/2009/08/rspec-and-rails-helpers-using-the-output-buffer/</id>
+    <published>2009-08-25T00:00:00Z</published>
+    <updated>2009-08-25T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;When testing helper methods that use Rails&amp;#39; output buffer (for example
+by calling &lt;code&gt;concat&lt;/code&gt;) with RSpec, be sure to add this to your specs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+before (:each) do 
+  helper.output_buffer = &amp;quot;&amp;quot;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Took me a while to figure this one out. Apparently RSpec doesn&amp;#39;t
+initialize the output buffer and you end up with a &lt;code&gt;NoMethodError&lt;/code&gt; on &lt;code&gt;nil&lt;/code&gt;.&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;When testing helper methods that use Rails&amp;#39; output buffer (for example
+by calling &lt;code&gt;concat&lt;/code&gt;) with RSpec, be sure to add this to your specs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+before (:each) do 
+  helper.output_buffer = &amp;quot;&amp;quot;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Took me a while to figure this one out. Apparently RSpec doesn&amp;#39;t
+initialize the output buffer and you end up with a &lt;code&gt;NoMethodError&lt;/code&gt; on &lt;code&gt;nil&lt;/code&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Commander: command-line executables in Ruby</title>
+    <link rel="alternate" href="/2009/03/commander-command-line-executables-in-ruby/"/>
+    <id>/2009/03/commander-command-line-executables-in-ruby/</id>
+    <published>2009-03-19T00:00:00Z</published>
+    <updated>2009-03-19T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;I&amp;#39;m currently building a tool to help managing severals servers
+simultaneously for &lt;a href="http://www.softvision-media.de/"&gt;Softvision Media&lt;/a&gt;.
+As I decided to write the tool in Ruby, I&amp;#39;ve been looking for a
+framework to create command-line executables. On GitHub I stumbled over
+&lt;a href="http://github.com/visionmedia/commander/tree/master"&gt;commander&lt;/a&gt; by TJ
+Holowaychuk of &lt;a href="http://vision-media.ca/"&gt;VisionMedia&lt;/a&gt; that provides a
+</summary>
+    <content type="html">&lt;p&gt;I&amp;#39;m currently building a tool to help managing severals servers
+simultaneously for &lt;a href="http://www.softvision-media.de/"&gt;Softvision Media&lt;/a&gt;.
+As I decided to write the tool in Ruby, I&amp;#39;ve been looking for a
+framework to create command-line executables. On GitHub I stumbled over
+&lt;a href="http://github.com/visionmedia/commander/tree/master"&gt;commander&lt;/a&gt; by TJ
+Holowaychuk of &lt;a href="http://vision-media.ca/"&gt;VisionMedia&lt;/a&gt; that provides a
+simple DSL for this task. It integrates with OptionParser and the
+Highline gem for user interaction. It automatically creates common
+options such as &lt;code&gt;--help&lt;/code&gt; and &lt;code&gt;--version&lt;/code&gt;, as well as detailed
+descriptions about possible commands.&lt;/p&gt;
+
+&lt;p&gt;A simple executable could be something like this (taken from commander&amp;#39;s
+readme):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+require &amp;#39;rubygems&amp;#39;
+require &amp;#39;commander&amp;#39;
+
+program :name, &amp;#39;Foo Bar&amp;#39;
+program :version, &amp;#39;1.0.0&amp;#39;
+program :description, &amp;#39;Stupid command that prints foo or bar.&amp;#39;
+
+command :foo do |c|
+  c.syntax = &amp;#39;foobar foo&amp;#39;
+  c.description = &amp;#39;Displays foo&amp;#39;
+  c.when_called do |args, options|
+    say &amp;#39;foo&amp;#39;
+  end
+end
+
+command :bar do |c|
+  c.syntax = &amp;#39;foobar bar [options]&amp;#39;
+  c.description = &amp;#39;Display bar with optional prefix and suffix&amp;#39;
+  c.option &amp;#39;--prefix STRING&amp;#39;, String, &amp;#39;Adds a prefix to bar&amp;#39;
+  c.option &amp;#39;--suffix STRING&amp;#39;, String, &amp;#39;Adds a suffix to bar&amp;#39;
+  c.when_called do |args, options|
+    options.default :prefix =&amp;gt; &amp;#39;(&amp;#39;, :suffix =&amp;gt; &amp;#39;)&amp;#39;
+    say &amp;quot;#{options.prefix}bar#{options.suffix}&amp;quot;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are still some rough edges, but in general it works pretty well.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>HowTo: Phusion Passenger aka mod_rails for Apache</title>
+    <link rel="alternate" href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/"/>
+    <id>/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/</id>
+    <published>2008-08-08T00:00:00Z</published>
+    <updated>2008-08-08T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;Yesterday I decided to give &lt;a href="http://www.modrails.com"&gt;Phusion Passenger aka
+mod_rails&lt;/a&gt; a try and installed it. It was dead
+simple to set it up and to deploy rails applications with it. I&amp;#39;m now
+using it for several &amp;ldquo;small&amp;rdquo; applications, for which the whole overhead
+of setting up a cluster of mongrels and a proxy doesn&amp;#39;t seem to be
+adequate. I&amp;#39;ll give you a short summary on how to install mod_rails for
+</summary>
+    <content type="html">&lt;p&gt;Yesterday I decided to give &lt;a href="http://www.modrails.com"&gt;Phusion Passenger aka
+mod_rails&lt;/a&gt; a try and installed it. It was dead
+simple to set it up and to deploy rails applications with it. I&amp;#39;m now
+using it for several &amp;ldquo;small&amp;rdquo; applications, for which the whole overhead
+of setting up a cluster of mongrels and a proxy doesn&amp;#39;t seem to be
+adequate. I&amp;#39;ll give you a short summary on how to install mod_rails for
+apache2 on Debian Etch.&lt;/p&gt;
+
+&lt;p&gt;First, install the passenger gem using
+&lt;a href="http://www.rubygems.org/"&gt;RubyGems&lt;/a&gt; (if you don&amp;#39;t have Ruby and
+RubyGems running on your server, install them first - of course):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+gem install passenger
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Afterwards, run the passenger apache2 module installer using this
+command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+passenger-install-apache2-module
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It&amp;#39;ll check for the required software to install the module, compile it
+and copy it to the correct folders. If some software is missing install
+it using &lt;code&gt;aptitude&lt;/code&gt; (ie. &lt;code&gt;aptitude install g++&lt;/code&gt; if
+you&amp;#39;re missing the GNU C++ Compiler).&lt;/p&gt;
+
+&lt;p&gt;Next, create two new files in the
+&lt;code&gt;/etc/apache2/mods-available&lt;/code&gt; directory. One called
+&lt;code&gt;mod_rails.load&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::apache
+LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-2.0.2/ext/apache2/mod_passenger.so
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip; and the other one called &lt;code&gt;mod_rails.conf&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::apache
+PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger–2.0.2
+PassengerRuby /usr/bin/ruby1.8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can enable the module using &lt;code&gt;a2enmod&lt;/code&gt; and restart
+apache.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+a2enmod mod_rails
+apache2ctl restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;#39;s it! Now simply deploy your rails application, just make sure
+apache&amp;#39;s document root is pointing to your applications
+&lt;code&gt;public&lt;/code&gt; folder. Passenger will automatically detect your
+rails application and start up processes as needed. You can check it&amp;#39;s
+status and stats using the &lt;code&gt;passenger-status&lt;/code&gt; and
+&lt;code&gt;passenger-memory-stats&lt;/code&gt; commands. For more details on
+mod_rails, take a look at it&amp;#39;s &lt;a href="http://modrails.com/documentation.html"&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>My day-to-day resources on Ruby and Rails</title>
+    <link rel="alternate" href="/2008/08/my-day-to-day-resources-on-ruby-and-rails/"/>
+    <id>/2008/08/my-day-to-day-resources-on-ruby-and-rails/</id>
+    <published>2008-08-04T00:00:00Z</published>
+    <updated>2008-08-04T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;h3 id="toc_0"&gt;News&lt;/h3&gt;
+
+&lt;p&gt;I try to keep up with Ruby and Ruby on Rails, even if I’m not working
+with one of them at the moment. These are the three feeds helping me to
+get the latest news:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/2008/08/planetrubyonrails.png" alt="image"&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;PlanetRubyOnRails.com, not to be mixed up with
+PlanetRubyOnRails.&lt;strong&gt;org&lt;/strong&gt;, is a simple feed aggregator with a set of
+</summary>
+    <content type="html">&lt;h3 id="toc_0"&gt;News&lt;/h3&gt;
+
+&lt;p&gt;I try to keep up with Ruby and Ruby on Rails, even if I’m not working
+with one of them at the moment. These are the three feeds helping me to
+get the latest news:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/2008/08/planetrubyonrails.png" alt="image"&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;PlanetRubyOnRails.com, not to be mixed up with
+PlanetRubyOnRails.&lt;strong&gt;org&lt;/strong&gt;, is a simple feed aggregator with a set of
+quite informative blogs. Including the official &lt;a href="http://blog.rubyonrails.com"&gt;Riding
+Rails&lt;/a&gt; Blog, &lt;a href="http://www.rubyinside.com"&gt;Ruby
+Inside&lt;/a&gt;, and &lt;a href="http://www.infoq.com"&gt;InfoQ&lt;/a&gt;.
+Unfortunately it doesn’t provide an RSS-Feed anymore, but thanks to
+&lt;a href="http://feed43.com/"&gt;Feed43&lt;/a&gt; it’s easy to build one on your own.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/2008/08/rails_envy_logo.gif" alt="image"&gt;:&lt;a href="http://railsenvy.com"&gt;http://railsenvy.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Every Wednesday Gregg Pollack and Jason Seifer of &lt;a href="http://www.railsenvy.com"&gt;Rails
+Envy&lt;/a&gt; publish their Rails Envy Podcast,
+covering last week’s most important topics in the Ruby and Rails
+community. They’re giving a short summary for every topic, together with
+a link in their &lt;em&gt;shownotes&lt;/em&gt; and usually are fooling around. The
+podcast’s length is usually between 10 to 15 minutes.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://planet.rubyonrails-ug.de/"&gt;&lt;strong&gt;RubyOnRails-Ug Planet&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Just like PlanetRubyOnRails, the planet of the german ruby on rails
+usergroup is a feed aggregator, except it includes blogs of members of
+the german Ruby on Rails community. (Yes, mine too …) Its far from being
+as active as the international one, but usually includes interesting
+posts.&lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;Documentation&lt;/h3&gt;
+
+&lt;p&gt;When I’m working on Ruby and Ruby on Rails code, I use there resources
+to quickly look up documentation:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/2008/08/rubydoc.png" alt="image"&gt;:&lt;a href="http://ruby-doc.org"&gt;http://ruby-doc.org&lt;/a&gt;/&lt;/p&gt;
+
+&lt;p&gt;Ruby-Doc.org provides the documentation for both Ruby’s
+&lt;a href="http://ruby-doc.org/core"&gt;Core&lt;/a&gt; and
+&lt;a href="http://ruby-doc.org/stdlib"&gt;Stdlib&lt;/a&gt;. The documentation is in the
+default RDoc format, so I usually end up hitting [Strg]+[F] and using my
+browsers search function to quickly get to the relevant sections.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://api.rubyonrails.com/"&gt;&lt;strong&gt;api.rubyonrails.com&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;What Ruby-Doc.org is for ruby,
+&lt;a href="http://api.rubyonrails.com/"&gt;api.rubyonrails.com&lt;/a&gt; is for rails. It’s
+the standard rails documentation in the default RDoc format. As with
+Ruby-Doc.org I use my browsers search to quickly find what I’m looking
+for.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/2008/08/rails-doc.png" alt="image"&gt;:&lt;a href="http://rails-doc.org"&gt;http://rails-doc.org&lt;/a&gt;/&lt;/p&gt;
+
+&lt;p&gt;Rails-Doc.org is a quite new site providing the full rails
+documentation. Unlike the default API documentation site (see above) it
+also includes documentation of older rails versions. Additionally it has
+a nice search engine, and adds the ability to post notes. There are
+other sites providing similar functionality for the rails documentation,
+but somehow Rails-Doc.org just feels right and I’m using more and more.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Gem Server&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Did you know the fabulous &lt;a href="http://www.rubygems.org/"&gt;RubyGem-Tools&lt;/a&gt;
+provide a server including the documentation for all your installed
+gems? Simple run &lt;code&gt;gem server&lt;/code&gt; on the console, fire up your
+browser and navigate to &lt;a href="http://localhost:8808"&gt;http://localhost:8808&lt;/a&gt;.
+Okay, it’s just the standard RDoc documentation for each gem, without
+any fancy search or anything … but who cares if you’re somewhere in the
+middle of nowhere with no internet connection? :-)&lt;/p&gt;
+
+&lt;h3 id="toc_2"&gt;Other&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src="/assets/2008/08/railscasts.png" alt="image"&gt;:&lt;a href="http://www.railscasts.com"&gt;http://www.railscasts.com&lt;/a&gt;/&lt;/p&gt;
+
+&lt;p&gt;Last but definitely not least, are the RailsCasts by Ryan Bates. Every
+Monday he publishes a approx. 5 to 10 minute screencast on a variety of
+topics related to rails development. If you haven’t seen one of them
+yet, don’t hesitate any longer. Ryan’s explanations are concise and
+based on practical examples.&lt;/p&gt;
+
+&lt;p&gt;What are your resources on Ruby / Rails? Which blogs are you reading to
+stay up-to-date? Which documentation are you using? I’m interested in
+your comments (there are way to few anyways … ;-))!&lt;/p&gt;
+
+&lt;h3 id="toc_3"&gt;Update (Aug 15.)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://blog.nodeta.fi/"&gt;Nodeta&lt;/a&gt;, creators of Rails-Doc.org, released
+&lt;a href="http://www.apidock.com/"&gt;APIdock&lt;/a&gt; yesterday. APIdock extends the
+Rails-Doc.org concept to multiple projects. Currently Rails, Ruby and
+RSpec are included.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Script.aculo.us should have Effect.Emerge</title>
+    <link rel="alternate" href="/2008/07/script-aculo-us-should-have-effect-emerge/"/>
+    <id>/2008/07/script-aculo-us-should-have-effect-emerge/</id>
+    <published>2008-07-24T00:00:00Z</published>
+    <updated>2008-07-24T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;&lt;a href="http://script.aculo.us"&gt;Script.aculo.us&lt;/a&gt; includes a nice effect called &lt;a href="http://github.com/madrobby/scriptaculous/wikis/effect-dropout"&gt;&lt;code&gt;Effect.DropOut&lt;/code&gt;&lt;/a&gt;,
+which let&amp;#39;s the element fall in an &amp;ldquo;invisible trap&amp;rdquo; underneath. Surprisingly there isn&amp;#39;t an opposite effect.
+Calling &lt;code&gt;Effect.DropOut&lt;/code&gt; with &lt;code&gt;Effect.Transitions.reverse&lt;/code&gt; as transition, doesn’t work either. So what to do?
+</summary>
+    <content type="html">&lt;p&gt;&lt;a href="http://script.aculo.us"&gt;Script.aculo.us&lt;/a&gt; includes a nice effect called &lt;a href="http://github.com/madrobby/scriptaculous/wikis/effect-dropout"&gt;&lt;code&gt;Effect.DropOut&lt;/code&gt;&lt;/a&gt;,
+which let&amp;#39;s the element fall in an &amp;ldquo;invisible trap&amp;rdquo; underneath. Surprisingly there isn&amp;#39;t an opposite effect.
+Calling &lt;code&gt;Effect.DropOut&lt;/code&gt; with &lt;code&gt;Effect.Transitions.reverse&lt;/code&gt; as transition, doesn’t work either. So what to do?
+&lt;code&gt;Effect.Emerge&lt;/code&gt; to the rescue!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::javascript
+Effect.Emerge = function(element) {
+  element = $(element);
+  var oldStyle = {
+    top: element.getStyle(&amp;#39;top&amp;#39;),
+    left: element.getStyle(&amp;#39;left&amp;#39;) };
+  var position = element.positionedOffset();
+  return new Effect.Parallel(
+    [ new Effect.Move(element, {x: 0, y: -100, sync: true }), 
+      new Effect.Opacity(element, { sync: true, from: 0.0, to: 1.0 }) ],
+    Object.extend(
+      { duration: 0.5,
+        beforeSetup: function(effect) {
+          effect.effects[0].element.show().makePositioned().setStyle( { top: (position.top + 100) + &amp;#39;px&amp;#39; }); 
+        },
+        afterFinishInternal: function(effect) {
+          effect.effects[0].element.undoPositioned().setStyle(oldStyle);
+        } 
+      }, arguments[1] || { }));
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Basically it’s just a modified version of &lt;code&gt;Effect.DropOut&lt;/code&gt; toreverse the effect. Try it in compination with
+&lt;a href="http://github.com/madrobby/scriptaculous/wikis/effect-multiple"&gt;&lt;code&gt;Effect.multiple&lt;/code&gt;&lt;/a&gt;!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using RSpactor with Linux</title>
+    <link rel="alternate" href="/2008/04/using-rspactor-with-linux/"/>
+    <id>/2008/04/using-rspactor-with-linux/</id>
+    <published>2008-04-10T00:00:00Z</published>
+    <updated>2008-04-10T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;&lt;a href="http://rubyphunk.com/"&gt;Andreas Wolff&lt;/a&gt; recently released
+&lt;a href="http://rubyphunk.com/2008/3/11/hello-world-introducing-rspactor"&gt;RSpactor&lt;/a&gt;,
+a (up to now) command line tool similar to
+&lt;a href="http://www.zenspider.com/ZSS/Products/ZenTest/"&gt;autotest&lt;/a&gt;. Nevertheless
+it differs from autotest in two points. First it&amp;#39;s focused on
+&lt;a href="http://rspec.info/"&gt;RSpec&lt;/a&gt; and secondly it’s using Mac OS&amp;#39; FSEvents to
+</summary>
+    <content type="html">&lt;p&gt;&lt;a href="http://rubyphunk.com/"&gt;Andreas Wolff&lt;/a&gt; recently released
+&lt;a href="http://rubyphunk.com/2008/3/11/hello-world-introducing-rspactor"&gt;RSpactor&lt;/a&gt;,
+a (up to now) command line tool similar to
+&lt;a href="http://www.zenspider.com/ZSS/Products/ZenTest/"&gt;autotest&lt;/a&gt;. Nevertheless
+it differs from autotest in two points. First it&amp;#39;s focused on
+&lt;a href="http://rspec.info/"&gt;RSpec&lt;/a&gt; and secondly it’s using Mac OS&amp;#39; FSEvents to
+monitor file changes. According to this it only runs on Mac OS. 
+To get it running on Linux you&amp;#39;ll have to change RSpactor&amp;#39;s Listener
+class to use Linux&amp;#39; equivalent to FSEvents called
+&lt;a href="http://en.wikipedia.org/wiki/Inotify"&gt;inotify&lt;/a&gt;. Luckily there&amp;#39;s a gem
+called &lt;a href="http://rubyforge.org/projects/rinotify/"&gt;RInotify&lt;/a&gt; which
+introduces a simple class to access the inotify events within ruby. I
+rewrote the Listeners class yesterday to get it running on my Linux
+notebook:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+# inotify_listener.rb
+class Listener
+  def initialize(&amp;amp;block)
+    require &amp;#39;rinotify&amp;#39;
+    begin
+      @spec_run_time = Time.now
+      @watching      = {}
+
+      notify = RInotify.new
+      Dir.glob(File.join(Dir.pwd, &amp;#39;**&amp;#39;)).each do |dir|
+        watch_desc = notify.add_watch(dir, RInotify::MODIFY | RInotify::CREATE | RInotify::DELETE)
+        @watching[watch_desc] = dir
+      end
+
+      while true do
+        changed_files = []
+        notify.each_event do |event|
+          changed_files &amp;lt;&amp;lt; build_path_from_event(event)
+        end
+        changed_files.uniq!
+        unless changed_files.empty?
+          @spec_run_time = Time.now
+          yield changed_files
+        end
+        sleep(5)
+      end
+    rescue Interrupt
+      @watching.each_key { |key| notify.rm_watch(key) }
+    end
+  end
+
+  def build_path_from_event(event)
+    File.join(@watching[event.watch_descriptor], event.name || &amp;#39;&amp;#39;)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To get it running you simply have to install the RInotify gem and change
+one line in &lt;code&gt;bin/rspactor&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+# from
+require File.join(File.dirname(__FILE__), &amp;#39;..&amp;#39;, &amp;#39;lib&amp;#39;, &amp;#39;listener&amp;#39;)
+# to
+require File.join(File.dirname(__FILE__), &amp;#39;..&amp;#39;, &amp;#39;lib&amp;#39;, &amp;#39;inotify_listener&amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That’s it! RSpactor should be running on Linux now and consuming much
+less CPU than autotest.&lt;/p&gt;
+
+&lt;p&gt;(You might also want to change the &lt;code&gt;system&lt;/code&gt;-call in
+&lt;code&gt;lib/resulting.rb&lt;/code&gt; as it’s currently using Growl to notify you about the
+test results.)&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Easy SSH authentication with keychain</title>
+    <link rel="alternate" href="/2008/03/easy-ssh-authentication-with-keychain/"/>
+    <id>/2008/03/easy-ssh-authentication-with-keychain/</id>
+    <published>2008-03-29T00:00:00Z</published>
+    <updated>2008-03-29T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;Typing SSH passwords again and again can be a real pain. For example:
+Lately I started to use &lt;a href="http://www.capify.org/"&gt;Capistrano&lt;/a&gt; to deploy
+my rails applications. If I want to set up the maintenance-page on the
+server I&amp;#39;ll type &lt;code&gt;cap deploy:web:disable&lt;/code&gt; which of course
+prompts me for the SSH password. Then I want to deploy my application
+with &lt;code&gt;cap deploy&lt;/code&gt; and again will be prompted for the
+password. Finally I have to &lt;code&gt;cap deploy:web:enable&lt;/code&gt; to remove
+the maintenance page which as mindful readers might have guessed
+already prompts for the password. This was just one reason for me to
+set up SSH authentication keys. At first I was a little worried that
+setting it up might be a bit complicated. Luckily I was disabused. If
+you want to switch to key based authentication too follow these simple
+steps.&lt;/p&gt;
+
+&lt;p&gt;</summary>
+    <content type="html">&lt;p&gt;Typing SSH passwords again and again can be a real pain. For example:
+Lately I started to use &lt;a href="http://www.capify.org/"&gt;Capistrano&lt;/a&gt; to deploy
+my rails applications. If I want to set up the maintenance-page on the
+server I&amp;#39;ll type &lt;code&gt;cap deploy:web:disable&lt;/code&gt; which of course
+prompts me for the SSH password. Then I want to deploy my application
+with &lt;code&gt;cap deploy&lt;/code&gt; and again will be prompted for the
+password. Finally I have to &lt;code&gt;cap deploy:web:enable&lt;/code&gt; to remove
+the maintenance page which as mindful readers might have guessed
+already prompts for the password. This was just one reason for me to
+set up SSH authentication keys. At first I was a little worried that
+setting it up might be a bit complicated. Luckily I was disabused. If
+you want to switch to key based authentication too follow these simple
+steps.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id="toc_0"&gt;Key generation&lt;/h3&gt;
+
+&lt;p&gt;The first thing you need is - of course - a pair of keys: your private
+key and the associated public key. To generate both fire up our favorite
+shell (for me it’s &lt;code&gt;bash&lt;/code&gt;) and type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+ssh-keygen
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will generate both keys and ask you where to store it. Usually the
+default would be something like &lt;code&gt;~/.ssh/id_rsa&lt;/code&gt;. Simply
+accept the default by pressing return. Next you&amp;#39;ll have to enter a
+password for your key and confirm it. Afterwards you&amp;#39;ve to tell the
+server to accept your key on authentication. Do so by uploading the
+public key to the server.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+scp ~/.ssh/id_rsa.pub
+yourserver.com:~/.ssh/authenticated_keys2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to add multiple keys, be sure to append it to the
+&lt;code&gt;authenticated_keys2&lt;/code&gt; file and don&amp;#39;t overwrite it.&lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;First login&lt;/h3&gt;
+
+&lt;p&gt;That&amp;#39;s all you have to do to switch to key based SSH authentication. Try
+to log in as usual by typing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+ssh yourserver.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will prompt you for your key&amp;#39;s password and log you in to your
+server afterwards. &amp;ldquo;But wait! I&amp;#39;m still having to type my password every
+time I want to log in!&amp;rdquo; you shout, and you’re right - up to now. What
+you need to do is running &lt;code&gt;ssh-agent&lt;/code&gt;, adding your key and
+typing your password. &lt;code&gt;ssh-agent&lt;/code&gt; will then ask for the
+password and store it until you shut it down. You&amp;#39;ll have to do this
+everytime you open up a new shell or put the commands into your i.e.
+&lt;code&gt;~/.bash_profile&lt;/code&gt;. Quite comfortable but we can do better.&lt;/p&gt;
+
+&lt;h3 id="toc_2"&gt;Keychain&lt;/h3&gt;
+
+&lt;p&gt;There is a nice little tool called &lt;code&gt;keychain&lt;/code&gt; that will
+smooth the process a little for you. It&amp;#39;s originally developed by the
+&lt;a href="http://www.gentoo.org/"&gt;Gentoo&lt;/a&gt; people but it’s available on other
+linux distributions (as well as Mac OS X), too. Simply install it by
+typing your system&amp;#39;s equivalent to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+# Gentoo
+emerge keychain
+# Debian
+aptitude install keychain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and it&amp;#39;ll be available in no time. To set it up you need to put these
+two lines in our &lt;code&gt;~/.bash_profile&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+keychain ~/.ssh/id_rsa
+source ~/.keychain/$HOSTNAME-sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;#39;s it. The first time you open up a shell &lt;code&gt;keychain&lt;/code&gt; will
+start &lt;code&gt;ssh-agent&lt;/code&gt;, prompt you for your keys password and
+remember the running &lt;code&gt;ssh-agent&lt;/code&gt; for all new shells. On your
+next SSH authentication no more password typing is required. Wasn’t
+complicated at all, was it?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Thanks to &lt;a href="http://www.michael-kolb.co.uk/"&gt;Michael&lt;/a&gt; for
+pointing out that the public key file is named &lt;code&gt;id_rsa.pub&lt;/code&gt;
+instead of &lt;code&gt;id_rsa&lt;/code&gt;. Fixed it.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Fuzzy-controlled jet with Processing</title>
+    <link rel="alternate" href="/2008/01/fuzzy-controlled-jet-with-processing/"/>
+    <id>/2008/01/fuzzy-controlled-jet-with-processing/</id>
+    <published>2008-01-14T00:00:00Z</published>
+    <updated>2008-01-14T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;This one started as an homework for university but I really started to
+like it. The original task was to built a fuzzy controller using
+&lt;a href="http://de.wikipedia.org/wiki/MATLAB"&gt;Matlab&lt;/a&gt; in groups of 2 or 3
+students.&lt;/p&gt;
+
+&lt;p&gt;</summary>
+    <content type="html">&lt;p&gt;This one started as an homework for university but I really started to
+like it. The original task was to built a fuzzy controller using
+&lt;a href="http://de.wikipedia.org/wiki/MATLAB"&gt;Matlab&lt;/a&gt; in groups of 2 or 3
+students.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;I joined &lt;a href="http://blog.benholio.de/"&gt;Benjamin&lt;/a&gt; and another
+fellow student to create a simple fuzzy controller for flying a plane in
+a given height above the ground. To make things a little more complex we
+also considered head wind. As all of us three didn’t like the quite
+abstract results of our controller in Matlab, we decided to implement a
+small simulation in &lt;a href="http://www.processing.org/"&gt;processing.&lt;/a&gt; We used
+&lt;a href="http://people.clarkson.edu/%7Eesazonov/FuzzyEngine.htm"&gt;Edward Saznov’s open source fuzzy inference engine for
+Java&lt;/a&gt; and
+integrated it into processing. Surprisingly everything worked quite well
+from the beginning. Although we had some small issues we were able to
+build a nice looking and functional simulation using the controller we
+designed. The resulting applet runs perfectly in the browser and as an
+application. (I love processing’s export-feature.) Check out the sketch
+by clicking on the picture below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/2008/01/fuzzy.png" alt="image"&gt;:&lt;a href="http://benedikt.synatic.net/fuzzy"&gt;http://benedikt.synatic.net/fuzzy&lt;/a&gt;/&lt;/p&gt;
+
+&lt;p&gt;Here are the controls you might need :-)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;R                    Reset the terrain
+  Space                Start / Stop simulatoin
+  Arrow up / down      Change wind angle
+  Arrow left           Increase wind power
+  Arrow right          Reduce wind power
+  Click                Set position of the plane
+  Dragging the mouse   Draw terrain&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;We decided to release the source code of this. It still could need some
+refactoring, but it’s working and deadline was today, so feel free to
+experiment with it (or even improve it) and sent us some comments!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>ActiveRecord: Using the type column</title>
+    <link rel="alternate" href="/2007/09/activerecord-using-the-type-column/"/>
+    <id>/2007/09/activerecord-using-the-type-column/</id>
+    <published>2007-09-21T00:00:00Z</published>
+    <updated>2007-09-21T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;By default it&amp;#39;s not possible to use a database-column called &lt;code&gt;type&lt;/code&gt; for
+anything else than single table inheritance. To change this, simply use
+&lt;code&gt;set_inheritance_column()&lt;/code&gt; and &lt;code&gt;read_attribute()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+class TypeTest &amp;lt; ActiveRecord::Base
+  set_inheritance_column(:something_else)
+
+  def type
+    read_attribute(:type)
+  end
+
+  def type=(value)
+    write_attribute(:type, value)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</summary>
+    <content type="html">&lt;p&gt;By default it&amp;#39;s not possible to use a database-column called &lt;code&gt;type&lt;/code&gt; for
+anything else than single table inheritance. To change this, simply use
+&lt;code&gt;set_inheritance_column()&lt;/code&gt; and &lt;code&gt;read_attribute()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+class TypeTest &amp;lt; ActiveRecord::Base
+  set_inheritance_column(:something_else)
+
+  def type
+    read_attribute(:type)
+  end
+
+  def type=(value)
+    write_attribute(:type, value)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;
+</content>
+  </entry>
+</feed>

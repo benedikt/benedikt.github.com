@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Multitouch Inspector for iPad | Benedikt Deicke - Software Engineer</title>
+<link href="/feed.xml" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="2010">
+    <header><h1>
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </h1>
+      <nav><ul>
+<li><a href="/archives">Archives</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="mailto:benedikt@synatic.net">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+    <li><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></li>
+    <li><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></li>
+    <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
+    <li><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">HowTo: Phusion Passenger aka mod_rails for Apache</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a href="/linux/">Linux</a></li>
+    <li><a href="/server/">Server</a></li>
+    <li><a href="/howto/">HowTo</a></li>
+    <li><a href="/ruby/">Ruby</a></li>
+    <li><a href="/rails/">Rails</a></li>
+    <li><a href="/activerecord/">ActiveRecord</a></li>
+    <li><a href="/processing/">Processing</a></li>
+    <li><a href="/rspec/">RSpec</a></li>
+    <li><a href="/javascript/">JavaScript</a></li>
+    <li><a href="/touch/">Touch</a></li>
+    <li><a href="/other/">Other</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article><h2><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></h2>
+  <div class="meta">
+    Posted on June 24, 2010
+    — Tagged with:
+    <a href="/javascript/">JavaScript</a>, <a href="/ruby/">Ruby</a>, <a href="/touch/">Touch</a>
+  </div>
+  <p><img src="/assets/2010/06/icon.png" style="float: right"></p>
+
+<p>During the last couple weeks I've been playing around with the iPad and
+Mobile Safari. I built a little tool to familiarize myself with the
+Multitouch JavaScript API provided by Mobile Safari as well as web
+applications for the iPad in general. I named the result <a href="/assets/2010/06/index.html">Multitouch
+Inspector</a> because
+that's what it does: Inspect the TouchEvents fired by the JavaScript
+API. ;-) Today I decided to rewrite the tool to drop the dependency on
+<a href="http://prototypejs.org">Prototype.js</a> and I published it on
+<a href="http://github.com/benedikt/multitouch-inspector">GitHub</a>.</p>
+
+<p></p>
+
+<h3 id="toc_0">Using Multitouch Events from JavaScript</h3>
+
+<p>There are four events that are related to touch: <code>TouchStart</code>, <code>TouchMove</code>,
+<code>TouchEnd</code> and <code>TouchCancel</code>. I'm not sure about what situation would
+trigger <code>TouchCancel</code> so I decided to skip it for now. Working with the
+touch events is straight forward:</p>
+
+<pre class="sunburst"><span class="Support">document</span>.addEventListener(<span class="String"><span class="String">'</span>touchstart<span class="String">'</span></span>, <span class="Storage">function</span>(<span class="Support">event</span>) {
+  <span class="Comment"><span class="Comment">//</span> Do whatever you'd like to do with the event</span>
+}, <span class="Constant">false</span>);
+</pre>
+
+<p>Of course you can add the listener to any element just like you would
+with <code>Click</code> or <code>MouseOver</code> events. The function gets passed an object
+of type <code>TouchEvent</code>. There are several properties on this object, but
+the most interesting ones are <code>Touches</code>, <code>changedTouches</code> and
+<code>targetTouches</code>. They all are of type <code>TouchList</code> and contain several
+<code>Touch</code> objects. The <code>touches</code> property lists all touches currently on
+the screen. The <code>changedTouches</code> list contains the touches that changed
+and caused the event to fire. The touches in the <code>targetTouches</code> list
+are those that are currently within the target element.</p>
+
+<p>Every <code>Touch</code> has an <code>identifier</code> property as well as <code>pageX</code> and <code>pageY</code>
+properties. As you might have guessed already, the <code>pageX</code> and <code>pageY</code>
+properties include the touch's position on the screen. The <code>identifier</code>
+property provides an unique integer for this touch. It stays the the
+same for this touch as long it is on the screen. This is particularly
+useful as removing one finger will trigger a <code>TouchEnd</code> event that implies
+that all fingers were removed, immediately followed by a <code>TouchStart</code>
+event including the remaining fingers. Luckily the identifier property
+stays the same for those fingers that weren't removed from the screen.</p>
+
+<h3 id="toc_1">Offline Application Caching</h3>
+
+<p>In order to use the application without having an active internet
+connection or simply while the development server isn't running I'm
+using <a href="http://www.w3.org/TR/offline-webapps/#offline">HTML5 Offline Application
+Caching</a>. It works by
+defining a manifest file and referencing it in the html-tag:</p>
+
+<pre class="sunburst"><span class="MetaTagAll"><span class="MetaTagAll">&lt;!</span><span class="MetaTagAll"><span class="MetaTagAll">DOCTYPE</span> html</span><span class="MetaTagAll">&gt;</span></span>
+<span class="MetaTagAll"><span class="MetaTagAll">&lt;</span><span class="MetaTagAll">html</span> <span class="MetaTagAll">manifest</span>=<span class="String"><span class="String">"</span>application.manifest<span class="String">"</span></span><span class="MetaTagAll">&gt;</span></span>
+</pre>
+
+<p>The manifest file itself looks like this and defines what files are
+required to view the application while offline:</p>
+
+<pre class="sunburst">CACHE MANIFEST
+
+# c94640e9114e05f16e189605e5b65ba2357117712c949cae92cc29bc1bbd3c47
+/images/background.png
+/images/icon.png
+/index.html
+/javascripts/application.js
+/stylesheets/application.css
+</pre>
+
+<p>You might wonder about the random string at the top. As the browser will
+reload everything when it can't find one file in it's cache, I'm using
+this string to force a reload during development. I built a small
+Sinatra app (see the listing below this paragraph) that generates the
+manifest and resets this string for every request. As a result, the
+browser reloads everything while online but falls back to the cached
+files when offline.</p>
+
+<pre class="sunburst"><span class="Keyword">require</span> <span class="String"><span class="String">'</span>sinatra<span class="String">'</span></span>
+<span class="Keyword">require</span> <span class="String"><span class="String">'</span>digest/sha2<span class="String">'</span></span>
+<span class="Keyword">require</span> <span class="String"><span class="String">'</span>pathname<span class="String">'</span></span>
+
+get <span class="String"><span class="String">'</span>/application.manifest<span class="String">'</span></span> <span class="Keyword">do</span>
+  content_type <span class="String"><span class="String">'</span>text/cache-manifest<span class="String">'</span></span>
+
+  manifest <span class="Keyword">=</span> <span class="String"><span class="String">"</span>CACHE MANIFEST<span class="StringConstant">\n</span><span class="StringConstant">\n</span><span class="String">"</span></span>
+  manifest <span class="Keyword">&lt;&lt;</span> <span class="String"><span class="String">"</span>#<span class="String">"</span></span> <span class="Keyword">&lt;&lt;</span> <span class="Support">Digest</span>::<span class="Entity">SHA2</span>.<span class="Entity">hexdigest</span>(<span class="Support">Time</span>.<span class="Entity">now</span>.<span class="Entity">to_s</span> <span class="Keyword">+</span> <span class="Support">Time</span>.<span class="Entity">now</span>.<span class="Entity">usec</span>.<span class="Entity">to_s</span>) <span class="Keyword">&lt;&lt;</span> <span class="String"><span class="String">"</span><span class="StringConstant">\n</span><span class="String">"</span></span>
+
+  root <span class="Keyword">=</span> <span class="Support">Pathname</span>.<span class="Entity">new</span>(settings.<span class="Entity">public</span>)
+  <span class="Support">Pathname</span>.<span class="Entity">glob</span>(<span class="Support">File</span>.<span class="Entity">join</span>(root, <span class="String"><span class="String">"</span>**<span class="String">"</span></span>, <span class="String"><span class="String">"</span>*<span class="String">"</span></span>)).<span class="Entity">each</span> <span class="Keyword">do </span>|<span class="Variable">p</span>|
+    manifest <span class="Keyword">&lt;&lt;</span> <span class="String"><span class="String">"</span>/<span class="String">"</span></span> <span class="Keyword">&lt;&lt;</span> p.<span class="Entity">relative_path_from</span>(root) <span class="Keyword">&lt;&lt;</span> <span class="String"><span class="String">"</span><span class="StringConstant">\n</span><span class="String">"</span></span> <span class="Keyword">if</span> p.<span class="Entity">file?</span>
+  <span class="Keyword">end</span>
+
+  manifest
+<span class="Keyword">end</span>
+</pre>
+
+<h3 id="toc_2">Issues</h3>
+
+<p>There are some issues that I couldn't resolve while building the
+application. The startup image will only work while in portrait
+orientation and its dimension has to be exactly 1004x768. Currently
+there isn't a way to define a startup image for horizontal orientation.</p>
+
+<p>While the tracking of the touches works on the iPhone (with iOS 4.0) as
+well for some reason it isn't possible to press the buttons in the
+toolbar. At the moment I have no explanation for this rather strange
+behavior, but I might take another look at it in the future.</p>
+
+<h3 id="toc_3">Screenshot &amp; Demo</h3>
+
+<p>Now that you have some insights on the internals of the application,
+here's a screenshot as well as a link on it to a demo:</p>
+
+<p><a href="/assets/2010/06/index.html"><img src="/assets/2010/06/multitouch-inspector_medium.png" alt="Screenshot of the Multitouch Inspector"></a></p>
+
+<h3 id="toc_4">Fork it on GitHub</h3>
+
+<p>I published the source code on
+<a href="http://github.com/benedikt/multitouch-inspector">GitHub</a>. Feel free to
+fork it!</p>
+
+<h3 id="toc_5">Further reading</h3>
+
+<ol>
+<li> <a href="http://developer.apple.com/safari/library/documentation/appleapplications/reference/safariwebcontent/handlingevents/handlingevents.html#//apple_ref/doc/uid/TP40006511-SW22">Safari Web Content Guide: Handling
+Events</a>
+</li>
+<li> <a href="http://mir.aculo.us/2010/06/04/making-an-ipad-html5-app-making-it-really-fast/">Making an iPad HTML5 App &amp; making it really
+fast</a>
+</li>
+</ol></article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p>© 2012 Benedikt Deicke, Haardtring 230a, 64295 Darmstadt, Germany</p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>

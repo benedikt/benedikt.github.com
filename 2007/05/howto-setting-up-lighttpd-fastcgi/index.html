@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HowTo: Setting up LigHttpd + fastcgi | Benedikt Deicke - Software Engineer</title>
+<link href="/feed.xml" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="2007">
+    <header><h1>
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </h1>
+      <nav><ul>
+<li><a href="/archives">Archives</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="mailto:benedikt@synatic.net">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+    <li><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></li>
+    <li><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></li>
+    <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
+    <li><a href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/">HowTo: Phusion Passenger aka mod_rails for Apache</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a href="/linux/">Linux</a></li>
+    <li><a href="/server/">Server</a></li>
+    <li><a href="/howto/">HowTo</a></li>
+    <li><a href="/ruby/">Ruby</a></li>
+    <li><a href="/rails/">Rails</a></li>
+    <li><a href="/activerecord/">ActiveRecord</a></li>
+    <li><a href="/processing/">Processing</a></li>
+    <li><a href="/rspec/">RSpec</a></li>
+    <li><a href="/javascript/">JavaScript</a></li>
+    <li><a href="/touch/">Touch</a></li>
+    <li><a href="/other/">Other</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article><h2><a href="/2007/05/howto-setting-up-lighttpd-fastcgi/">HowTo: Setting up LigHttpd + fastcgi</a></h2>
+  <div class="meta">
+    Posted on May 22, 2007
+    — Tagged with:
+    <a href="/linux/">Linux</a>, <a href="/server/">Server</a>, <a href="/howto/">HowTo</a>
+  </div>
+  <p>This short tutorial is going to show how to set up Lighttpd with fastcgi
+on Debian 4.0 (Etch). Actually it’s nothing special but I hope it
+demonstrates how easy it is. ;-)</p>
+
+<p></p>
+
+<h2 id="toc_0">What is Lighttpd?</h2>
+
+<p>Lighttpd is a light (I bet you already guessed that … ;)), fast and
+secure high performance web server. It perfectly fits the needs for high
+load websites but it’s not the best choice for servers hosting multiple
+independant websites. There are some popular sites running on lighttpd
+(eg. Youtube).</p>
+
+<h2 id="toc_1">Installation</h2>
+
+<p>If you’ve been running apache, the first step is to stop it:</p>
+
+<pre class="sunburst">apache2ctl stop
+</pre>
+
+<p>Afterwards you can savely install the lighttpd package:</p>
+
+<pre class="sunburst">aptitude install lighttpd
+</pre>
+
+<p>It should install smoothly and start itself when finished.</p>
+
+<h2 id="toc_2">Basic Configuration</h2>
+
+<p>Lighttpds default configuration on Debian file is
+<code>/etc/lighttpd/lighttpd.conf</code>. The default settings might be
+just fine for your needs, but it’s a bit messy for my taste. So let’s
+simply write our own. Open the configuration with your favorite editor.</p>
+
+<p>The first thing we need to do is loading the required modules. This is
+what we’ll use for this tutorial: </p>
+
+<pre class="sunburst"><span class="Comment"><span class="Comment">#</span> Modules</span>
+<span class="SupportConstant">server.modules</span> = (
+ <span class="String"><span class="String">"</span>mod_access<span class="String">"</span></span>,
+ <span class="String"><span class="String">"</span>mod_alias<span class="String">"</span></span>,
+ <span class="String"><span class="String">"</span>mod_accesslog<span class="String">"</span></span>,
+ <span class="String"><span class="String">"</span>mod_rewrite<span class="String">"</span></span>,
+ <span class="String"><span class="String">"</span>mod_compress<span class="String">"</span></span>,
+ <span class="String"><span class="String">"</span>mod_evhost<span class="String">"</span></span>
+)
+</pre>
+
+<p>Of course there are a lot more modules. Just take a look at the list
+provided in the <a href="http://trac.lighttpd.net/trac/wiki/Docs">Lighttpd documentation wiki.</a> 
+We’ll use <code>mod_evhost</code> to simulate multiple virtual hosts. More on this later.
+Next we’ve to set some required values in order to get the server working. This should be self explaining:</p>
+
+<pre class="sunburst"><span class="Comment"><span class="Comment">#</span> Server settings</span>
+<span class="SupportConstant">server.port</span> = <span class="Constant">80</span>
+<span class="SupportConstant">server.pid-file</span> = <span class="String"><span class="String">"</span>/var/run/lighttpd.pid<span class="String">"</span></span>
+
+<span class="SupportConstant">server.username</span> = <span class="String"><span class="String">"</span>www-data<span class="String">"</span></span>
+<span class="SupportConstant">server.groupname</span> = <span class="String"><span class="String">"</span>www-data<span class="String">"</span></span>
+
+<span class="Comment"><span class="Comment">#</span> Document root</span>
+<span class="SupportConstant">server.document-root</span> = <span class="String"><span class="String">"</span>/var/www/default<span class="String">"</span></span>
+</pre>
+
+<p>In order to use logging we also need to set the following two paths:</p>
+
+<pre class="sunburst"><span class="Comment"><span class="Comment">#</span> Logs</span>
+<span class="SupportConstant">server.errorlog</span> = <span class="String"><span class="String">"</span>/var/log/lighttpd/error.log<span class="String">"</span></span>
+<span class="SupportConstant">accesslog.filename</span> = <span class="String"><span class="String">"</span>/var/log/lighttpd/access.log<span class="String">"</span></span>
+</pre>
+
+<p>You also might want to set index file names and enable directory
+listing. Do this by adding this to your configuration file:</p>
+
+<pre class="sunburst"><span class="Comment"><span class="Comment">#</span> Index files</span>
+<span class="SupportConstant">index-file.names</span> = (
+ <span class="String"><span class="String">"</span>index.php<span class="String">"</span></span>,
+ <span class="String"><span class="String">"</span>index.html<span class="String">"</span></span>,
+ <span class="String"><span class="String">"</span>index.htm<span class="String">"</span></span>
+)
+
+<span class="Comment"><span class="Comment">#</span> Directory listing</span>
+<span class="SupportConstant">server.dir-listing</span> = <span class="String"><span class="String">"</span>enable<span class="String">"</span></span>
+</pre>
+
+<p>To finish the basic configuration we’ve to add two more lines. They’re used to load more configuration files located in
+<code>/etc/lighttpd/conf-enabled/</code> and to load the mime-types:</p>
+
+<pre class="sunburst"><span class="Comment"><span class="Comment">#</span> External configuration files</span>
+<span class="SupportConstant">include-shell</span> <span class="String"><span class="String">"</span>/usr/share/lighttpd/create-mime.assign.pl<span class="String">"</span></span>
+<span class="SupportConstant">include-shell</span> <span class="String"><span class="String">"</span>/usr/share/lighttpd/include-conf-enabled.pl<span class="String">"</span></span>
+</pre>
+
+<p>Don’t forget to save! ;-)</p>
+
+<h2 id="toc_3">Enabling fastcgi support</h2>
+
+<p>In order to use ruby or php on our server we need to activate lighty’s
+fastcgi module. This can be done by running:</p>
+
+<pre class="sunburst">lighty-enable-mod
+</pre>
+
+<p>You’ll see a list of available modules and asked to enter the module in
+question (<code>fastcgi</code>). Afterwards open up <code>/etc/lighttpd/conf-enabled/10-fastcgi.conf</code> to see the
+fastcgi configuration. By default php4 support is enabled. In order to use it you need to install <code>php4-cgi</code>:</p>
+
+<pre class="sunburst">aptitude install php4-cgi
+</pre>
+
+<p>In order to use the newly created configuration file we need to restart lighttpd:</p>
+
+<pre class="sunburst">/etc/init.d/lighttpd force-reload
+</pre>
+
+<p>That’s it! Now go and place a file like this called <code>info.php</code> in <code>/var/www/default</code>:</p>
+
+<pre class="sunburst">&lt;?php phpinfo(); ?&gt;
+</pre>
+
+<p>View it’s output by visiting <a href="http://www.your-domain.com/info.php">http://www.your-domain.com/info.php</a>.
+If everything worked you should now see php’s details.</p>
+</article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p>© 2012 Benedikt Deicke, Haardtring 230a, 64295 Darmstadt, Germany</p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>
