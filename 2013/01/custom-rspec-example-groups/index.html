@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Cleaner specs with custom RSpec example groups | Benedikt Deicke - Software Engineer</title>
+<link href="http://feeds.feedburner.com/benediktdeicke" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="2013">
+    <header><h1>
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </h1>
+      <nav><ul>
+<li><a href="/archives">Archives</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="mailto:benedikt@benediktdeicke.com">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2013/01/custom-rspec-example-groups/">Cleaner specs with custom RSpec example groups</a></li>
+    <li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+    <li><a href="/2010/06/multitouch-inspector-for-ipad/">Multitouch Inspector for iPad</a></li>
+    <li><a href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/">RSpec and Rails Helpers using the output buffer</a></li>
+    <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a href="/linux/">Linux</a></li>
+    <li><a href="/server/">Server</a></li>
+    <li><a href="/howto/">HowTo</a></li>
+    <li><a href="/ruby/">Ruby</a></li>
+    <li><a href="/rails/">Rails</a></li>
+    <li><a href="/activerecord/">ActiveRecord</a></li>
+    <li><a href="/processing/">Processing</a></li>
+    <li><a href="/rspec/">RSpec</a></li>
+    <li><a href="/javascript/">JavaScript</a></li>
+    <li><a href="/touch/">Touch</a></li>
+    <li><a href="/other/">Other</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article><h2><a href="/2013/01/custom-rspec-example-groups/">Cleaner specs with custom RSpec example groups</a></h2>
+  <div class="meta">
+    Posted on January 09, 2013
+    — Tagged with:
+    <a href="/howto/">HowTo</a>, <a href="/ruby/">Ruby</a>, <a href="/rspec/">RSpec</a>
+  </div>
+  <p>Sometimes, when testing your code with RSpec, you'll notice similarities and duplication between your spec files. Most of these will involve setup that doesn't say much about the object under test. There's something that helps you to reduce this duplication: Custom example groups! RSpec itself (rspec-rails) <a href="https://github.com/rspec/rspec-rails/tree/master/lib/rspec/rails/example">uses example groups</a> for the different types of tests for models, controllers, helpers and views. In the following I'll show you how to use them to reduce duplication and improve your tests.</p>
+
+<h3 id="toc_0">What are example groups?</h3>
+
+<p>An example group is defined by using RSpec's <code>describe</code> method (or its alias <code>context</code>). It's a subclass of <a href="http://rubydoc.info/gems/rspec-core/RSpec/Core/ExampleGroup"><code>RSpec::Core::ExampleGroup</code></a> and provides all the macro methods you're used to in your specs. Additionally it provides a description, a set of metadata, and optionally a described class. It also knows about the examples defined using <code>it</code> and how to run each of them with all hooks and stuff.</p>
+
+<h3 id="toc_1">Customizing example groups</h3>
+
+<p>Now that you know about example groups, let's start customizing them. As we've learned above, example groups are simple classes and therefore can be extended with modules. This happens to be the way rspec-rails is working as well. To illustrate the process, let's look at an example.</p>
+
+<h4 id="toc_2">A serializer example group</h4>
+
+<p>In a recent project, I was working with <a href="https://github.com/rails-api/active_model_serializers"><code>ActiveModel::Serializers</code></a>. In case you don't know it, you should definitely have a look at it. In my opinion, it's a great way to serialize your models into JSON. For our example we want to create a custom example group for serializers so we can test them like this:</p>
+
+<pre class="sunburst"><span class="Keyword">require</span> <span class="String"><span class="String">'</span>spec_helper<span class="String">'</span></span>
+
+describe <span class="Variable">UserSerializer</span> <span class="Keyword">do</span>
+  <span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>attributes</span>) { <span class="Support">FactoryGirl</span>.<span class="Entity">attributes_for</span>(resource_name) }
+
+  it { should <span class="Entity">have_key</span>(<span class="Constant"><span class="Constant">:</span>name</span>) }
+  it { should <span class="Entity">have_key</span>(<span class="Constant"><span class="Constant">:</span>email</span>) }
+  it { should <span class="Entity">have_key</span>(<span class="Constant"><span class="Constant">:</span>created_at</span>) }
+  it { should <span class="Entity">have_key</span>(<span class="Constant"><span class="Constant">:</span>updated_at</span>) }
+<span class="Keyword">end</span>
+</pre>
+
+<p>In order to get there we create a new file called <code>spec/support/example_groups/serializer_example_group.rb</code>. Then we define a new module called <code>SerializerExampleGroup</code>. For convenience (and following the pattern of rspec-rails) we extend this module with <code>ActiveSupport::Concern</code>. In addition we must tell RSpec to include this module into the example groups of all specs in the <code>spec/serializers</code> folder and all specs explicitly setting <code>:type =&gt; :serializer</code>.</p>
+
+<pre class="sunburst"><span class="Keyword">module</span> <span class="JEntityNameType">SerializerExampleGroup</span>
+  <span class="Keyword">extend</span> <span class="Support">ActiveSupport</span>::<span class="Entity">Concern</span>
+
+  <span class="Variable">RSpec</span>.<span class="Entity">configure</span> <span class="Keyword">do </span>|<span class="Variable">config</span>|
+    config.<span class="Entity">include</span> <span class="Variable">self</span>,
+      <span class="Constant"><span class="Constant">:</span>type</span> =&gt; <span class="Constant"><span class="Constant">:</span>serializer</span>,
+      <span class="Constant"><span class="Constant">:</span>example_group</span> =&gt; { <span class="Constant"><span class="Constant">:</span>file_path</span> =&gt; <span class="StringRegexp"><span class="StringRegexp">%r(</span>spec/serializers<span class="StringRegexp">)</span></span> }
+  <span class="Keyword">end</span>
+<span class="Keyword">end</span>
+</pre>
+
+<h4 id="toc_3">Adding custom behavior</h4>
+
+<p>That's all we have to do to set up our custom example group. Next we add our desired custom behavior. We have to create a new instance of our serializer and pass a resource to serialize. The resource needs attributes and must implement a <code>read_attributes_for_serialization</code> method. We can add all this by defining an <code>included</code> block and use RSpec's <code>let</code> macro. In order to get the name of the resource that is serialized by the serializer under test we use RSpec's <code>described_class</code> method. It returns the class defined in the <code>describe UserSerializer</code> statement. By converting its name to underscores, removing the <code>_serializer</code> part and converting it into a symbol we get <code>:user</code> as <code>resource_name</code>.</p>
+
+<pre class="sunburst">included <span class="Keyword">do</span>
+  <span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>attributes</span>) <span class="Keyword">do</span>
+    {}
+  <span class="Keyword">end</span>
+
+  <span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>resource_name</span>) <span class="Keyword">do</span>
+    described_class.<span class="Entity">name</span>.<span class="Entity">underscore</span>[<span class="Constant">0</span>..<span class="Keyword">-</span><span class="Constant">12</span>].<span class="Entity">to_sym</span>
+  <span class="Keyword">end</span>
+
+  <span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>resource</span>) <span class="Keyword">do</span>
+    <span class="Entity">double</span>(resource_name, attributes).<span class="Entity">tap</span> <span class="Keyword">do </span>|<span class="Variable">double</span>|
+      double.<span class="Entity">stub</span>(<span class="Constant"><span class="Constant">:</span>read_attribute_for_serialization</span>) { |<span class="Variable">name</span>| attributes[name] }
+    <span class="Keyword">end</span>
+  <span class="Keyword">end</span>
+<span class="Keyword">end</span>
+</pre>
+
+<p>Next we set the serialized hash as the subject for the example group. For convenience we also convert it into a <code>HashWithIndifferentAccess</code> so we don't have to think about using strings or symbols as keys.</p>
+
+<pre class="sunburst"><span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>serializer</span>) { described_class.<span class="Entity">new</span>(resource) }
+subject { serializer.<span class="Entity">serializable_hash</span>.<span class="Entity">with_indifferent_access</span> }
+</pre>
+
+<h4 id="toc_4">Adding some metadata</h4>
+
+<p>Now we have the desired custom behavior. To wrap things up, we add some metadata to the example group. In the <code>included</code> block we have access to the <code>metadata</code> method and are able to set the <code>:type</code> to <code>:serializer</code>.</p>
+
+<pre class="sunburst">metadata[<span class="Constant"><span class="Constant">:</span>type</span>] <span class="Keyword">=</span> <span class="Constant"><span class="Constant">:</span>serializer</span>
+</pre>
+
+<h4 id="toc_5">The finished example group</h4>
+
+<p>All this results in a <code>spec/support/example_groups/serializer_example_group.rb</code> file looking like this:</p>
+
+<pre class="sunburst"><span class="Keyword">module</span> <span class="JEntityNameType">SerializerExampleGroup</span>
+  <span class="Keyword">extend</span> <span class="Support">ActiveSupport</span>::<span class="Entity">Concern</span>
+
+  included <span class="Keyword">do</span>
+    metadata[<span class="Constant"><span class="Constant">:</span>type</span>] <span class="Keyword">=</span> <span class="Constant"><span class="Constant">:</span>serializer</span>
+
+    <span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>attributes</span>) <span class="Keyword">do</span>
+      {}
+    <span class="Keyword">end</span>
+
+    <span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>resource_name</span>) <span class="Keyword">do</span>
+      described_class.<span class="Entity">name</span>.<span class="Entity">underscore</span>[<span class="Constant">0</span>..<span class="Keyword">-</span><span class="Constant">12</span>].<span class="Entity">to_sym</span>
+    <span class="Keyword">end</span>
+
+    <span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>resource</span>) <span class="Keyword">do</span>
+      <span class="Entity">double</span>(resource_name, attributes).<span class="Entity">tap</span> <span class="Keyword">do </span>|<span class="Variable">double</span>|
+        double.<span class="Entity">stub</span>(<span class="Constant"><span class="Constant">:</span>read_attribute_for_serialization</span>) { |<span class="Variable">name</span>| attributes[name] }
+      <span class="Keyword">end</span>
+    <span class="Keyword">end</span>
+
+    <span class="Entity">let</span>(<span class="Constant"><span class="Constant">:</span>serializer</span>) { described_class.<span class="Entity">new</span>(resource) }
+
+    subject { serializer.<span class="Entity">serializable_hash</span>.<span class="Entity">with_indifferent_access</span> }
+  <span class="Keyword">end</span>
+
+  <span class="Variable">RSpec</span>.<span class="Entity">configure</span> <span class="Keyword">do </span>|<span class="Variable">config</span>|
+    config.<span class="Entity">include</span> <span class="Variable">self</span>,
+      <span class="Constant"><span class="Constant">:</span>type</span> =&gt; <span class="Constant"><span class="Constant">:</span>serializer</span>,
+      <span class="Constant"><span class="Constant">:</span>example_group</span> =&gt; { <span class="Constant"><span class="Constant">:</span>file_path</span> =&gt; <span class="StringRegexp"><span class="StringRegexp">%r(</span>spec/serializers<span class="StringRegexp">)</span></span> }
+  <span class="Keyword">end</span>
+<span class="Keyword">end</span>
+</pre>
+
+<p>With this custom example group in place, testing the serializers gets much easier. Of course, this is only one example of what you can do. Instead of adding a lot of setup you might only use this to add metadata (such as tags) to specs in a specific folder.</p>
+  <footer><img src="https://secure.gravatar.com/avatar/b5cf7402a65fd705228c748682654cac?s=40"><p>Did you enjoy this article? Follow me on <a href="https://twitter.com/benediktdeicke">Twitter</a> or subscribe to the <a href="http://feeds.feedburner.com/benediktdeicke">feed</a>!<br>
+    Do you have any feedback, suggestions or comments? Feel free to <a href="mailto:benedikt@benediktdeicke.com">contact me</a>!</p>
+  </footer></article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p>© 2013 Benedikt Deicke, Haardtring 230a, 64295 Darmstadt, Germany</p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>

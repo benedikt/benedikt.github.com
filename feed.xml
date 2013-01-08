@@ -3,11 +3,141 @@
   <title>Benedikt Deicke - Software Engineer</title>
   <id>http://benediktdeicke.com/</id>
   <link href="http://benediktdeicke.com/"/>
-  <link href="http://benediktdeicke.com/feed.xml" rel="self"/>
-  <updated>2010-11-01T00:00:00Z</updated>
+  <link href="http://feeds.feedburner.com/benediktdeicke" rel="self"/>
+  <updated>2013-01-09T00:00:00Z</updated>
   <author>
     <name>Benedikt Deicke</name>
   </author>
+  <entry>
+    <title>Cleaner specs with custom RSpec example groups</title>
+    <link rel="alternate" href="/2013/01/custom-rspec-example-groups/"/>
+    <id>/2013/01/custom-rspec-example-groups/</id>
+    <published>2013-01-09T00:00:00Z</published>
+    <updated>2013-01-09T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;Sometimes, when testing your code with RSpec, you&amp;#39;ll notice similarities and duplication between your spec files. Most of these will involve setup that doesn&amp;#39;t say much about the object under test. There&amp;#39;s something that helps you to reduce this duplication: Custom example groups! RSpec itself (rspec-rails) &lt;a href="https://github.com/rspec/rspec-rails/tree/master/lib/rspec/rails/example"&gt;uses example groups&lt;/a&gt; for the different types of tests for models, controllers, helpers and views. In the following I&amp;#39;ll show you how to use them to reduce duplication and improve your tests.&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;Sometimes, when testing your code with RSpec, you&amp;#39;ll notice similarities and duplication between your spec files. Most of these will involve setup that doesn&amp;#39;t say much about the object under test. There&amp;#39;s something that helps you to reduce this duplication: Custom example groups! RSpec itself (rspec-rails) &lt;a href="https://github.com/rspec/rspec-rails/tree/master/lib/rspec/rails/example"&gt;uses example groups&lt;/a&gt; for the different types of tests for models, controllers, helpers and views. In the following I&amp;#39;ll show you how to use them to reduce duplication and improve your tests.&lt;/p&gt;
+
+&lt;h3 id="toc_0"&gt;What are example groups?&lt;/h3&gt;
+
+&lt;p&gt;An example group is defined by using RSpec&amp;#39;s &lt;code&gt;describe&lt;/code&gt; method (or its alias &lt;code&gt;context&lt;/code&gt;). It&amp;#39;s a subclass of &lt;a href="http://rubydoc.info/gems/rspec-core/RSpec/Core/ExampleGroup"&gt;&lt;code&gt;RSpec::Core::ExampleGroup&lt;/code&gt;&lt;/a&gt; and provides all the macro methods you&amp;#39;re used to in your specs. Additionally it provides a description, a set of metadata, and optionally a described class. It also knows about the examples defined using &lt;code&gt;it&lt;/code&gt; and how to run each of them with all hooks and stuff.&lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;Customizing example groups&lt;/h3&gt;
+
+&lt;p&gt;Now that you know about example groups, let&amp;#39;s start customizing them. As we&amp;#39;ve learned above, example groups are simple classes and therefore can be extended with modules. This happens to be the way rspec-rails is working as well. To illustrate the process, let&amp;#39;s look at an example.&lt;/p&gt;
+
+&lt;h4 id="toc_2"&gt;A serializer example group&lt;/h4&gt;
+
+&lt;p&gt;In a recent project, I was working with &lt;a href="https://github.com/rails-api/active_model_serializers"&gt;&lt;code&gt;ActiveModel::Serializers&lt;/code&gt;&lt;/a&gt;. In case you don&amp;#39;t know it, you should definitely have a look at it. In my opinion, it&amp;#39;s a great way to serialize your models into JSON. For our example we want to create a custom example group for serializers so we can test them like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+require &amp;#39;spec_helper&amp;#39;
+
+describe UserSerializer do
+  let(:attributes) { FactoryGirl.attributes_for(resource_name) }
+
+  it { should have_key(:name) }
+  it { should have_key(:email) }
+  it { should have_key(:created_at) }
+  it { should have_key(:updated_at) }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In order to get there we create a new file called &lt;code&gt;spec/support/example_groups/serializer_example_group.rb&lt;/code&gt;. Then we define a new module called &lt;code&gt;SerializerExampleGroup&lt;/code&gt;. For convenience (and following the pattern of rspec-rails) we extend this module with &lt;code&gt;ActiveSupport::Concern&lt;/code&gt;. In addition we must tell RSpec to include this module into the example groups of all specs in the &lt;code&gt;spec/serializers&lt;/code&gt; folder and all specs explicitly setting &lt;code&gt;:type =&amp;gt; :serializer&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+module SerializerExampleGroup
+  extend ActiveSupport::Concern
+
+  RSpec.configure do |config|
+    config.include self,
+      :type =&amp;gt; :serializer,
+      :example_group =&amp;gt; { :file_path =&amp;gt; %r(spec/serializers) }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="toc_3"&gt;Adding custom behavior&lt;/h4&gt;
+
+&lt;p&gt;That&amp;#39;s all we have to do to set up our custom example group. Next we add our desired custom behavior. We have to create a new instance of our serializer and pass a resource to serialize. The resource needs attributes and must implement a &lt;code&gt;read_attributes_for_serialization&lt;/code&gt; method. We can add all this by defining an &lt;code&gt;included&lt;/code&gt; block and use RSpec&amp;#39;s &lt;code&gt;let&lt;/code&gt; macro. In order to get the name of the resource that is serialized by the serializer under test we use RSpec&amp;#39;s &lt;code&gt;described_class&lt;/code&gt; method. It returns the class defined in the &lt;code&gt;describe UserSerializer&lt;/code&gt; statement. By converting its name to underscores, removing the &lt;code&gt;_serializer&lt;/code&gt; part and converting it into a symbol we get &lt;code&gt;:user&lt;/code&gt; as &lt;code&gt;resource_name&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+included do
+  let(:attributes) do
+    {}
+  end
+
+  let(:resource_name) do
+    described_class.name.underscore[0..-12].to_sym
+  end
+
+  let(:resource) do
+    double(resource_name, attributes).tap do |double|
+      double.stub(:read_attribute_for_serialization) { |name| attributes[name] }
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we set the serialized hash as the subject for the example group. For convenience we also convert it into a &lt;code&gt;HashWithIndifferentAccess&lt;/code&gt; so we don&amp;#39;t have to think about using strings or symbols as keys.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+let(:serializer) { described_class.new(resource) }
+subject { serializer.serializable_hash.with_indifferent_access }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="toc_4"&gt;Adding some metadata&lt;/h4&gt;
+
+&lt;p&gt;Now we have the desired custom behavior. To wrap things up, we add some metadata to the example group. In the &lt;code&gt;included&lt;/code&gt; block we have access to the &lt;code&gt;metadata&lt;/code&gt; method and are able to set the &lt;code&gt;:type&lt;/code&gt; to &lt;code&gt;:serializer&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+metadata[:type] = :serializer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="toc_5"&gt;The finished example group&lt;/h4&gt;
+
+&lt;p&gt;All this results in a &lt;code&gt;spec/support/example_groups/serializer_example_group.rb&lt;/code&gt; file looking like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+module SerializerExampleGroup
+  extend ActiveSupport::Concern
+
+  included do
+    metadata[:type] = :serializer
+
+    let(:attributes) do
+      {}
+    end
+
+    let(:resource_name) do
+      described_class.name.underscore[0..-12].to_sym
+    end
+
+    let(:resource) do
+      double(resource_name, attributes).tap do |double|
+        double.stub(:read_attribute_for_serialization) { |name| attributes[name] }
+      end
+    end
+
+    let(:serializer) { described_class.new(resource) }
+
+    subject { serializer.serializable_hash.with_indifferent_access }
+  end
+
+  RSpec.configure do |config|
+    config.include self,
+      :type =&amp;gt; :serializer,
+      :example_group =&amp;gt; { :file_path =&amp;gt; %r(spec/serializers) }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this custom example group in place, testing the serializers gets much easier. Of course, this is only one example of what you can do. Instead of adding a lot of setup you might only use this to add metadata (such as tags) to specs in a specific folder.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>I'm joining flinc as a Rails developer</title>
     <link rel="alternate" href="/2010/11/i-m-joining-flinc-as-a-rails-developer/"/>
@@ -821,55 +951,6 @@ by clicking on the picture below.&lt;/p&gt;
 &lt;p&gt;We decided to release the source code of this. It still could need some
 refactoring, but it’s working and deadline was today, so feel free to
 experiment with it (or even improve it) and sent us some comments!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>ActiveRecord: Using the type column</title>
-    <link rel="alternate" href="/2007/09/activerecord-using-the-type-column/"/>
-    <id>/2007/09/activerecord-using-the-type-column/</id>
-    <published>2007-09-21T00:00:00Z</published>
-    <updated>2007-09-21T00:00:00Z</updated>
-    <author>
-      <name>Benedikt Deicke</name>
-    </author>
-    <summary type="html">&lt;p&gt;By default it&amp;#39;s not possible to use a database-column called &lt;code&gt;type&lt;/code&gt; for
-anything else than single table inheritance. To change this, simply use
-&lt;code&gt;set_inheritance_column()&lt;/code&gt; and &lt;code&gt;read_attribute()&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::ruby
-class TypeTest &amp;lt; ActiveRecord::Base
-  set_inheritance_column(:something_else)
-
-  def type
-    read_attribute(:type)
-  end
-
-  def type=(value)
-    write_attribute(:type, value)
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;</summary>
-    <content type="html">&lt;p&gt;By default it&amp;#39;s not possible to use a database-column called &lt;code&gt;type&lt;/code&gt; for
-anything else than single table inheritance. To change this, simply use
-&lt;code&gt;set_inheritance_column()&lt;/code&gt; and &lt;code&gt;read_attribute()&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::ruby
-class TypeTest &amp;lt; ActiveRecord::Base
-  set_inheritance_column(:something_else)
-
-  def type
-    read_attribute(:type)
-  end
-
-  def type=(value)
-    write_attribute(:type, value)
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
