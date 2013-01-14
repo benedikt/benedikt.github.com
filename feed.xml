@@ -159,8 +159,7 @@ Dieburg. I was impressed by their product and the spirit of the
 &lt;a href="http://flinc.org/theflincteam"&gt;team&lt;/a&gt;, so I agreed on
 doing trial work for a week. Obviously they liked me and my work and
 offered me a job.&lt;/p&gt;
-
-&lt;p&gt;</summary>
+</summary>
     <content type="html">&lt;p&gt;&lt;a href="http://flinc.org"&gt;&lt;img src="/assets/2010/11/flinc.png" style="float: right" /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Today’s my first day as a full-time employee at
@@ -188,7 +187,7 @@ satellite navigation systems to arrange rideshares in realtime. For
 riders this results in an alternative to an own car, for drivers it’s an
 easy way to reduce their costs.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="http://flinc.org/"&gt;&lt;img src="/assets/2010/11/how_flinc_works_en.png" alt="image"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://flinc.org/"&gt;&lt;img alt="image" width="500" height="184" src="../assets/2010/11/how_flinc_works_en.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;flinc is currently tested in the city of Friedrichshafen and is planned
 to be rolled out in several innovation regions in 2011. Head over to
@@ -217,20 +216,19 @@ working on an exciting product, send a mail to
 &lt;p&gt;During the last couple weeks I&amp;#39;ve been playing around with the iPad and
 Mobile Safari. I built a little tool to familiarize myself with the
 Multitouch JavaScript API provided by Mobile Safari as well as web
-applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/index.html"&gt;Multitouch
+applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/"&gt;Multitouch
 Inspector&lt;/a&gt; because
 that&amp;#39;s what it does: Inspect the TouchEvents fired by the JavaScript
 API. ;-) Today I decided to rewrite the tool to drop the dependency on
 &lt;a href="http://prototypejs.org"&gt;Prototype.js&lt;/a&gt; and I published it on
 &lt;a href="http://github.com/benedikt/multitouch-inspector"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;</summary>
+</summary>
     <content type="html">&lt;p&gt;&lt;img src="/assets/2010/06/icon.png" style="float: right" /&gt;&lt;/p&gt;
 
 &lt;p&gt;During the last couple weeks I&amp;#39;ve been playing around with the iPad and
 Mobile Safari. I built a little tool to familiarize myself with the
 Multitouch JavaScript API provided by Mobile Safari as well as web
-applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/index.html"&gt;Multitouch
+applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/"&gt;Multitouch
 Inspector&lt;/a&gt; because
 that&amp;#39;s what it does: Inspect the TouchEvents fired by the JavaScript
 API. ;-) Today I decided to rewrite the tool to drop the dependency on
@@ -343,7 +341,7 @@ behavior, but I might take another look at it in the future.&lt;/p&gt;
 &lt;p&gt;Now that you have some insights on the internals of the application,
 here&amp;#39;s a screenshot as well as a link on it to a demo:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="/assets/2010/06/index.html"&gt;&lt;img src="/assets/2010/06/multitouch-inspector_medium.png" alt="Screenshot of the Multitouch Inspector"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/assets/2010/06/"&gt;&lt;img alt="Screenshot of the Multitouch Inspector" width="630" height="473" src="../assets/2010/06/multitouch-inspector_medium.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id="toc_4"&gt;Fork it on GitHub&lt;/h3&gt;
 
@@ -409,7 +407,7 @@ simultaneously for &lt;a href="http://www.softvision-media.de/"&gt;Softvision Me
 As I decided to write the tool in Ruby, I&amp;#39;ve been looking for a
 framework to create command-line executables. On GitHub I stumbled over
 &lt;a href="http://github.com/visionmedia/commander/tree/master"&gt;commander&lt;/a&gt; by TJ
-Holowaychuk of &lt;a href="http://vision-media.ca/"&gt;VisionMedia&lt;/a&gt; that provides a
+Holowaychuk of &lt;a href="http://vision-media.ca/"&gt;VisionMedia&lt;/a&gt; that provides a&lt;/p&gt;
 </summary>
     <content type="html">&lt;p&gt;I&amp;#39;m currently building a tool to help managing severals servers
 simultaneously for &lt;a href="http://www.softvision-media.de/"&gt;Softvision Media&lt;/a&gt;.
@@ -470,7 +468,7 @@ mod_rails&lt;/a&gt; a try and installed it. It was dead
 simple to set it up and to deploy rails applications with it. I&amp;#39;m now
 using it for several &amp;ldquo;small&amp;rdquo; applications, for which the whole overhead
 of setting up a cluster of mongrels and a proxy doesn&amp;#39;t seem to be
-adequate. I&amp;#39;ll give you a short summary on how to install mod_rails for
+adequate. I&amp;#39;ll give you a short summary on how to install mod_rails for&lt;/p&gt;
 </summary>
     <content type="html">&lt;p&gt;Yesterday I decided to give &lt;a href="http://www.modrails.com"&gt;Phusion Passenger aka
 mod_rails&lt;/a&gt; a try and installed it. It was dead
@@ -547,10 +545,11 @@ mod_rails, take a look at it&amp;#39;s &lt;a href="http://modrails.com/documenta
 with one of them at the moment. These are the three feeds helping me to
 get the latest news:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/assets/2008/08/planetrubyonrails.png" alt="image"&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" width="349" height="69" src="../assets/2008/08/planetrubyonrails.png" /&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;PlanetRubyOnRails.com, not to be mixed up with
-PlanetRubyOnRails.&lt;strong&gt;org&lt;/strong&gt;, is a simple feed aggregator with a set of
+PlanetRubyOnRails.**org**, is a simple feed aggregator with a set of
+quite informative blogs. Including the official [Riding&lt;/p&gt;
 </summary>
     <content type="html">&lt;h3 id="toc_0"&gt;News&lt;/h3&gt;
 
@@ -558,17 +557,17 @@ PlanetRubyOnRails.&lt;strong&gt;org&lt;/strong&gt;, is a simple feed aggregator 
 with one of them at the moment. These are the three feeds helping me to
 get the latest news:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/assets/2008/08/planetrubyonrails.png" alt="image"&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" width="349" height="69" src="../assets/2008/08/planetrubyonrails.png" /&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;PlanetRubyOnRails.com, not to be mixed up with
-PlanetRubyOnRails.&lt;strong&gt;org&lt;/strong&gt;, is a simple feed aggregator with a set of
+PlanetRubyOnRails.**org**, is a simple feed aggregator with a set of
 quite informative blogs. Including the official &lt;a href="http://blog.rubyonrails.com"&gt;Riding
 Rails&lt;/a&gt; Blog, &lt;a href="http://www.rubyinside.com"&gt;Ruby
 Inside&lt;/a&gt;, and &lt;a href="http://www.infoq.com"&gt;InfoQ&lt;/a&gt;.
 Unfortunately it doesn’t provide an RSS-Feed anymore, but thanks to
 &lt;a href="http://feed43.com/"&gt;Feed43&lt;/a&gt; it’s easy to build one on your own.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/assets/2008/08/rails_envy_logo.gif" alt="image"&gt;:&lt;a href="http://railsenvy.com"&gt;http://railsenvy.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" width="130" height="79" src="../assets/2008/08/rails_envy_logo.gif" /&gt;:&lt;a href="http://railsenvy.com"&gt;http://railsenvy.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Every Wednesday Gregg Pollack and Jason Seifer of &lt;a href="http://www.railsenvy.com"&gt;Rails
 Envy&lt;/a&gt; publish their Rails Envy Podcast,
@@ -590,7 +589,7 @@ posts.&lt;/p&gt;
 &lt;p&gt;When I’m working on Ruby and Ruby on Rails code, I use there resources
 to quickly look up documentation:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/assets/2008/08/rubydoc.png" alt="image"&gt;:&lt;a href="http://ruby-doc.org"&gt;http://ruby-doc.org&lt;/a&gt;/&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" width="351" height="53" src="../assets/2008/08/rubydoc.png" /&gt;:&lt;a href="http://ruby-doc.org"&gt;http://ruby-doc.org&lt;/a&gt;/&lt;/p&gt;
 
 &lt;p&gt;Ruby-Doc.org provides the documentation for both Ruby’s
 &lt;a href="http://ruby-doc.org/core"&gt;Core&lt;/a&gt; and
@@ -606,7 +605,7 @@ the standard rails documentation in the default RDoc format. As with
 Ruby-Doc.org I use my browsers search to quickly find what I’m looking
 for.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/assets/2008/08/rails-doc.png" alt="image"&gt;:&lt;a href="http://rails-doc.org"&gt;http://rails-doc.org&lt;/a&gt;/&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" width="215" height="57" src="../assets/2008/08/rails-doc.png" /&gt;:&lt;a href="http://rails-doc.org"&gt;http://rails-doc.org&lt;/a&gt;/&lt;/p&gt;
 
 &lt;p&gt;Rails-Doc.org is a quite new site providing the full rails
 documentation. Unlike the default API documentation site (see above) it
@@ -627,7 +626,7 @@ middle of nowhere with no internet connection? :-)&lt;/p&gt;
 
 &lt;h3 id="toc_2"&gt;Other&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src="/assets/2008/08/railscasts.png" alt="image"&gt;:&lt;a href="http://www.railscasts.com"&gt;http://www.railscasts.com&lt;/a&gt;/&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" width="200" height="45" src="../assets/2008/08/railscasts.png" /&gt;:&lt;a href="http://www.railscasts.com"&gt;http://www.railscasts.com&lt;/a&gt;/&lt;/p&gt;
 
 &lt;p&gt;Last but definitely not least, are the RailsCasts by Ryan Bates. Every
 Monday he publishes a approx. 5 to 10 minute screencast on a variety of
@@ -659,6 +658,7 @@ RSpec are included.&lt;/p&gt;
     <summary type="html">&lt;p&gt;&lt;a href="http://script.aculo.us"&gt;Script.aculo.us&lt;/a&gt; includes a nice effect called &lt;a href="http://github.com/madrobby/scriptaculous/wikis/effect-dropout"&gt;&lt;code&gt;Effect.DropOut&lt;/code&gt;&lt;/a&gt;,
 which let&amp;#39;s the element fall in an &amp;ldquo;invisible trap&amp;rdquo; underneath. Surprisingly there isn&amp;#39;t an opposite effect.
 Calling &lt;code&gt;Effect.DropOut&lt;/code&gt; with &lt;code&gt;Effect.Transitions.reverse&lt;/code&gt; as transition, doesn’t work either. So what to do?
+&lt;code&gt;Effect.Emerge&lt;/code&gt; to the rescue!&lt;/p&gt;
 </summary>
     <content type="html">&lt;p&gt;&lt;a href="http://script.aculo.us"&gt;Script.aculo.us&lt;/a&gt; includes a nice effect called &lt;a href="http://github.com/madrobby/scriptaculous/wikis/effect-dropout"&gt;&lt;code&gt;Effect.DropOut&lt;/code&gt;&lt;/a&gt;,
 which let&amp;#39;s the element fall in an &amp;ldquo;invisible trap&amp;rdquo; underneath. Surprisingly there isn&amp;#39;t an opposite effect.
@@ -706,6 +706,7 @@ a (up to now) command line tool similar to
 &lt;a href="http://www.zenspider.com/ZSS/Products/ZenTest/"&gt;autotest&lt;/a&gt;. Nevertheless
 it differs from autotest in two points. First it&amp;#39;s focused on
 &lt;a href="http://rspec.info/"&gt;RSpec&lt;/a&gt; and secondly it’s using Mac OS&amp;#39; FSEvents to
+monitor file changes. According to this it only runs on Mac OS. &lt;/p&gt;
 </summary>
     <content type="html">&lt;p&gt;&lt;a href="http://rubyphunk.com/"&gt;Andreas Wolff&lt;/a&gt; recently released
 &lt;a href="http://rubyphunk.com/2008/3/11/hello-world-introducing-rspactor"&gt;RSpactor&lt;/a&gt;,
@@ -800,8 +801,7 @@ set up SSH authentication keys. At first I was a little worried that
 setting it up might be a bit complicated. Luckily I was disabused. If
 you want to switch to key based authentication too follow these simple
 steps.&lt;/p&gt;
-
-&lt;p&gt;</summary>
+</summary>
     <content type="html">&lt;p&gt;Typing SSH passwords again and again can be a real pain. For example:
 Lately I started to use &lt;a href="http://www.capify.org/"&gt;Capistrano&lt;/a&gt; to deploy
 my rails applications. If I want to set up the maintenance-page on the
@@ -908,8 +908,7 @@ instead of &lt;code&gt;id_rsa&lt;/code&gt;. Fixed it.&lt;/p&gt;
 like it. The original task was to built a fuzzy controller using
 &lt;a href="http://de.wikipedia.org/wiki/MATLAB"&gt;Matlab&lt;/a&gt; in groups of 2 or 3
 students.&lt;/p&gt;
-
-&lt;p&gt;</summary>
+</summary>
     <content type="html">&lt;p&gt;This one started as an homework for university but I really started to
 like it. The original task was to built a fuzzy controller using
 &lt;a href="http://de.wikipedia.org/wiki/MATLAB"&gt;Matlab&lt;/a&gt; in groups of 2 or 3
@@ -923,7 +922,7 @@ a given height above the ground. To make things a little more complex we
 also considered head wind. As all of us three didn’t like the quite
 abstract results of our controller in Matlab, we decided to implement a
 small simulation in &lt;a href="http://www.processing.org/"&gt;processing.&lt;/a&gt; We used
-&lt;a href="http://people.clarkson.edu/%7Eesazonov/FuzzyEngine.htm"&gt;Edward Saznov’s open source fuzzy inference engine for
+&lt;a href="http://people.clarkson.edu/~esazonov/FuzzyEngine.htm"&gt;Edward Saznov’s open source fuzzy inference engine for
 Java&lt;/a&gt; and
 integrated it into processing. Surprisingly everything worked quite well
 from the beginning. Although we had some small issues we were able to
@@ -932,7 +931,7 @@ designed. The resulting applet runs perfectly in the browser and as an
 application. (I love processing’s export-feature.) Check out the sketch
 by clicking on the picture below.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="/assets/2008/01/fuzzy.png" alt="image"&gt;:&lt;a href="http://benedikt.synatic.net/fuzzy"&gt;http://benedikt.synatic.net/fuzzy&lt;/a&gt;/&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" width="480" height="304" src="../assets/2008/01/fuzzy.png" /&gt;:&lt;a href="http://benedikt.synatic.net/fuzzy"&gt;http://benedikt.synatic.net/fuzzy&lt;/a&gt;/&lt;/p&gt;
 
 &lt;p&gt;Here are the controls you might need :-)&lt;/p&gt;
 

@@ -12,7 +12,7 @@
 <link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
 </head>
-<body class="2008">
+<body class="2008 articles">
     <header><h1>
         <a href="/">Benedikt Deicke</a>
         <span>(Software Engineer)</span>
@@ -34,31 +34,31 @@
     <li><a href="/2009/03/commander-command-line-executables-in-ruby/">Commander: command-line executables in Ruby</a></li>
   </ul>
 <header>Tags</header><ul class="tags">
-<li><a href="/linux/">Linux</a></li>
-    <li><a href="/server/">Server</a></li>
-    <li><a href="/howto/">HowTo</a></li>
-    <li><a href="/ruby/">Ruby</a></li>
-    <li><a href="/rails/">Rails</a></li>
-    <li><a href="/activerecord/">ActiveRecord</a></li>
-    <li><a href="/processing/">Processing</a></li>
-    <li><a href="/rspec/">RSpec</a></li>
-    <li><a href="/javascript/">JavaScript</a></li>
-    <li><a href="/touch/">Touch</a></li>
-    <li><a href="/other/">Other</a></li>
+<li><a rel="tag" href="/linux/">Linux</a></li>
+    <li><a rel="tag" href="/server/">Server</a></li>
+    <li><a rel="tag" href="/howto/">HowTo</a></li>
+    <li><a rel="tag" href="/ruby/">Ruby</a></li>
+    <li><a rel="tag" href="/rails/">Rails</a></li>
+    <li><a rel="tag" href="/activerecord/">ActiveRecord</a></li>
+    <li><a rel="tag" href="/processing/">Processing</a></li>
+    <li><a rel="tag" href="/rspec/">RSpec</a></li>
+    <li><a rel="tag" href="/javascript/">JavaScript</a></li>
+    <li><a rel="tag" href="/touch/">Touch</a></li>
+    <li><a rel="tag" href="/other/">Other</a></li>
   </ul>
-<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article class="hentry"><h2 class="entry-title"><a rel="bookmark" title="Fuzzy-controlled jet with Processing" href="/2008/01/fuzzy-controlled-jet-with-processing/">Fuzzy-controlled jet with Processing</a></h2>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article class="hentry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><h2 class="entry-title" itemprop="name"><a title="Fuzzy-controlled jet with Processing" itemprop="url" rel="bookmark" href="/2008/01/fuzzy-controlled-jet-with-processing/">Fuzzy-controlled jet with Processing</a></h2>
   <div class="meta">
-    <span class="published updated" title="2008-01-14T00:00:00+00:00">Posted on January 14, 2008</span>
+    <time class="updated published" datetime="2008-01-14T00:00:00Z" itemprop="datePublished">Posted on January 14, 2008</time>
     — Tagged with:
-    <a rel="tag" href="/processing/">Processing</a>
+    <a itemprop="articleSection" rel="tag" href="/processing/">Processing</a>
     — Written by
-    <span class="author">
+    <span class="author" itemprop="author">
       <span class="vcard">
         <span class="fn">Benedikt Deicke</span>
       </span>
     </span>
   </div>
-  <div class="entry-content">
+  <div class="entry-content" itemprop="articleBody">
 <p>This one started as an homework for university but I really started to
 like it. The original task was to built a fuzzy controller using
 <a href="http://de.wikipedia.org/wiki/MATLAB">Matlab</a> in groups of 2 or 3
@@ -72,7 +72,7 @@ a given height above the ground. To make things a little more complex we
 also considered head wind. As all of us three didn’t like the quite
 abstract results of our controller in Matlab, we decided to implement a
 small simulation in <a href="http://www.processing.org/">processing.</a> We used
-<a href="http://people.clarkson.edu/%7Eesazonov/FuzzyEngine.htm">Edward Saznov’s open source fuzzy inference engine for
+<a href="http://people.clarkson.edu/~esazonov/FuzzyEngine.htm">Edward Saznov’s open source fuzzy inference engine for
 Java</a> and
 integrated it into processing. Surprisingly everything worked quite well
 from the beginning. Although we had some small issues we were able to
@@ -81,7 +81,7 @@ designed. The resulting applet runs perfectly in the browser and as an
 application. (I love processing’s export-feature.) Check out the sketch
 by clicking on the picture below.</p>
 
-<p><img src="/assets/2008/01/fuzzy.png" alt="image">:<a href="http://benedikt.synatic.net/fuzzy">http://benedikt.synatic.net/fuzzy</a>/</p>
+<p><img alt="image" width="480" height="304" src="../assets/2008/01/fuzzy.png">:<a href="http://benedikt.synatic.net/fuzzy">http://benedikt.synatic.net/fuzzy</a>/</p>
 
 <p>Here are the controls you might need :-)</p>
 
@@ -112,29 +112,31 @@ experiment with it (or even improve it) and sent us some comments!</p>
           <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
           <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
         </ul>
-<p class="vcard">
+<p class="vcard" itemscope="itemscope" itemtype="http://schema.org/Person">
           © 2013
-<span class="fn">Benedikt Deicke</span>,
-<span class="adr">
-  <span class="street-address">Haardtring 230a</span>,
-  <span class="postal-code">64295</span> <span class="city">Darmstadt</span>,
-  <span class="country-name">Germany</span>
+<span itemprop="name" class="fn">Benedikt Deicke</span>,
+<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="adr">
+  <span itemprop="streetAddress" class="street-address">Haardtring 230a</span>,
+  <span itemprop="postalCode" class="postal-code">64295</span> <span class="city">Darmstadt</span>,
+  <span itemprop="addressCountry" class="country-name">Germany</span>
 </span>
         </p>
       </div>
-    </footer><script>
-      var _gaq = _gaq || [];
-      _gaq.push(['_require', 'inpage_linkid', '//www.google-analytics.com/plugins/ga/inpage_linkid.js']);
-      _gaq.push(['_setAccount', 'UA-2590585-3']);
-      _gaq.push(['_gat._anonymizeIp']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-      
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+    </footer><script type="text/javascript">
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_require', 'inpage_linkid', '//www.google-analytics.com/plugins/ga/inpage_linkid.js']);
+        _gaq.push(['_setAccount', 'UA-2590585-3']);
+        _gaq.push(['_gat._anonymizeIp']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+        
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      //]]>
     </script>
 </body>
 </html>
