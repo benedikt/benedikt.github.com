@@ -4,10 +4,152 @@
   <id>http://benediktdeicke.com/</id>
   <link href="http://benediktdeicke.com/"/>
   <link href="http://feeds.feedburner.com/benediktdeicke" rel="self"/>
-  <updated>2013-01-09T00:00:00Z</updated>
+  <updated>2013-02-14T00:00:00Z</updated>
   <author>
     <name>Benedikt Deicke</name>
   </author>
+  <entry>
+    <title>What you did not know about Capistrano, yet</title>
+    <link rel="alternate" href="/2013/02/what-you-did-not-know-about-capistrano-yet/"/>
+    <id>/2013/02/what-you-did-not-know-about-capistrano-yet/</id>
+    <published>2013-02-14T00:00:00Z</published>
+    <updated>2013-02-14T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;Like any other build process, deploying Rails applications should be a quick and easy task. You should be able to deploy everything to your server with just one command. There are several tools available for this task. One of them is &lt;a href="https://github.com/capistrano/capistrano"&gt;Capistrano&lt;/a&gt;, which is probably the oldest and by far the most popular deployment tool in the Rails community. Unfortunately the &lt;a href="https://github.com/capistrano/capistrano/wiki"&gt;documentation&lt;/a&gt; is still not great and a lot of very handy features are unknown to many. Only digging through the API documentation and the &lt;a href="http://rubydoc.info/github/capistrano/capistrano/master/frames"&gt;source code&lt;/a&gt; reveals them.&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;Like any other build process, deploying Rails applications should be a quick and easy task. You should be able to deploy everything to your server with just one command. There are several tools available for this task. One of them is &lt;a href="https://github.com/capistrano/capistrano"&gt;Capistrano&lt;/a&gt;, which is probably the oldest and by far the most popular deployment tool in the Rails community. Unfortunately the &lt;a href="https://github.com/capistrano/capistrano/wiki"&gt;documentation&lt;/a&gt; is still not great and a lot of very handy features are unknown to many. Only digging through the API documentation and the &lt;a href="http://rubydoc.info/github/capistrano/capistrano/master/frames"&gt;source code&lt;/a&gt; reveals them.&lt;/p&gt;
+
+&lt;h2 id="toc_0"&gt;Variables&lt;/h2&gt;
+
+&lt;p&gt;A lot of tasks for deploying Rails applications are the same for almost every application. They only differ by minor aspects such as the path to deploy to, or the branch to checkout the code from. Capistrano allows setting these aspects using variables. Setting a variable is as simple as calling &lt;code&gt;set :name, &amp;#39;value&amp;#39;&lt;/code&gt;. Accessing a previously defined variable is even easier by just using it as a ruby method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+set :name, &amp;#39;value&amp;#39;
+puts name # Prints &amp;#39;value&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However there are some aspects of Capistrano variables that make them really useful. &lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;Accessing variables that might not exist&lt;/h3&gt;
+
+&lt;p&gt;In some cases you don&amp;#39;t want to set every single variable to configure certain aspects of a task. But this comes with a problem. Accessing a variable that has not been defined before, will make Capistrano yell at you and crash with a &lt;code&gt;NameError&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;There are two ways to handle this. One of them is to define all variables with sane defaults and overwrite them as needed afterwards. The other one, and by far my preferred one, is to use Capistrano&amp;#39;s &lt;code&gt;fetch&lt;/code&gt; method. It allows you to access a variable and additionally provide a default that will be returned when the variable is not defined, yet. This allows you to write flexible tasks without having to define every single variable upfront. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+fetch(:some_setting, false)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="toc_2"&gt;Setting variables via the command line&lt;/h3&gt;
+
+&lt;p&gt;Another very useful feature is the possibility to set variables via the command line. Appending a &lt;code&gt;-S variable_name=value&lt;/code&gt; option to the command line will set the given variable to the given value. This comes with a minor caveat, though. Any call of &lt;code&gt;set&lt;/code&gt; with the same variable name will overwrite the value set by the command line option. Luckily Capistrano&amp;#39;s &lt;code&gt;exists?&lt;/code&gt; method allows you to check for the existence of a variable. This allows you to only set a variable if it doesn&amp;#39;t exist yet. You might change your &lt;code&gt;set :branch&lt;/code&gt; call to something like this: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+set(:branch, &amp;#39;staging&amp;#39;) unless exists?(:branch)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This allows you to deploy any branch to your staging servers without fiddling with the configuration files, just by appending &lt;code&gt;-S branch=other-branch&lt;/code&gt; to your &lt;code&gt;cap deploy&lt;/code&gt; call:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+cap deploy -S branch=awesome-new-feature
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Combining the ability to set variables via the command line with the previously explained &lt;code&gt;fetch&lt;/code&gt; method is also useful to toggle certain aspects of your deployment.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+namespace :translations do
+  task :update do
+    if fetch(:with_translations, true)
+      # Download current translations from your translation service provider
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="toc_3"&gt;Reading passwords from STDIN&lt;/h3&gt;
+
+&lt;p&gt;Variables are great to store your configuration options. There&amp;#39;s just one exception: Passwords. You probably don&amp;#39;t want to have your production database password checked into your repository.
+This is where Capistrano&amp;#39;s command line interface tools come in handy. It allows you, among several other options, to read passwords from STDIN. It even makes sure your terminal won&amp;#39;t print it while you&amp;#39;re typing.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+Capistrano::CLI.password_prompt(&amp;#39;Enter database password: &amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="toc_4"&gt;Task descriptions&lt;/h2&gt;
+
+&lt;p&gt;As you probably know, it&amp;#39;s possible to list all available tasks using &lt;code&gt;cap -T&lt;/code&gt;. This will print a list of all available commands. Every task with a description will show up in this list. Adding a description is easy. Just prepend the task definition with a &lt;code&gt;desc&lt;/code&gt; call, passing it a string.&lt;/p&gt;
+
+&lt;h3 id="toc_5"&gt;Adding extended description&lt;/h3&gt;
+
+&lt;p&gt;Each defined task may also have an extended description. To show it, simply execute &lt;code&gt;cap -e task name&lt;/code&gt;. Adding an extended description works just like adding the short description explained above. Just like &lt;code&gt;git commit&lt;/code&gt;, Capistrano will use the first paragraph as short description and every following paragraph as extended description. Ruby&amp;#39;s heredoc literal is handy when defining extended descriptions:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+desc &amp;lt;&amp;lt;-EOS
+  This is a short description that is visible in the `cap -T` list
+
+  This the extended description that is visible when executing `cap -e task name`
+EOS
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="toc_6"&gt;Hiding internal tasks&lt;/h3&gt;
+
+&lt;p&gt;Some tasks you&amp;#39;ll define for your deployment process are not intended to be executed manually and therefore shouldn&amp;#39;t show up when using &lt;code&gt;cap -T&lt;/code&gt;. The simplest way to prevent this, is to not give them any description. However, in some cases, a description would be useful for later reference and documentation. By prepending the description with &lt;code&gt;[internal]&lt;/code&gt; you can hide the task from the &lt;code&gt;cap -T&lt;/code&gt; list. It will then only be visible when executing &lt;code&gt;cap -vT&lt;/code&gt;, which will list absolutely all defined tasks.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+desc &amp;#39;[internal] This task does something useful but you should not invoke it manually&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="toc_7"&gt;Executing commands&lt;/h2&gt;
+
+&lt;p&gt;Running commands on the remote servers is easy. Capistrano&amp;#39;s &lt;code&gt;run&lt;/code&gt; method will execute the given command on every server the current task applies to. There are two more methods related to command execution that are very useful, though. &lt;/p&gt;
+
+&lt;h3 id="toc_8"&gt;Running local commands&lt;/h3&gt;
+
+&lt;p&gt;One of them is &lt;code&gt;run_locally&lt;/code&gt;. It behaves just like &lt;code&gt;run&lt;/code&gt;, except it will run the command on your machine. While it is of course possible to use Ruby&amp;#39;s various methods for command execution, &lt;code&gt;run_locally&lt;/code&gt; will ensure both the command and it&amp;#39;s output will show up cleanly aligned with all other output of the Capistrano run. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+run_locally &amp;#39;bundle exec rake deploy:prepare&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="toc_9"&gt;Streaming output from remote servers&lt;/h3&gt;
+
+&lt;p&gt;The other very useful method is &lt;code&gt;stream&lt;/code&gt;. It will execute the given command on every server the task applies to, but unlike the &lt;code&gt;run&lt;/code&gt; method it will stream the command&amp;#39;s output to your console. This allows you, for example, to peek into your log files in realtime. Combined with &lt;code&gt;grep&lt;/code&gt; and Rails&amp;#39; &lt;code&gt;TaggedLogger&lt;/code&gt; this helps a lot when debugging an issue that only shows up on your servers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+stream &amp;quot;tail -f #{current_path}/log/#{rails_env}.log&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="toc_10"&gt;Handling failing commands&lt;/h3&gt;
+
+&lt;p&gt;When executing a remote command that fails, Capistrano will abort the deployment process. This makes sense in most cases, but wouldn&amp;#39;t it be nice to have a little more control over the behavior? Let&amp;#39;s say you want to check for the existence of a file on the remote server. One easy way to do this is the &lt;code&gt;test&lt;/code&gt; command. It&amp;#39;s exit code will be &lt;code&gt;0&lt;/code&gt; for success or &lt;code&gt;1&lt;/code&gt; for failure. Unfortunately this means one of the cases will cause the entire deployment process to fail. To prevent this, all you have to do is to rescue &lt;code&gt;Capistrano::CommandError&lt;/code&gt;. A practical example for this technique is this task, that checks if the server is in maintenance mode before running migrations. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+namespace :deploy do
+  namespace :web do
+    desc &amp;#39;[internal] Ensures that web is currently disabled&amp;#39;
+    task :ensure do
+      begin
+        run &amp;quot;test -f #{shared_path}/system/maintenance.html&amp;quot;
+      rescue Capistrano::CommandError
+        unless fetch(:force, false)
+          logger.important &amp;#39;You should disable the website using deploy:web:disable before doing this&amp;#39;
+          exit
+        end
+      end
+    end
+  end
+end
+
+before &amp;#39;deploy:migrations&amp;#39;, &amp;#39;deploy:web:ensure&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="toc_11"&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;This is &amp;ndash; of course &amp;ndash; only a small subset of the useful features Capistrano provides. I hope I showed you one or two you haven&amp;#39;t known before. I encourage you to read through Capistrano&amp;#39;s &lt;a href="https://github.com/capistrano/capistrano"&gt;source code&lt;/a&gt; and &lt;a href="http://rubydoc.info/github/capistrano/capistrano/master/frames"&gt;API documentation&lt;/a&gt; to find more of these hidden features. &lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Cleaner specs with custom RSpec example groups</title>
     <link rel="alternate" href="/2013/01/custom-rspec-example-groups/"/>
@@ -21,15 +163,15 @@
 </summary>
     <content type="html">&lt;p&gt;Sometimes, when testing your code with RSpec, you&amp;#39;ll notice similarities and duplication between your spec files. Most of these will involve setup that doesn&amp;#39;t say much about the object under test. There&amp;#39;s something that helps you to reduce this duplication: Custom example groups! RSpec itself (rspec-rails) &lt;a href="https://github.com/rspec/rspec-rails/tree/master/lib/rspec/rails/example"&gt;uses example groups&lt;/a&gt; for the different types of tests for models, controllers, helpers and views. In the following I&amp;#39;ll show you how to use them to reduce duplication and improve your tests.&lt;/p&gt;
 
-&lt;h3 id="toc_0"&gt;What are example groups?&lt;/h3&gt;
+&lt;h2 id="toc_0"&gt;What are example groups?&lt;/h2&gt;
 
 &lt;p&gt;An example group is defined by using RSpec&amp;#39;s &lt;code&gt;describe&lt;/code&gt; method (or its alias &lt;code&gt;context&lt;/code&gt;). It&amp;#39;s a subclass of &lt;a href="http://rubydoc.info/gems/rspec-core/RSpec/Core/ExampleGroup"&gt;&lt;code&gt;RSpec::Core::ExampleGroup&lt;/code&gt;&lt;/a&gt; and provides all the macro methods you&amp;#39;re used to in your specs. Additionally it provides a description, a set of metadata, and optionally a described class. It also knows about the examples defined using &lt;code&gt;it&lt;/code&gt; and how to run each of them with all hooks and stuff.&lt;/p&gt;
 
-&lt;h3 id="toc_1"&gt;Customizing example groups&lt;/h3&gt;
+&lt;h2 id="toc_1"&gt;Customizing example groups&lt;/h2&gt;
 
 &lt;p&gt;Now that you know about example groups, let&amp;#39;s start customizing them. As we&amp;#39;ve learned above, example groups are simple classes and therefore can be extended with modules. This happens to be the way rspec-rails is working as well. To illustrate the process, let&amp;#39;s look at an example.&lt;/p&gt;
 
-&lt;h4 id="toc_2"&gt;A serializer example group&lt;/h4&gt;
+&lt;h3 id="toc_2"&gt;A serializer example group&lt;/h3&gt;
 
 &lt;p&gt;In a recent project, I was working with &lt;a href="https://github.com/rails-api/active_model_serializers"&gt;&lt;code&gt;ActiveModel::Serializers&lt;/code&gt;&lt;/a&gt;. In case you don&amp;#39;t know it, you should definitely have a look at it. In my opinion, it&amp;#39;s a great way to serialize your models into JSON. For our example we want to create a custom example group for serializers so we can test them like this:&lt;/p&gt;
 
@@ -60,7 +202,7 @@ module SerializerExampleGroup
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id="toc_3"&gt;Adding custom behavior&lt;/h4&gt;
+&lt;h3 id="toc_3"&gt;Adding custom behavior&lt;/h3&gt;
 
 &lt;p&gt;That&amp;#39;s all we have to do to set up our custom example group. Next we add our desired custom behavior. We have to create a new instance of our serializer and pass a resource to serialize. The resource needs attributes and must implement a &lt;code&gt;read_attributes_for_serialization&lt;/code&gt; method. We can add all this by defining an &lt;code&gt;included&lt;/code&gt; block and use RSpec&amp;#39;s &lt;code&gt;let&lt;/code&gt; macro. In order to get the name of the resource that is serialized by the serializer under test we use RSpec&amp;#39;s &lt;code&gt;described_class&lt;/code&gt; method. It returns the class defined in the &lt;code&gt;describe UserSerializer&lt;/code&gt; statement. By converting its name to underscores, removing the &lt;code&gt;_serializer&lt;/code&gt; part and converting it into a symbol we get &lt;code&gt;:user&lt;/code&gt; as &lt;code&gt;resource_name&lt;/code&gt;.&lt;/p&gt;
 
@@ -89,7 +231,7 @@ let(:serializer) { described_class.new(resource) }
 subject { serializer.serializable_hash.with_indifferent_access }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id="toc_4"&gt;Adding some metadata&lt;/h4&gt;
+&lt;h3 id="toc_4"&gt;Adding some metadata&lt;/h3&gt;
 
 &lt;p&gt;Now we have the desired custom behavior. To wrap things up, we add some metadata to the example group. In the &lt;code&gt;included&lt;/code&gt; block we have access to the &lt;code&gt;metadata&lt;/code&gt; method and are able to set the &lt;code&gt;:type&lt;/code&gt; to &lt;code&gt;:serializer&lt;/code&gt;.&lt;/p&gt;
 
@@ -97,7 +239,7 @@ subject { serializer.serializable_hash.with_indifferent_access }
 metadata[:type] = :serializer
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id="toc_5"&gt;The finished example group&lt;/h4&gt;
+&lt;h3 id="toc_5"&gt;The finished example group&lt;/h3&gt;
 
 &lt;p&gt;All this results in a &lt;code&gt;spec/support/example_groups/serializer_example_group.rb&lt;/code&gt; file looking like this:&lt;/p&gt;
 
@@ -175,7 +317,7 @@ offered me a job.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;h3 id="toc_0"&gt;About flinc&lt;/h3&gt;
+&lt;h2 id="toc_0"&gt;About flinc&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;“flinc arranges spontaneous rideshares in realtime. Directly on your
@@ -193,7 +335,7 @@ easy way to reduce their costs.&lt;/p&gt;
 to be rolled out in several innovation regions in 2011. Head over to
 &lt;a href="http://flinc.org"&gt;flinc.org&lt;/a&gt; to register and get more information.&lt;/p&gt;
 
-&lt;h3 id="toc_1"&gt;Pair with me!&lt;/h3&gt;
+&lt;h2 id="toc_1"&gt;Pair with me!&lt;/h2&gt;
 
 &lt;p&gt;As I’m the third developer at flinc, we’re looking for another Ruby on
 Rails developer to join the team. If you’re interested in pair
@@ -237,7 +379,7 @@ API. ;-) Today I decided to rewrite the tool to drop the dependency on
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;h3 id="toc_0"&gt;Using Multitouch Events from JavaScript&lt;/h3&gt;
+&lt;h2 id="toc_0"&gt;Using Multitouch Events from JavaScript&lt;/h2&gt;
 
 &lt;p&gt;There are four events that are related to touch: &lt;code&gt;TouchStart&lt;/code&gt;, &lt;code&gt;TouchMove&lt;/code&gt;,
 &lt;code&gt;TouchEnd&lt;/code&gt; and &lt;code&gt;TouchCancel&lt;/code&gt;. I&amp;#39;m not sure about what situation would
@@ -270,7 +412,7 @@ that all fingers were removed, immediately followed by a &lt;code&gt;TouchStart&
 event including the remaining fingers. Luckily the identifier property
 stays the same for those fingers that weren&amp;#39;t removed from the screen.&lt;/p&gt;
 
-&lt;h3 id="toc_1"&gt;Offline Application Caching&lt;/h3&gt;
+&lt;h2 id="toc_1"&gt;Offline Application Caching&lt;/h2&gt;
 
 &lt;p&gt;In order to use the application without having an active internet
 connection or simply while the development server isn&amp;#39;t running I&amp;#39;m
@@ -324,7 +466,7 @@ get &amp;#39;/application.manifest&amp;#39; do
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id="toc_2"&gt;Issues&lt;/h3&gt;
+&lt;h2 id="toc_2"&gt;Issues&lt;/h2&gt;
 
 &lt;p&gt;There are some issues that I couldn&amp;#39;t resolve while building the
 application. The startup image will only work while in portrait
@@ -336,20 +478,20 @@ well for some reason it isn&amp;#39;t possible to press the buttons in the
 toolbar. At the moment I have no explanation for this rather strange
 behavior, but I might take another look at it in the future.&lt;/p&gt;
 
-&lt;h3 id="toc_3"&gt;Screenshot &amp;amp; Demo&lt;/h3&gt;
+&lt;h2 id="toc_3"&gt;Screenshot &amp;amp; Demo&lt;/h2&gt;
 
 &lt;p&gt;Now that you have some insights on the internals of the application,
 here&amp;#39;s a screenshot as well as a link on it to a demo:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/assets/2010/06/"&gt;&lt;img alt="Screenshot of the Multitouch Inspector" width="630" height="473" src="../assets/2010/06/multitouch-inspector_medium.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id="toc_4"&gt;Fork it on GitHub&lt;/h3&gt;
+&lt;h2 id="toc_4"&gt;Fork it on GitHub&lt;/h2&gt;
 
 &lt;p&gt;I published the source code on
 &lt;a href="http://github.com/benedikt/multitouch-inspector"&gt;GitHub&lt;/a&gt;. Feel free to
 fork it!&lt;/p&gt;
 
-&lt;h3 id="toc_5"&gt;Further reading&lt;/h3&gt;
+&lt;h2 id="toc_5"&gt;Further reading&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt; &lt;a href="http://developer.apple.com/safari/library/documentation/appleapplications/reference/safariwebcontent/handlingevents/handlingevents.html#//apple_ref/doc/uid/TP40006511-SW22"&gt;Safari Web Content Guide: Handling
@@ -539,7 +681,7 @@ mod_rails, take a look at it&amp;#39;s &lt;a href="http://modrails.com/documenta
     <author>
       <name>Benedikt Deicke</name>
     </author>
-    <summary type="html">&lt;h3 id="toc_0"&gt;News&lt;/h3&gt;
+    <summary type="html">&lt;h2 id="toc_0"&gt;News&lt;/h2&gt;
 
 &lt;p&gt;I try to keep up with Ruby and Ruby on Rails, even if I’m not working
 with one of them at the moment. These are the three feeds helping me to
@@ -551,7 +693,7 @@ get the latest news:&lt;/p&gt;
 PlanetRubyOnRails.**org**, is a simple feed aggregator with a set of
 quite informative blogs. Including the official [Riding&lt;/p&gt;
 </summary>
-    <content type="html">&lt;h3 id="toc_0"&gt;News&lt;/h3&gt;
+    <content type="html">&lt;h2 id="toc_0"&gt;News&lt;/h2&gt;
 
 &lt;p&gt;I try to keep up with Ruby and Ruby on Rails, even if I’m not working
 with one of them at the moment. These are the three feeds helping me to
@@ -584,7 +726,7 @@ the german Ruby on Rails community. (Yes, mine too …) Its far from being
 as active as the international one, but usually includes interesting
 posts.&lt;/p&gt;
 
-&lt;h3 id="toc_1"&gt;Documentation&lt;/h3&gt;
+&lt;h2 id="toc_1"&gt;Documentation&lt;/h2&gt;
 
 &lt;p&gt;When I’m working on Ruby and Ruby on Rails code, I use there resources
 to quickly look up documentation:&lt;/p&gt;
@@ -624,7 +766,7 @@ Okay, it’s just the standard RDoc documentation for each gem, without
 any fancy search or anything … but who cares if you’re somewhere in the
 middle of nowhere with no internet connection? :-)&lt;/p&gt;
 
-&lt;h3 id="toc_2"&gt;Other&lt;/h3&gt;
+&lt;h2 id="toc_2"&gt;Other&lt;/h2&gt;
 
 &lt;p&gt;&lt;img alt="image" width="200" height="45" src="../assets/2008/08/railscasts.png" /&gt;:&lt;a href="http://www.railscasts.com"&gt;http://www.railscasts.com&lt;/a&gt;/&lt;/p&gt;
 
@@ -638,7 +780,7 @@ based on practical examples.&lt;/p&gt;
 stay up-to-date? Which documentation are you using? I’m interested in
 your comments (there are way to few anyways … ;-))!&lt;/p&gt;
 
-&lt;h3 id="toc_3"&gt;Update (Aug 15.)&lt;/h3&gt;
+&lt;h2 id="toc_3"&gt;Update (Aug 15.)&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href="http://blog.nodeta.fi/"&gt;Nodeta&lt;/a&gt;, creators of Rails-Doc.org, released
 &lt;a href="http://www.apidock.com/"&gt;APIdock&lt;/a&gt; yesterday. APIdock extends the
@@ -818,7 +960,7 @@ steps.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;h3 id="toc_0"&gt;Key generation&lt;/h3&gt;
+&lt;h2 id="toc_0"&gt;Key generation&lt;/h2&gt;
 
 &lt;p&gt;The first thing you need is - of course - a pair of keys: your private
 key and the associated public key. To generate both fire up our favorite
@@ -843,7 +985,7 @@ yourserver.com:~/.ssh/authenticated_keys2
 &lt;p&gt;If you want to add multiple keys, be sure to append it to the
 &lt;code&gt;authenticated_keys2&lt;/code&gt; file and don&amp;#39;t overwrite it.&lt;/p&gt;
 
-&lt;h3 id="toc_1"&gt;First login&lt;/h3&gt;
+&lt;h2 id="toc_1"&gt;First login&lt;/h2&gt;
 
 &lt;p&gt;That&amp;#39;s all you have to do to switch to key based SSH authentication. Try
 to log in as usual by typing:&lt;/p&gt;
@@ -861,7 +1003,7 @@ password and store it until you shut it down. You&amp;#39;ll have to do this
 everytime you open up a new shell or put the commands into your i.e.
 &lt;code&gt;~/.bash_profile&lt;/code&gt;. Quite comfortable but we can do better.&lt;/p&gt;
 
-&lt;h3 id="toc_2"&gt;Keychain&lt;/h3&gt;
+&lt;h2 id="toc_2"&gt;Keychain&lt;/h2&gt;
 
 &lt;p&gt;There is a nice little tool called &lt;code&gt;keychain&lt;/code&gt; that will
 smooth the process a little for you. It&amp;#39;s originally developed by the
@@ -893,63 +1035,6 @@ complicated at all, was it?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Thanks to &lt;a href="http://www.michael-kolb.co.uk/"&gt;Michael&lt;/a&gt; for
 pointing out that the public key file is named &lt;code&gt;id_rsa.pub&lt;/code&gt;
 instead of &lt;code&gt;id_rsa&lt;/code&gt;. Fixed it.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Fuzzy-controlled jet with Processing</title>
-    <link rel="alternate" href="/2008/01/fuzzy-controlled-jet-with-processing/"/>
-    <id>/2008/01/fuzzy-controlled-jet-with-processing/</id>
-    <published>2008-01-14T00:00:00Z</published>
-    <updated>2008-01-14T00:00:00Z</updated>
-    <author>
-      <name>Benedikt Deicke</name>
-    </author>
-    <summary type="html">&lt;p&gt;This one started as an homework for university but I really started to
-like it. The original task was to built a fuzzy controller using
-&lt;a href="http://de.wikipedia.org/wiki/MATLAB"&gt;Matlab&lt;/a&gt; in groups of 2 or 3
-students.&lt;/p&gt;
-</summary>
-    <content type="html">&lt;p&gt;This one started as an homework for university but I really started to
-like it. The original task was to built a fuzzy controller using
-&lt;a href="http://de.wikipedia.org/wiki/MATLAB"&gt;Matlab&lt;/a&gt; in groups of 2 or 3
-students.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;I joined &lt;a href="http://blog.benholio.de/"&gt;Benjamin&lt;/a&gt; and another
-fellow student to create a simple fuzzy controller for flying a plane in
-a given height above the ground. To make things a little more complex we
-also considered head wind. As all of us three didn’t like the quite
-abstract results of our controller in Matlab, we decided to implement a
-small simulation in &lt;a href="http://www.processing.org/"&gt;processing.&lt;/a&gt; We used
-&lt;a href="http://people.clarkson.edu/~esazonov/FuzzyEngine.htm"&gt;Edward Saznov’s open source fuzzy inference engine for
-Java&lt;/a&gt; and
-integrated it into processing. Surprisingly everything worked quite well
-from the beginning. Although we had some small issues we were able to
-build a nice looking and functional simulation using the controller we
-designed. The resulting applet runs perfectly in the browser and as an
-application. (I love processing’s export-feature.) Check out the sketch
-by clicking on the picture below.&lt;/p&gt;
-
-&lt;p&gt;&lt;img alt="image" width="480" height="304" src="../assets/2008/01/fuzzy.png" /&gt;:&lt;a href="http://benedikt.synatic.net/fuzzy"&gt;http://benedikt.synatic.net/fuzzy&lt;/a&gt;/&lt;/p&gt;
-
-&lt;p&gt;Here are the controls you might need :-)&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;R                    Reset the terrain
-  Space                Start / Stop simulatoin
-  Arrow up / down      Change wind angle
-  Arrow left           Increase wind power
-  Arrow right          Reduce wind power
-  Click                Set position of the plane
-  Dragging the mouse   Draw terrain&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;We decided to release the source code of this. It still could need some
-refactoring, but it’s working and deadline was today, so feel free to
-experiment with it (or even improve it) and sent us some comments!&lt;/p&gt;
 </content>
   </entry>
 </feed>
