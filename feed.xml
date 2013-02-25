@@ -4,10 +4,30 @@
   <id>http://benediktdeicke.com/</id>
   <link href="http://benediktdeicke.com/"/>
   <link href="http://feeds.feedburner.com/benediktdeicke" rel="self"/>
-  <updated>2013-02-14T00:00:00Z</updated>
+  <updated>2013-02-25T00:00:00Z</updated>
   <author>
     <name>Benedikt Deicke</name>
   </author>
+  <entry>
+    <title>I'm going freelance</title>
+    <link rel="alternate" href="/2013/02/i-am-going-freelance/"/>
+    <id>/2013/02/i-am-going-freelance/</id>
+    <published>2013-02-25T00:00:00Z</published>
+    <updated>2013-02-25T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;More than two years ago, I joined &lt;a href="https://flinc.org"&gt;flinc&lt;/a&gt; as a Rails developer. During this time, I helped building, launching and maintaining the realtime ride sharing network. From april on, I&amp;#39;m going to work as a freelance software engineer. It&amp;#39;s not totally new for me, but it&amp;#39;s the first time it&amp;#39;ll be my main source of income.&lt;/p&gt;
+
+&lt;p&gt;Besides doing freelance software development work, I&amp;#39;m planning to focus more on my own projects. One of them is &amp;ndash; of course &amp;ndash; this blog, which has been neglected for far too long. Additionally I&amp;#39;ve got some other projects in mind, that I&amp;#39;m going to announce here eventually. &lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;More than two years ago, I joined &lt;a href="https://flinc.org"&gt;flinc&lt;/a&gt; as a Rails developer. During this time, I helped building, launching and maintaining the realtime ride sharing network. From april on, I&amp;#39;m going to work as a freelance software engineer. It&amp;#39;s not totally new for me, but it&amp;#39;s the first time it&amp;#39;ll be my main source of income.&lt;/p&gt;
+
+&lt;p&gt;Besides doing freelance software development work, I&amp;#39;m planning to focus more on my own projects. One of them is &amp;ndash; of course &amp;ndash; this blog, which has been neglected for far too long. Additionally I&amp;#39;ve got some other projects in mind, that I&amp;#39;m going to announce here eventually. &lt;/p&gt;
+
+&lt;p&gt;During the upcoming weeks, I&amp;#39;ll update my website to provide some more information about my services and past work. In the meantime, please don&amp;#39;t hesitate to &lt;a href="mailto:benedikt@benediktdeicke.com"&gt;contact me&lt;/a&gt; in case you want me to help you develop your product.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>What you did not know about Capistrano, yet</title>
     <link rel="alternate" href="/2013/02/what-you-did-not-know-about-capistrano-yet/"/>
@@ -115,7 +135,7 @@ run_locally &amp;#39;bundle exec rake deploy:prepare&amp;#39;
 
 &lt;h3 id="toc_9"&gt;Streaming output from remote servers&lt;/h3&gt;
 
-&lt;p&gt;The other very useful method is &lt;code&gt;stream&lt;/code&gt;. It will execute the given command on every server the task applies to, but unlike the &lt;code&gt;run&lt;/code&gt; method it will stream the command&amp;#39;s output to your console. This allows you, for example, to peek into your log files in realtime. Combined with &lt;code&gt;grep&lt;/code&gt; and Rails&amp;#39; &lt;code&gt;TaggedLogger&lt;/code&gt; this helps a lot when debugging an issue that only shows up on your servers.&lt;/p&gt;
+&lt;p&gt;The other very useful method is &lt;code&gt;stream&lt;/code&gt;. It will execute the given command on every server the task applies to, but unlike the &lt;code&gt;run&lt;/code&gt; method it will stream the command&amp;#39;s output to your console. This allows you, for example, to peek into your log files in realtime. Combined with &lt;code&gt;grep&lt;/code&gt; and Rails&amp;#39; &lt;code&gt;ActiveSupport::TaggedLogging&lt;/code&gt; this helps a lot when debugging an issue that only shows up on your servers.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;:::ruby
 stream &amp;quot;tail -f #{current_path}/log/#{rails_env}.log&amp;quot;
@@ -919,122 +939,6 @@ less CPU than autotest.&lt;/p&gt;
 &lt;p&gt;(You might also want to change the &lt;code&gt;system&lt;/code&gt;-call in
 &lt;code&gt;lib/resulting.rb&lt;/code&gt; as it’s currently using Growl to notify you about the
 test results.)&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Easy SSH authentication with keychain</title>
-    <link rel="alternate" href="/2008/03/easy-ssh-authentication-with-keychain/"/>
-    <id>/2008/03/easy-ssh-authentication-with-keychain/</id>
-    <published>2008-03-29T00:00:00Z</published>
-    <updated>2008-03-29T00:00:00Z</updated>
-    <author>
-      <name>Benedikt Deicke</name>
-    </author>
-    <summary type="html">&lt;p&gt;Typing SSH passwords again and again can be a real pain. For example:
-Lately I started to use &lt;a href="http://www.capify.org/"&gt;Capistrano&lt;/a&gt; to deploy
-my rails applications. If I want to set up the maintenance-page on the
-server I&amp;#39;ll type &lt;code&gt;cap deploy:web:disable&lt;/code&gt; which of course
-prompts me for the SSH password. Then I want to deploy my application
-with &lt;code&gt;cap deploy&lt;/code&gt; and again will be prompted for the
-password. Finally I have to &lt;code&gt;cap deploy:web:enable&lt;/code&gt; to remove
-the maintenance page which as mindful readers might have guessed
-already prompts for the password. This was just one reason for me to
-set up SSH authentication keys. At first I was a little worried that
-setting it up might be a bit complicated. Luckily I was disabused. If
-you want to switch to key based authentication too follow these simple
-steps.&lt;/p&gt;
-</summary>
-    <content type="html">&lt;p&gt;Typing SSH passwords again and again can be a real pain. For example:
-Lately I started to use &lt;a href="http://www.capify.org/"&gt;Capistrano&lt;/a&gt; to deploy
-my rails applications. If I want to set up the maintenance-page on the
-server I&amp;#39;ll type &lt;code&gt;cap deploy:web:disable&lt;/code&gt; which of course
-prompts me for the SSH password. Then I want to deploy my application
-with &lt;code&gt;cap deploy&lt;/code&gt; and again will be prompted for the
-password. Finally I have to &lt;code&gt;cap deploy:web:enable&lt;/code&gt; to remove
-the maintenance page which as mindful readers might have guessed
-already prompts for the password. This was just one reason for me to
-set up SSH authentication keys. At first I was a little worried that
-setting it up might be a bit complicated. Luckily I was disabused. If
-you want to switch to key based authentication too follow these simple
-steps.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id="toc_0"&gt;Key generation&lt;/h2&gt;
-
-&lt;p&gt;The first thing you need is - of course - a pair of keys: your private
-key and the associated public key. To generate both fire up our favorite
-shell (for me it’s &lt;code&gt;bash&lt;/code&gt;) and type:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
-ssh-keygen
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will generate both keys and ask you where to store it. Usually the
-default would be something like &lt;code&gt;~/.ssh/id_rsa&lt;/code&gt;. Simply
-accept the default by pressing return. Next you&amp;#39;ll have to enter a
-password for your key and confirm it. Afterwards you&amp;#39;ve to tell the
-server to accept your key on authentication. Do so by uploading the
-public key to the server.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
-scp ~/.ssh/id_rsa.pub
-yourserver.com:~/.ssh/authenticated_keys2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you want to add multiple keys, be sure to append it to the
-&lt;code&gt;authenticated_keys2&lt;/code&gt; file and don&amp;#39;t overwrite it.&lt;/p&gt;
-
-&lt;h2 id="toc_1"&gt;First login&lt;/h2&gt;
-
-&lt;p&gt;That&amp;#39;s all you have to do to switch to key based SSH authentication. Try
-to log in as usual by typing:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
-ssh yourserver.com
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will prompt you for your key&amp;#39;s password and log you in to your
-server afterwards. &amp;ldquo;But wait! I&amp;#39;m still having to type my password every
-time I want to log in!&amp;rdquo; you shout, and you’re right - up to now. What
-you need to do is running &lt;code&gt;ssh-agent&lt;/code&gt;, adding your key and
-typing your password. &lt;code&gt;ssh-agent&lt;/code&gt; will then ask for the
-password and store it until you shut it down. You&amp;#39;ll have to do this
-everytime you open up a new shell or put the commands into your i.e.
-&lt;code&gt;~/.bash_profile&lt;/code&gt;. Quite comfortable but we can do better.&lt;/p&gt;
-
-&lt;h2 id="toc_2"&gt;Keychain&lt;/h2&gt;
-
-&lt;p&gt;There is a nice little tool called &lt;code&gt;keychain&lt;/code&gt; that will
-smooth the process a little for you. It&amp;#39;s originally developed by the
-&lt;a href="http://www.gentoo.org/"&gt;Gentoo&lt;/a&gt; people but it’s available on other
-linux distributions (as well as Mac OS X), too. Simply install it by
-typing your system&amp;#39;s equivalent to&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
-# Gentoo
-emerge keychain
-# Debian
-aptitude install keychain
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;and it&amp;#39;ll be available in no time. To set it up you need to put these
-two lines in our &lt;code&gt;~/.bash_profile&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
-keychain ~/.ssh/id_rsa
-source ~/.keychain/$HOSTNAME-sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That&amp;#39;s it. The first time you open up a shell &lt;code&gt;keychain&lt;/code&gt; will
-start &lt;code&gt;ssh-agent&lt;/code&gt;, prompt you for your keys password and
-remember the running &lt;code&gt;ssh-agent&lt;/code&gt; for all new shells. On your
-next SSH authentication no more password typing is required. Wasn’t
-complicated at all, was it?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Thanks to &lt;a href="http://www.michael-kolb.co.uk/"&gt;Michael&lt;/a&gt; for
-pointing out that the public key file is named &lt;code&gt;id_rsa.pub&lt;/code&gt;
-instead of &lt;code&gt;id_rsa&lt;/code&gt;. Fixed it.&lt;/p&gt;
 </content>
   </entry>
 </feed>
