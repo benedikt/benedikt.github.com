@@ -5,7 +5,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://benediktdeicke.com/articles/</loc>
+    <loc>http://benediktdeicke.com/imprint/</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -66,7 +66,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://benediktdeicke.com/assets/2010/06/</loc>
+    <loc>http://benediktdeicke.com/assets/2010/06/index</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://benediktdeicke.com/contact/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://benediktdeicke.com/portfolio/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://benediktdeicke.com/services/</loc>
     <priority>0.7</priority>
   </url>
   <url>

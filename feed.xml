@@ -17,10 +17,9 @@
     <author>
       <name>Benedikt Deicke</name>
     </author>
-    <summary type="html">&lt;p&gt;More than two years ago, I joined &lt;a href="https://flinc.org"&gt;flinc&lt;/a&gt; as a Rails developer. During this time, I helped building, launching and maintaining the realtime ride sharing network. From april on, I&amp;#39;m going to work as a freelance software engineer. It&amp;#39;s not totally new for me, but it&amp;#39;s the first time it&amp;#39;ll be my main source of income.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;More than two years ago, I joined &lt;a href="https://flinc.org"&gt;flinc&lt;/a&gt; as a Rails developer. During this time, I helped building, launching and maintaining the realtime ride sharing network. From april on, I'm going to work as a freelance software engineer. It's not totally new for me, but it's the first time it'll be my main source of income.&lt;/p&gt;
 
-&lt;p&gt;Besides doing freelance software development work, I&amp;#39;m planning to focus more on my own projects. One of them is &amp;ndash; of course &amp;ndash; this blog, which has been neglected for far too long. Additionally I&amp;#39;ve got some other projects in mind, that I&amp;#39;m going to announce here eventually. &lt;/p&gt;
-</summary>
+&lt;p&gt;Besides doing freelance software development work, I'm planning to focus more on my...&lt;/p&gt;</summary>
     <content type="html">&lt;p&gt;More than two years ago, I joined &lt;a href="https://flinc.org"&gt;flinc&lt;/a&gt; as a Rails developer. During this time, I helped building, launching and maintaining the realtime ride sharing network. From april on, I&amp;#39;m going to work as a freelance software engineer. It&amp;#39;s not totally new for me, but it&amp;#39;s the first time it&amp;#39;ll be my main source of income.&lt;/p&gt;
 
 &lt;p&gt;Besides doing freelance software development work, I&amp;#39;m planning to focus more on my own projects. One of them is &amp;ndash; of course &amp;ndash; this blog, which has been neglected for far too long. Additionally I&amp;#39;ve got some other projects in mind, that I&amp;#39;m going to announce here eventually. &lt;/p&gt;
@@ -37,8 +36,7 @@
     <author>
       <name>Benedikt Deicke</name>
     </author>
-    <summary type="html">&lt;p&gt;Like any other build process, deploying Rails applications should be a quick and easy task. You should be able to deploy everything to your server with just one command. There are several tools available for this task. One of them is &lt;a href="https://github.com/capistrano/capistrano"&gt;Capistrano&lt;/a&gt;, which is probably the oldest and by far the most popular deployment tool in the Rails community. Unfortunately the &lt;a href="https://github.com/capistrano/capistrano/wiki"&gt;documentation&lt;/a&gt; is still not great and a lot of very handy features are unknown to many. Only digging through the API documentation and the &lt;a href="http://rubydoc.info/github/capistrano/capistrano/master/frames"&gt;source code&lt;/a&gt; reveals them.&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;p&gt;Like any other build process, deploying Rails applications should be a quick and easy task. You should be able to deploy everything to your server with just one command. There are several tools available for this task. One of them is &lt;a href="https://github.com/capistrano/capistrano"&gt;Capistrano&lt;/a&gt;, which is probably the oldest and by far the most popular deployment tool in the Rails community. Unfortunately the &lt;a href="https://github.com/capistrano/capistrano/wiki"&gt;documentation&lt;/a&gt; is still not great and...&lt;/p&gt;</summary>
     <content type="html">&lt;p&gt;Like any other build process, deploying Rails applications should be a quick and easy task. You should be able to deploy everything to your server with just one command. There are several tools available for this task. One of them is &lt;a href="https://github.com/capistrano/capistrano"&gt;Capistrano&lt;/a&gt;, which is probably the oldest and by far the most popular deployment tool in the Rails community. Unfortunately the &lt;a href="https://github.com/capistrano/capistrano/wiki"&gt;documentation&lt;/a&gt; is still not great and a lot of very handy features are unknown to many. Only digging through the API documentation and the &lt;a href="http://rubydoc.info/github/capistrano/capistrano/master/frames"&gt;source code&lt;/a&gt; reveals them.&lt;/p&gt;
 
 &lt;h2 id="toc_0"&gt;Variables&lt;/h2&gt;
@@ -179,8 +177,7 @@ before &amp;#39;deploy:migrations&amp;#39;, &amp;#39;deploy:web:ensure&amp;#39;
     <author>
       <name>Benedikt Deicke</name>
     </author>
-    <summary type="html">&lt;p&gt;Sometimes, when testing your code with RSpec, you&amp;#39;ll notice similarities and duplication between your spec files. Most of these will involve setup that doesn&amp;#39;t say much about the object under test. There&amp;#39;s something that helps you to reduce this duplication: Custom example groups! RSpec itself (rspec-rails) &lt;a href="https://github.com/rspec/rspec-rails/tree/master/lib/rspec/rails/example"&gt;uses example groups&lt;/a&gt; for the different types of tests for models, controllers, helpers and views. In the following I&amp;#39;ll show you how to use them to reduce duplication and improve your tests.&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;p&gt;Sometimes, when testing your code with RSpec, you'll notice similarities and duplication between your spec files. Most of these will involve setup that doesn't say much about the object under test. There's something that helps you to reduce this duplication: Custom example groups! RSpec itself (rspec-rails) &lt;a href="https://github.com/rspec/rspec-rails/tree/master/lib/rspec/rails/example"&gt;uses example groups&lt;/a&gt; for the different types of tests for models, controllers, helpers and...&lt;/p&gt;</summary>
     <content type="html">&lt;p&gt;Sometimes, when testing your code with RSpec, you&amp;#39;ll notice similarities and duplication between your spec files. Most of these will involve setup that doesn&amp;#39;t say much about the object under test. There&amp;#39;s something that helps you to reduce this duplication: Custom example groups! RSpec itself (rspec-rails) &lt;a href="https://github.com/rspec/rspec-rails/tree/master/lib/rspec/rails/example"&gt;uses example groups&lt;/a&gt; for the different types of tests for models, controllers, helpers and views. In the following I&amp;#39;ll show you how to use them to reduce duplication and improve your tests.&lt;/p&gt;
 
 &lt;h2 id="toc_0"&gt;What are example groups?&lt;/h2&gt;
@@ -321,7 +318,8 @@ Dieburg. I was impressed by their product and the spirit of the
 &lt;a href="http://flinc.org/theflincteam"&gt;team&lt;/a&gt;, so I agreed on
 doing trial work for a week. Obviously they liked me and my work and
 offered me a job.&lt;/p&gt;
-</summary>
+
+&lt;p&gt;</summary>
     <content type="html">&lt;p&gt;&lt;a href="http://flinc.org"&gt;&lt;img src="/assets/2010/11/flinc.png" style="float: right" /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Today’s my first day as a full-time employee at
@@ -349,7 +347,7 @@ satellite navigation systems to arrange rideshares in realtime. For
 riders this results in an alternative to an own car, for drivers it’s an
 easy way to reduce their costs.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="http://flinc.org/"&gt;&lt;img alt="image" width="500" height="184" src="../../../assets/2010/11/how_flinc_works_en.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://flinc.org/"&gt;&lt;img src="/assets/2010/11/how_flinc_works_en.png" alt="image"&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;flinc is currently tested in the city of Friedrichshafen and is planned
 to be rolled out in several innovation regions in 2011. Head over to
@@ -378,19 +376,20 @@ working on an exciting product, send a mail to
 &lt;p&gt;During the last couple weeks I&amp;#39;ve been playing around with the iPad and
 Mobile Safari. I built a little tool to familiarize myself with the
 Multitouch JavaScript API provided by Mobile Safari as well as web
-applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/"&gt;Multitouch
+applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/index.html"&gt;Multitouch
 Inspector&lt;/a&gt; because
 that&amp;#39;s what it does: Inspect the TouchEvents fired by the JavaScript
 API. ;-) Today I decided to rewrite the tool to drop the dependency on
 &lt;a href="http://prototypejs.org"&gt;Prototype.js&lt;/a&gt; and I published it on
 &lt;a href="http://github.com/benedikt/multitouch-inspector"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-</summary>
+
+&lt;p&gt;</summary>
     <content type="html">&lt;p&gt;&lt;img src="/assets/2010/06/icon.png" style="float: right" /&gt;&lt;/p&gt;
 
 &lt;p&gt;During the last couple weeks I&amp;#39;ve been playing around with the iPad and
 Mobile Safari. I built a little tool to familiarize myself with the
 Multitouch JavaScript API provided by Mobile Safari as well as web
-applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/"&gt;Multitouch
+applications for the iPad in general. I named the result &lt;a href="/assets/2010/06/index.html"&gt;Multitouch
 Inspector&lt;/a&gt; because
 that&amp;#39;s what it does: Inspect the TouchEvents fired by the JavaScript
 API. ;-) Today I decided to rewrite the tool to drop the dependency on
@@ -503,7 +502,7 @@ behavior, but I might take another look at it in the future.&lt;/p&gt;
 &lt;p&gt;Now that you have some insights on the internals of the application,
 here&amp;#39;s a screenshot as well as a link on it to a demo:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="/assets/2010/06/"&gt;&lt;img alt="Screenshot of the Multitouch Inspector" width="630" height="473" src="../../../assets/2010/06/multitouch-inspector_medium.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/assets/2010/06/index.html"&gt;&lt;img src="/assets/2010/06/multitouch-inspector_medium.png" alt="Screenshot of the Multitouch Inspector"&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id="toc_4"&gt;Fork it on GitHub&lt;/h2&gt;
 
@@ -564,13 +563,14 @@ initialize the output buffer and you end up with a &lt;code&gt;NoMethodError&lt;
     <author>
       <name>Benedikt Deicke</name>
     </author>
-    <summary type="html">&lt;p&gt;I&amp;#39;m currently building a tool to help managing severals servers
+    <summary type="html">&lt;p&gt;I'm currently building a tool to help managing severals servers
 simultaneously for &lt;a href="http://www.softvision-media.de/"&gt;Softvision Media&lt;/a&gt;.
-As I decided to write the tool in Ruby, I&amp;#39;ve been looking for a
+As I decided to write the tool in Ruby, I've been looking for a
 framework to create command-line executables. On GitHub I stumbled over
 &lt;a href="http://github.com/visionmedia/commander/tree/master"&gt;commander&lt;/a&gt; by TJ
-Holowaychuk of &lt;a href="http://vision-media.ca/"&gt;VisionMedia&lt;/a&gt; that provides a&lt;/p&gt;
-</summary>
+Holowaychuk of &lt;a href="http://vision-media.ca/"&gt;VisionMedia&lt;/a&gt; that provides a
+simple DSL for this task. It integrates with OptionParser and the
+Highline gem for user interaction. It...&lt;/p&gt;</summary>
     <content type="html">&lt;p&gt;I&amp;#39;m currently building a tool to help managing severals servers
 simultaneously for &lt;a href="http://www.softvision-media.de/"&gt;Softvision Media&lt;/a&gt;.
 As I decided to write the tool in Ruby, I&amp;#39;ve been looking for a
@@ -627,11 +627,11 @@ end
     </author>
     <summary type="html">&lt;p&gt;Yesterday I decided to give &lt;a href="http://www.modrails.com"&gt;Phusion Passenger aka
 mod_rails&lt;/a&gt; a try and installed it. It was dead
-simple to set it up and to deploy rails applications with it. I&amp;#39;m now
-using it for several &amp;ldquo;small&amp;rdquo; applications, for which the whole overhead
-of setting up a cluster of mongrels and a proxy doesn&amp;#39;t seem to be
-adequate. I&amp;#39;ll give you a short summary on how to install mod_rails for&lt;/p&gt;
-</summary>
+simple to set it up and to deploy rails applications with it. I'm now
+using it for several “small” applications, for which the whole overhead
+of setting up a cluster of mongrels and a proxy doesn't seem to be
+adequate. I'll give you a short summary on how to install mod_rails for
+apache2 on Debian Etch...&lt;/p&gt;</summary>
     <content type="html">&lt;p&gt;Yesterday I decided to give &lt;a href="http://www.modrails.com"&gt;Phusion Passenger aka
 mod_rails&lt;/a&gt; a try and installed it. It was dead
 simple to set it up and to deploy rails applications with it. I&amp;#39;m now
@@ -707,19 +707,20 @@ mod_rails, take a look at it&amp;#39;s &lt;a href="http://modrails.com/documenta
 with one of them at the moment. These are the three feeds helping me to
 get the latest news:&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="image" width="349" height="69" src="../../../assets/2008/08/planetrubyonrails.png" /&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/assets/2008/08/planetrubyonrails.png" alt="image"&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;PlanetRubyOnRails.com, not to be mixed up with
 PlanetRubyOnRails.**org**, is a simple feed aggregator with a set of
-quite informative blogs. Including the official [Riding&lt;/p&gt;
-</summary>
+quite informative blogs. Including the official &lt;a href="http://blog.rubyonrails.com"&gt;Riding
+Rails&lt;/a&gt; Blog, &lt;a href="http://www.rubyinside.com"&gt;Ruby
+Inside&lt;/a&gt;, and...&lt;/p&gt;</summary>
     <content type="html">&lt;h2 id="toc_0"&gt;News&lt;/h2&gt;
 
 &lt;p&gt;I try to keep up with Ruby and Ruby on Rails, even if I’m not working
 with one of them at the moment. These are the three feeds helping me to
 get the latest news:&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="image" width="349" height="69" src="../../../assets/2008/08/planetrubyonrails.png" /&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/assets/2008/08/planetrubyonrails.png" alt="image"&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;PlanetRubyOnRails.com, not to be mixed up with
 PlanetRubyOnRails.**org**, is a simple feed aggregator with a set of
@@ -729,7 +730,7 @@ Inside&lt;/a&gt;, and &lt;a href="http://www.infoq.com"&gt;InfoQ&lt;/a&gt;.
 Unfortunately it doesn’t provide an RSS-Feed anymore, but thanks to
 &lt;a href="http://feed43.com/"&gt;Feed43&lt;/a&gt; it’s easy to build one on your own.&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="image" width="130" height="79" src="../../../assets/2008/08/rails_envy_logo.gif" /&gt;:&lt;a href="http://railsenvy.com"&gt;http://railsenvy.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/assets/2008/08/rails_envy_logo.gif" alt="image"&gt;:&lt;a href="http://railsenvy.com"&gt;http://railsenvy.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Every Wednesday Gregg Pollack and Jason Seifer of &lt;a href="http://www.railsenvy.com"&gt;Rails
 Envy&lt;/a&gt; publish their Rails Envy Podcast,
@@ -751,7 +752,7 @@ posts.&lt;/p&gt;
 &lt;p&gt;When I’m working on Ruby and Ruby on Rails code, I use there resources
 to quickly look up documentation:&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="image" width="351" height="53" src="../../../assets/2008/08/rubydoc.png" /&gt;:&lt;a href="http://ruby-doc.org"&gt;http://ruby-doc.org&lt;/a&gt;/&lt;/p&gt;
+&lt;p&gt;&lt;img src="/assets/2008/08/rubydoc.png" alt="image"&gt;:&lt;a href="http://ruby-doc.org"&gt;http://ruby-doc.org&lt;/a&gt;/&lt;/p&gt;
 
 &lt;p&gt;Ruby-Doc.org provides the documentation for both Ruby’s
 &lt;a href="http://ruby-doc.org/core"&gt;Core&lt;/a&gt; and
@@ -767,7 +768,7 @@ the standard rails documentation in the default RDoc format. As with
 Ruby-Doc.org I use my browsers search to quickly find what I’m looking
 for.&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="image" width="215" height="57" src="../../../assets/2008/08/rails-doc.png" /&gt;:&lt;a href="http://rails-doc.org"&gt;http://rails-doc.org&lt;/a&gt;/&lt;/p&gt;
+&lt;p&gt;&lt;img src="/assets/2008/08/rails-doc.png" alt="image"&gt;:&lt;a href="http://rails-doc.org"&gt;http://rails-doc.org&lt;/a&gt;/&lt;/p&gt;
 
 &lt;p&gt;Rails-Doc.org is a quite new site providing the full rails
 documentation. Unlike the default API documentation site (see above) it
@@ -788,7 +789,7 @@ middle of nowhere with no internet connection? :-)&lt;/p&gt;
 
 &lt;h2 id="toc_2"&gt;Other&lt;/h2&gt;
 
-&lt;p&gt;&lt;img alt="image" width="200" height="45" src="../../../assets/2008/08/railscasts.png" /&gt;:&lt;a href="http://www.railscasts.com"&gt;http://www.railscasts.com&lt;/a&gt;/&lt;/p&gt;
+&lt;p&gt;&lt;img src="/assets/2008/08/railscasts.png" alt="image"&gt;:&lt;a href="http://www.railscasts.com"&gt;http://www.railscasts.com&lt;/a&gt;/&lt;/p&gt;
 
 &lt;p&gt;Last but definitely not least, are the RailsCasts by Ryan Bates. Every
 Monday he publishes a approx. 5 to 10 minute screencast on a variety of
@@ -818,10 +819,14 @@ RSpec are included.&lt;/p&gt;
       <name>Benedikt Deicke</name>
     </author>
     <summary type="html">&lt;p&gt;&lt;a href="http://script.aculo.us"&gt;Script.aculo.us&lt;/a&gt; includes a nice effect called &lt;a href="http://github.com/madrobby/scriptaculous/wikis/effect-dropout"&gt;&lt;code&gt;Effect.DropOut&lt;/code&gt;&lt;/a&gt;,
-which let&amp;#39;s the element fall in an &amp;ldquo;invisible trap&amp;rdquo; underneath. Surprisingly there isn&amp;#39;t an opposite effect.
+which let's the element fall in an “invisible trap” underneath. Surprisingly there isn't an opposite effect.
 Calling &lt;code&gt;Effect.DropOut&lt;/code&gt; with &lt;code&gt;Effect.Transitions.reverse&lt;/code&gt; as transition, doesn’t work either. So what to do?
 &lt;code&gt;Effect.Emerge&lt;/code&gt; to the rescue!&lt;/p&gt;
-</summary>
+
+&lt;pre&gt;&lt;code&gt;:::javascript
+Effect.Emerge = function(element) {
+  element = $(element);
+  var oldStyle =...&lt;/code&gt;&lt;/pre&gt;</summary>
     <content type="html">&lt;p&gt;&lt;a href="http://script.aculo.us"&gt;Script.aculo.us&lt;/a&gt; includes a nice effect called &lt;a href="http://github.com/madrobby/scriptaculous/wikis/effect-dropout"&gt;&lt;code&gt;Effect.DropOut&lt;/code&gt;&lt;/a&gt;,
 which let&amp;#39;s the element fall in an &amp;ldquo;invisible trap&amp;rdquo; underneath. Surprisingly there isn&amp;#39;t an opposite effect.
 Calling &lt;code&gt;Effect.DropOut&lt;/code&gt; with &lt;code&gt;Effect.Transitions.reverse&lt;/code&gt; as transition, doesn’t work either. So what to do?
@@ -866,10 +871,11 @@ Effect.Emerge = function(element) {
 &lt;a href="http://rubyphunk.com/2008/3/11/hello-world-introducing-rspactor"&gt;RSpactor&lt;/a&gt;,
 a (up to now) command line tool similar to
 &lt;a href="http://www.zenspider.com/ZSS/Products/ZenTest/"&gt;autotest&lt;/a&gt;. Nevertheless
-it differs from autotest in two points. First it&amp;#39;s focused on
-&lt;a href="http://rspec.info/"&gt;RSpec&lt;/a&gt; and secondly it’s using Mac OS&amp;#39; FSEvents to
-monitor file changes. According to this it only runs on Mac OS. &lt;/p&gt;
-</summary>
+it differs from autotest in two points. First it's focused on
+&lt;a href="http://rspec.info/"&gt;RSpec&lt;/a&gt; and secondly it’s using Mac OS' FSEvents to
+monitor file changes. According to this it only runs on Mac OS. 
+To get it running on Linux you'll have to change RSpactor's Listener
+class to use Linux' equivalent to FSEvents called...&lt;/p&gt;</summary>
     <content type="html">&lt;p&gt;&lt;a href="http://rubyphunk.com/"&gt;Andreas Wolff&lt;/a&gt; recently released
 &lt;a href="http://rubyphunk.com/2008/3/11/hello-world-introducing-rspactor"&gt;RSpactor&lt;/a&gt;,
 a (up to now) command line tool similar to
