@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ActionWidgets: Rails helpers on steroids | Benedikt Deicke - Software Engineer</title>
+<link href="http://feeds.feedburner.com/benediktdeicke" rel="alternate" title="Atom Feed" type="application/atom+xml">
+<link href="http://benediktdeicke.com/2013/05/action-widgets-rails-helpers-on-steroids/" rel="canonical">
+<link href="https://plus.google.com/u/0/104775472587527890320?rel=author" rel="author">
+<meta content="&lt;p&gt;More than once writing view code for a Rails application ends up with a messy template file. The separation of structure and style doesn&amp;#39;t always work out as intended. Frameworks like Bootstrap force you to use nested structures and lots of class attributes. The view code ends up with a lot of duplication and is hard to read as a result. You&amp;#39;ll get away with that for a while, constantly fearing the next redesign&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;" property="description">
+<meta content="ActionWidgets: Rails helpers on steroids | Benedikt Deicke - Software Engineer" property="og:title">
+<meta content="http://benediktdeicke.com/2013/05/action-widgets-rails-helpers-on-steroids/" property="og:url">
+<meta content="website" property="og:type">
+<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
+</head>
+<body class="2013 articles">
+    <header><div id="logo">
+        <a href="/">Benedikt Deicke</a>
+        <span>(Software Engineer)</span>
+      </div>
+      <nav><ul>
+<li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li><a href="/archives">Archives</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul></nav></header><section><div class="wrapper">
+        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+  I'm building user focused web applications using
+  Ruby on Rails and JavaScript. Additionally I'm developing
+  several <a href="https://github.com/benedikt">Open Source</a> projects
+  and enjoying photography in my spare time.
+  Feel free to <a href="/contact">get in touch with me</a>!</p>
+  <header>Recent articles</header><ul class="recent">
+<li><a href="/2013/05/action-widgets-rails-helpers-on-steroids/">ActionWidgets: Rails helpers on steroids</a></li>
+    <li><a href="/2013/02/i-am-going-freelance/">I'm going freelance</a></li>
+    <li><a href="/2013/02/what-you-did-not-know-about-capistrano-yet/">What you did not know about Capistrano, yet</a></li>
+    <li><a href="/2013/01/custom-rspec-example-groups/">Cleaner specs with custom RSpec example groups</a></li>
+    <li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
+  </ul>
+<header>Tags</header><ul class="tags">
+<li><a rel="tag" href="/linux/">Linux</a></li>
+    <li><a rel="tag" href="/server/">Server</a></li>
+    <li><a rel="tag" href="/howto/">HowTo</a></li>
+    <li><a rel="tag" href="/ruby/">Ruby</a></li>
+    <li><a rel="tag" href="/rails/">Rails</a></li>
+    <li><a rel="tag" href="/activerecord/">ActiveRecord</a></li>
+    <li><a rel="tag" href="/processing/">Processing</a></li>
+    <li><a rel="tag" href="/rspec/">RSpec</a></li>
+    <li><a rel="tag" href="/javascript/">JavaScript</a></li>
+    <li><a rel="tag" href="/touch/">Touch</a></li>
+    <li><a rel="tag" href="/other/">Other</a></li>
+    <li><a rel="tag" href="/capistrano/">Capistrano</a></li>
+  </ul>
+<header>Recent Tweets</header><ul class="twitter" data-count="5"></ul></aside><article class="hentry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><h1 class="entry-title" itemprop="name"><a title="ActionWidgets: Rails helpers on steroids" itemprop="url" rel="bookmark" href="/2013/05/action-widgets-rails-helpers-on-steroids/">ActionWidgets: Rails helpers on steroids</a></h1>
+  <div class="meta">
+    <time class="updated published" datetime="2013-05-21T00:00:00Z" itemprop="datePublished">Posted on May 21, 2013</time>
+    — Tagged with:
+    <a itemprop="articleSection" rel="tag" href="/howto/">HowTo</a>, <a itemprop="articleSection" rel="tag" href="/rails/">Rails</a>
+    — Written by
+    <span class="author" itemprop="author">
+      <span class="vcard">
+        <span class="fn">Benedikt Deicke</span>
+      </span>
+    </span>
+  </div>
+  <div class="entry-content" itemprop="articleBody">
+<p>More than once writing view code for a Rails application ends up with a messy template file. The separation of structure and style doesn't always work out as intended. Frameworks like Bootstrap force you to use nested structures and lots of class attributes. The view code ends up with a lot of duplication and is hard to read as a result. You'll get away with that for a while, constantly fearing the next redesign…</p>
+
+<p></p>
+
+<p>To tackle this, you probably start writing helper methods. They help to remove logic out of the template and hide overly complex structures behind a nice interface. Unfortunately some view components are more complex to implement and require more than just a single method. This is even more true when you need to configure the view components in some way or another.</p>
+
+<h2 id="toc_0">Introducing ActionWidgets</h2>
+
+<p>In the following, I'll present you a different approach to this issue: <a href="https://github.com/t6d/action_widget">ActionWidget</a>. The gem by <a href="https://twitter.com/t6d">Konstantin Tennhard</a> takes helper methods to the next level. The basic idea is simple, instead of writing a complex helper method, you'll write a class inheriting from <code>ActionWidget::Base</code> and put it into the <code>app/widgets</code> directory. The only method you have to implement is the <code>render</code> method. The ActionWidget gem, will provide you with a simple helper method to use your widget automatically. Let me show you a simple example.</p>
+
+<h3 id="toc_1">A simple button widget</h3>
+
+<p>To illustrate the basic usage of ActionWidget, let's write a widget to represent a button. The button will have a title, a target, a type (default, primary, or danger) and a size (small, default, or large). For convenience, the gem provides a generator to get you started:</p>
+
+<pre class="sunburst">rails generate action_widget:widget button
+</pre>
+
+<p>The generator creates a file called <code>app/widgets/button_widget.rb</code> for you. This is where the implementation of the button widget lives. An example implementation might look something like this:</p>
+
+<pre class="sunburst"><span class="Comment"><span class="Comment">#</span> app/widgets/button_widget.rb</span>
+<span class="Keyword">class</span> <span class="JEntityNameType">ButtonWidget<span class="EntityInheritedClass"> <span class="EntityInheritedClass">&lt;</span> ActionWidget::Base</span></span>
+
+  property <span class="Constant"><span class="Constant">:</span>title</span>,
+    <span class="Constant"><span class="Constant">:</span>converts</span> =&gt; <span class="Constant"><span class="Constant">:</span>to_s</span>,
+    <span class="Constant"><span class="Constant">:</span>required</span> =&gt; <span class="Constant">true</span>
+
+  property <span class="Constant"><span class="Constant">:</span>target</span>,
+    <span class="Constant"><span class="Constant">:</span>converts</span> =&gt; <span class="Constant"><span class="Constant">:</span>to_s</span>,
+    <span class="Constant"><span class="Constant">:</span>required</span> =&gt; <span class="Constant">true</span>
+
+  property <span class="Constant"><span class="Constant">:</span>type</span>,
+    <span class="Constant"><span class="Constant">:</span>converts</span> =&gt; <span class="Constant"><span class="Constant">:</span>to_sym</span>,
+    <span class="Constant"><span class="Constant">:</span>accepts</span>  =&gt; [<span class="Constant"><span class="Constant">:</span>default</span>, <span class="Constant"><span class="Constant">:</span>primary</span>, <span class="Constant"><span class="Constant">:</span>danger</span>],
+    <span class="Constant"><span class="Constant">:</span>default</span>  =&gt; <span class="Constant"><span class="Constant">:</span>default</span>
+
+  property <span class="Constant"><span class="Constant">:</span>size</span>,
+    <span class="Constant"><span class="Constant">:</span>converts</span> =&gt; <span class="Constant"><span class="Constant">:</span>to_sym</span>,
+    <span class="Constant"><span class="Constant">:</span>accepts</span>  =&gt; [<span class="Constant"><span class="Constant">:</span>small</span>, <span class="Constant"><span class="Constant">:</span>default</span>, <span class="Constant"><span class="Constant">:</span>large</span>],
+    <span class="Constant"><span class="Constant">:</span>default</span>  =&gt; <span class="Constant"><span class="Constant">:</span>default</span>
+
+  <span class="Keyword">def</span> <span class="Entity">render</span>
+    <span class="Entity">content_tag</span>(<span class="Constant"><span class="Constant">:</span>a</span>, title, <span class="Constant"><span class="Constant">:</span>href</span> =&gt; target, <span class="Constant"><span class="Constant">:</span>class</span> =&gt; css_classes)  
+  <span class="Keyword">end</span>
+
+<span class="Keyword">protected</span>
+
+  <span class="Keyword">def</span> <span class="Entity">css_classes</span>
+    css_classes <span class="Keyword">=</span> [<span class="String"><span class="String">'</span>btn<span class="String">'</span></span>]
+    css_classes <span class="Keyword">&lt;&lt;</span> <span class="String"><span class="String">"</span>btn-<span class="StringEmbeddedSource"><span class="StringEmbeddedSource">#{</span>size<span class="StringEmbeddedSource">}</span></span><span class="String">"</span></span> <span class="Keyword">unless</span> size <span class="Keyword">==</span> <span class="Constant"><span class="Constant">:</span>default</span>
+    css_classes <span class="Keyword">&lt;&lt;</span> <span class="String"><span class="String">"</span>btn-<span class="StringEmbeddedSource"><span class="StringEmbeddedSource">#{</span>type<span class="StringEmbeddedSource">}</span></span><span class="String">"</span></span> <span class="Keyword">unless</span> type <span class="Keyword">==</span> <span class="Constant"><span class="Constant">:</span>default</span>
+    css_classes
+  <span class="Keyword">end</span>
+
+<span class="Keyword">end</span>
+</pre>
+
+<p>The ActionWidget gem depends on <a href="https://github.com/t6d/smart_properties">Smart Properties</a> to provide the <code>property</code> macro method. This allows you to add simple configuration values to your widget. It'll also do conversion and input validation for you. With the implementation above, you'll be forced to always provide a title and a target attribute for every button. Otherwise the widget will complain with an exception. </p>
+
+<p>Using the button widget in your view is as simple as a call to the (automatically generated) <code>button_widget</code> method:</p>
+
+<pre class="sunburst">button_widget <span class="Constant"><span class="Constant">:</span>title</span> =&gt; <span class="String"><span class="String">'</span>Sign Up<span class="String">'</span></span>,
+  <span class="Constant"><span class="Constant">:</span>target</span> =&gt; signup_path,
+  <span class="Constant"><span class="Constant">:</span>type</span> =&gt; <span class="Constant"><span class="Constant">:</span>primary</span>,
+  <span class="Constant"><span class="Constant">:</span>size</span> =&gt; <span class="Constant"><span class="Constant">:</span>large</span>
+</pre>
+
+<p>Now that you have a basic understanding of the idea behind ActionWidgets, let's dive into a more complex example. </p>
+
+<h3 id="toc_2">A more advanced example</h3>
+
+<p>Tabs are a pretty common user interface element and their implementation is pretty straight forward. Let's look at the implementation of tabs, on a site using Twitter Bootstrap: </p>
+
+<pre class="sunburst"><span class="MetaTagAll"><span class="MetaTagAll">&lt;</span><span class="MetaTagAll">ul</span> <span class="MetaTagAll">class</span>=<span class="String"><span class="String">"</span>nav nav-tabs<span class="String">"</span></span> <span class="MetaTagAll"><span class="MetaTagAll">id</span><span class="MetaTagAll">=</span><span class="String"><span class="String">"</span><span class="String">myTab</span><span class="String">"</span></span></span><span class="MetaTagAll">&gt;</span></span>
+  <span class="MetaTagInline"><span class="MetaTagInline">&lt;</span><span class="MetaTagInline">li</span><span class="MetaTagInline">&gt;</span></span><span class="MetaTagInline"><span class="MetaTagInline">&lt;</span><span class="MetaTagInline">a</span> <span class="MetaTagInline">href</span>=<span class="String"><span class="String">"</span>#first<span class="String">"</span></span><span class="MetaTagInline">&gt;</span></span>First<span class="MetaTagInline"><span class="MetaTagInline">&lt;/</span><span class="MetaTagInline">a</span><span class="MetaTagInline">&gt;</span></span><span class="MetaTagInline"><span class="MetaTagInline">&lt;/</span><span class="MetaTagInline">li</span><span class="MetaTagInline">&gt;</span></span>
+  <span class="MetaTagInline"><span class="MetaTagInline">&lt;</span><span class="MetaTagInline">li</span> <span class="MetaTagInline">class</span>=<span class="String"><span class="String">"</span>active<span class="String">"</span></span><span class="MetaTagInline">&gt;</span></span><span class="MetaTagInline"><span class="MetaTagInline">&lt;</span><span class="MetaTagInline">a</span> <span class="MetaTagInline">href</span>=<span class="String"><span class="String">"</span>#second<span class="String">"</span></span><span class="MetaTagInline">&gt;</span></span>Second<span class="MetaTagInline"><span class="MetaTagInline">&lt;/</span><span class="MetaTagInline">a</span><span class="MetaTagInline">&gt;</span></span><span class="MetaTagInline"><span class="MetaTagInline">&lt;/</span><span class="MetaTagInline">li</span><span class="MetaTagInline">&gt;</span></span>
+  <span class="MetaTagInline"><span class="MetaTagInline">&lt;</span><span class="MetaTagInline">li</span><span class="MetaTagInline">&gt;</span></span><span class="MetaTagInline"><span class="MetaTagInline">&lt;</span><span class="MetaTagInline">a</span> <span class="MetaTagInline">href</span>=<span class="String"><span class="String">"</span>#third<span class="String">"</span></span><span class="MetaTagInline">&gt;</span></span>Third<span class="MetaTagInline"><span class="MetaTagInline">&lt;/</span><span class="MetaTagInline">a</span><span class="MetaTagInline">&gt;</span></span><span class="MetaTagInline"><span class="MetaTagInline">&lt;/</span><span class="MetaTagInline">li</span><span class="MetaTagInline">&gt;</span></span>
+<span class="MetaTagAll"><span class="MetaTagAll">&lt;/</span><span class="MetaTagAll">ul</span><span class="MetaTagAll">&gt;</span></span>
+
+<span class="MetaTagAll"><span class="MetaTagAll">&lt;</span><span class="MetaTagAll">div</span> <span class="MetaTagAll">class</span>=<span class="String"><span class="String">"</span>tab-content<span class="String">"</span></span><span class="MetaTagAll">&gt;</span></span>
+  <span class="MetaTagAll"><span class="MetaTagAll">&lt;</span><span class="MetaTagAll">div</span> <span class="MetaTagAll">class</span>=<span class="String"><span class="String">"</span>tab-pane<span class="String">"</span></span> <span class="MetaTagAll"><span class="MetaTagAll">id</span><span class="MetaTagAll">=</span><span class="String"><span class="String">"</span><span class="String">first</span><span class="String">"</span></span></span><span class="MetaTagAll">&gt;</span></span>...<span class="MetaTagAll"><span class="MetaTagAll">&lt;/</span><span class="MetaTagAll">div</span><span class="MetaTagAll">&gt;</span></span>
+  <span class="MetaTagAll"><span class="MetaTagAll">&lt;</span><span class="MetaTagAll">div</span> <span class="MetaTagAll">class</span>=<span class="String"><span class="String">"</span>tab-pane active<span class="String">"</span></span> <span class="MetaTagAll"><span class="MetaTagAll">id</span><span class="MetaTagAll">=</span><span class="String"><span class="String">"</span><span class="String">second</span><span class="String">"</span></span></span><span class="MetaTagAll">&gt;</span></span>...<span class="MetaTagAll"><span class="MetaTagAll">&lt;/</span><span class="MetaTagAll">div</span><span class="MetaTagAll">&gt;</span></span>
+  <span class="MetaTagAll"><span class="MetaTagAll">&lt;</span><span class="MetaTagAll">div</span> <span class="MetaTagAll">class</span>=<span class="String"><span class="String">"</span>tab-pane<span class="String">"</span></span> <span class="MetaTagAll"><span class="MetaTagAll">id</span><span class="MetaTagAll">=</span><span class="String"><span class="String">"</span><span class="String">third</span><span class="String">"</span></span></span><span class="MetaTagAll">&gt;</span></span>...<span class="MetaTagAll"><span class="MetaTagAll">&lt;/</span><span class="MetaTagAll">div</span><span class="MetaTagAll">&gt;</span></span>
+<span class="MetaTagAll"><span class="MetaTagAll">&lt;/</span><span class="MetaTagAll">div</span><span class="MetaTagAll">&gt;</span></span>
+</pre>
+
+<p>To implement the tabs, you need a list with links for each tab and a collection of tab panes. For every <code>href</code> attribute of each link, there must be a corresponding tab pane with its <code>id</code> attribute set accordingly. Additionally, the <code>active</code> class has to match, or your users will be a bit confused when clicking through the tabs. Of course when adding the tabs to one of your pages, you'll have to remember all the details of the markup that's required. There has to be both the <code>nav</code> and <code>nav-tabs</code> class in the <code>ul</code> tag, and don't forget the wrapping <code>div</code> tag with class <code>tab-content</code> around all the <code>tab-pane</code> elements. That's a lot to remember, and a lot to mess up. If you don't screw it up now, then probably later when you try to change something quickly. To make your life a little easier, I'll show you how to use ActionWidgets to hide the markup behind this expressive interface.</p>
+
+<pre class="sunburst"><span class="Keyword">=</span> tabs_widget <span class="Keyword">do </span>|<span class="Variable">t</span>|
+  <span class="Keyword">=</span> t.<span class="Entity">tab</span> <span class="String"><span class="String">'</span>First<span class="String">'</span></span> <span class="Keyword">do</span>
+    <span class="Variable">Content</span> of the first tab
+
+  <span class="Keyword">=</span> t.<span class="Entity">tab</span> <span class="String"><span class="String">'</span>Second<span class="String">'</span></span>, <span class="Constant"><span class="Constant">:</span>active</span> =&gt; <span class="Constant">true</span> <span class="Keyword">do</span>
+    <span class="Variable">Content</span> of the second tab
+
+  <span class="Keyword">=</span> t.<span class="Entity">tab</span> <span class="String"><span class="String">'</span>Third<span class="String">'</span></span> <span class="Keyword">do</span>
+    <span class="Variable">Content</span> of the third tab
+</pre>
+
+<p>I'm using Haml in this example, but that's not a requirement. ActionWidgets work with all of your templates, as long as they support helper methods.</p>
+
+<h4 id="toc_3">Building the TabsWidget</h4>
+
+<p>Let's start by generating the <code>TabsWidget</code> class. Again, it's as simple as creating a file called <code>app/widgets/tabs_widget.rb</code> or running the generator.</p>
+
+<pre class="sunburst"><span class="Keyword">class</span> <span class="JEntityNameType">TabsWidget<span class="EntityInheritedClass"> <span class="EntityInheritedClass">&lt;</span> ActionWidget::Base</span></span>
+
+  <span class="Keyword">def</span> <span class="Entity">render</span>(<span class="Variable"><span class="Keyword">&amp;</span>block</span>)
+    navigation <span class="Keyword">=</span> <span class="Entity">content_tag</span>(<span class="Constant"><span class="Constant">:</span>ul</span>, <span class="Constant"><span class="Constant">:</span>class</span> =&gt; [<span class="String"><span class="String">'</span>nav<span class="String">'</span></span>, <span class="String"><span class="String">'</span>nav-tabs<span class="String">'</span></span>]) <span class="Keyword">do</span>
+      <span class="Entity">capture</span>(<span class="Variable">self</span>, <span class="Keyword">&amp;</span>block)
+    <span class="Keyword">end</span>
+
+    contents <span class="Keyword">=</span> <span class="Entity">content_tag</span>(<span class="Constant"><span class="Constant">:</span>div</span>, <span class="Constant"><span class="Constant">:</span>class</span> =&gt; [<span class="String"><span class="String">'</span>tab-content<span class="String">'</span></span>]) <span class="Keyword">do</span>
+      tabs.<span class="Entity">each</span> <span class="Keyword">do </span>|<span class="Variable">tab</span>|
+        <span class="Entity">concat</span>(tab.<span class="Entity">render</span>)
+      <span class="Keyword">end</span>
+    <span class="Keyword">end</span>
+
+    navigation <span class="Keyword">+</span> contents
+  <span class="Keyword">end</span>
+
+  <span class="Keyword">def</span> <span class="Entity">tab</span>(<span class="Variable"><span class="Keyword">*</span>args</span>)
+<span class="Comment">    <span class="Comment">#</span> We'll implement this soon...</span>
+  <span class="Keyword">end</span>
+
+<span class="Keyword">private</span>
+
+  <span class="Keyword">def</span> <span class="Entity">tabs</span>
+    <span class="Variable"><span class="Variable">@</span>tabs</span> <span class="Keyword">||=</span> []
+  <span class="Keyword">end</span>
+
+<span class="Keyword">end</span>
+</pre>
+
+<p>Every ActionWidget has to implement a <code>render</code> method. If the generated helper method gets passed a block, it will be handed to this method as well. Every ActionWidget has delegators to all the methods in your view. We use this to our advantage and use <code>capture</code> to get the contents of the block. We also pass <code>self</code>, which makes it possible to call the widget's <code>tab</code> method from within the block. The captured contents get wrapped in the necessary <code>ul</code> tag.</p>
+
+<p>Next we create a <code>div</code> tag to wrap the tab contents. We iterate over the collection of tabs and render each one. By using <code>concat</code> we make sure, that the rendered tab-pane actually gets appended to the view.</p>
+
+<p>With this code in place, we don't get an error when trying to view the page we're embedding the tabs widget in, but we don't see the tabs either.</p>
+
+<h4 id="toc_4">Adding a nested TabWidget</h4>
+
+<p>The general idea behind ActionWidget is to use objects instead of a set of methods to generate markup code. In this spirit, let's add another ActionWidget to represent a single tab. It's pretty useless without the wrapping tabs widget, so let's add it as a nested class:</p>
+
+<pre class="sunburst"><span class="Keyword">class</span> <span class="JEntityNameType">TabsWidget<span class="EntityInheritedClass"> <span class="EntityInheritedClass">&lt;</span> ActionWidget::Base</span></span>
+
+  <span class="Keyword">class</span> <span class="JEntityNameType">Tab<span class="EntityInheritedClass"> <span class="EntityInheritedClass">&lt;</span> ActionWidget::Base</span></span>
+
+    property <span class="Constant"><span class="Constant">:</span>name</span>,
+      <span class="Constant"><span class="Constant">:</span>required</span> =&gt; <span class="Constant">true</span>,
+      <span class="Constant"><span class="Constant">:</span>converts</span> =&gt; <span class="Constant"><span class="Constant">:</span>to_s</span>
+
+    property <span class="Constant"><span class="Constant">:</span>active</span>,
+      <span class="Constant"><span class="Constant">:</span>accepts</span> =&gt; [<span class="Constant">true</span>, <span class="Constant">false</span>],
+      <span class="Constant"><span class="Constant">:</span>default</span> =&gt; <span class="Constant">false</span>
+
+    property <span class="Constant"><span class="Constant">:</span>target</span>,
+      <span class="Constant"><span class="Constant">:</span>converts</span> =&gt; <span class="Constant"><span class="Constant">:</span>to_s</span>
+
+
+    property <span class="Constant"><span class="Constant">:</span>content</span>,
+      <span class="Constant"><span class="Constant">:</span>required</span> =&gt; <span class="Constant">true</span>
+
+    <span class="Keyword">def</span> <span class="Entity">render</span>
+      <span class="Entity">content_tag</span>(<span class="Constant"><span class="Constant">:</span>div</span>, <span class="Constant"><span class="Constant">:</span>id</span> =&gt; target, <span class="Constant"><span class="Constant">:</span>class</span> =&gt; [<span class="String"><span class="String">'</span>tab-pane<span class="String">'</span></span>] <span class="Keyword">+</span> css_classes, <span class="Keyword">&amp;</span>content)
+    <span class="Keyword">end</span>
+
+    <span class="Keyword">def</span> <span class="Entity">render_navigation</span>
+      <span class="Entity">content_tag</span>(<span class="Constant"><span class="Constant">:</span>li</span>, <span class="Constant"><span class="Constant">:</span>class</span> =&gt; [<span class="String"><span class="String">'</span>tab<span class="String">'</span></span>] <span class="Keyword">+</span> css_classes) <span class="Keyword">do</span>
+        <span class="Entity">link_to</span>(name, <span class="String"><span class="String">'</span>#<span class="String">'</span></span> <span class="Keyword">+</span> target)
+      <span class="Keyword">end</span>
+    <span class="Keyword">end</span>
+
+    <span class="Keyword">def</span> <span class="Entity">target</span>
+      <span class="Keyword">super</span> <span class="Keyword">||</span> name.<span class="Entity">parameterize</span>
+    <span class="Keyword">end</span>
+
+  <span class="Keyword">private</span>
+
+    <span class="Keyword">def</span> <span class="Entity">css_classes</span>
+      css_classes <span class="Keyword">=</span> []
+      css_classes <span class="Keyword">&lt;&lt;</span> <span class="String"><span class="String">'</span>active<span class="String">'</span></span> <span class="Keyword">if</span> active
+      css_classes
+    <span class="Keyword">end</span>
+
+  <span class="Keyword">end</span>
+
+<span class="Comment">  <span class="Comment">#</span> ...</span>
+
+<span class="Keyword">end</span>
+</pre>
+
+<p>As you can see, the class is quite simple. Apart from defining a set of properties, it has two render methods. One to render the tab pane, and another one to render the navigation link. They both make use of the <code>target</code> method so the link's <code>href</code> attribute matches the tab pane's <code>id</code> attribute. The private <code>css_classes</code> method makes sure, both elements get the <code>active</code> class when the tab is active.</p>
+
+<p>Now everything we need to do is to tie the <code>TabsWidget</code> and the <code>TabsWidget::Tab</code> together, usin the <code>TabsWidget#tab</code> method.</p>
+
+<pre class="sunburst"><span class="Keyword">def</span> <span class="Entity">tab</span>(<span class="Variable">name<span class="Variable">,</span> options <span class="Keyword">=</span> <span class="Variable">{</span><span class="Variable">}</span><span class="Variable">,</span> <span class="Keyword">&amp;</span>block</span>)
+  options.<span class="Entity">merge!</span>({
+    <span class="Constant"><span class="Constant">:</span>name</span> =&gt; name,
+    <span class="Constant"><span class="Constant">:</span>content</span> =&gt; block
+  })
+
+  tab <span class="Keyword">=</span> <span class="Support">Tab</span>.<span class="Entity">new</span>(view, options)
+  tabs <span class="Keyword">&lt;&lt;</span> tab
+  tab.<span class="Entity">render_navigation</span>
+<span class="Keyword">end</span>
+</pre>
+
+<p>This method creates a new instance of the <code>TabsWidget::Tab</code> widget, while passing both the view context and a options hash to it. Afterwards it adds the tab to the collection and renders the navigation link.</p>
+
+<p>Now we have everything in place to render tab widgets with a few lines of nice and expressive code. Should you ever need to change the implementation of all tab widgets on your website, you now have a single place to do this.</p>
+
+<h2 id="toc_5">Conclusion</h2>
+
+<p>ActionWidget allows you to separate the concept of a view component from the actual implementation. In contrast to the presenter pattern, the widgets don't necessarily need to wrap a model object. As they are implemented in classes, it's easy to extend them. Additionally the possibility to use private methods internally makes their code easier to maintain than standard helper methods.</p>
+
+<p>Hopefully this short introduction made you curious about the ActionWidget approach and gives you some pointers to implement some (or all?) of your user interface components using this gem. Unfortunately there's no documentation for it yet, but as the <a href="https://github.com/t6d/action_widget">gem's code</a> is pretty simple and I covered the basic idea in this article, you should be able to get started easily.</p>
+</div>
+  <footer><img width="60" height="60" src="../../../images/me.png"><p>Did you enjoy this article? Follow me on <a href="https://twitter.com/benediktdeicke">Twitter</a> or subscribe to the <a href="http://feeds.feedburner.com/benediktdeicke">feed</a>!<br>
+    Do you have any feedback, suggestions or comments? Feel free to <a href="/contact">contact me</a>!</p>
+  </footer></article>
+</div>
+    </section><footer><div class="wrapper">
+        <ul>
+<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://github.com/benedikt">GitHub</a></li>
+          <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
+          <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
+          <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
+          <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
+        </ul>
+<p class="vcard" itemscope="itemscope" itemtype="http://schema.org/Person">
+          © 2013
+<span itemprop="name" class="fn">Benedikt Deicke</span>,
+<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="adr">
+  <span itemprop="streetAddress" class="street-address">Haardtring 230a</span>,
+  <span itemprop="postalCode" class="postal-code">64295</span> <span class="city">Darmstadt</span>,
+  <span itemprop="addressCountry" class="country-name">Germany</span>
+</span> |
+          <a href="/imprint">Imprint</a>
+        </p>
+      </div>
+    </footer><script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_require', 'inpage_linkid', '//www.google-analytics.com/plugins/ga/inpage_linkid.js']);
+      _gaq.push(['_setAccount', 'UA-2590585-3']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+      
+      (function(){ var ht = document.createElement('script');ht.async = true;
+      ht.type='text/javascript';ht.src = '//101768.hittail.com/mlt.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ht, s);})();
+    </script>
+</body>
+</html>

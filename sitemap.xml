@@ -66,7 +66,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://benediktdeicke.com/assets/2010/06/index</loc>
+    <loc>http://benediktdeicke.com/assets/2010/06/</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -127,6 +127,10 @@
   </url>
   <url>
     <loc>http://benediktdeicke.com/capistrano/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://benediktdeicke.com/2013/05/action-widgets-rails-helpers-on-steroids/</loc>
     <priority>0.7</priority>
   </url>
   <url>

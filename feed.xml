@@ -4,10 +4,248 @@
   <id>http://benediktdeicke.com/</id>
   <link href="http://benediktdeicke.com/"/>
   <link href="http://feeds.feedburner.com/benediktdeicke" rel="self"/>
-  <updated>2013-02-25T00:00:00Z</updated>
+  <updated>2013-05-21T00:00:00Z</updated>
   <author>
     <name>Benedikt Deicke</name>
   </author>
+  <entry>
+    <title>ActionWidgets: Rails helpers on steroids</title>
+    <link rel="alternate" href="/2013/05/action-widgets-rails-helpers-on-steroids/"/>
+    <id>/2013/05/action-widgets-rails-helpers-on-steroids/</id>
+    <published>2013-05-21T00:00:00Z</published>
+    <updated>2013-05-21T00:00:00Z</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;More than once writing view code for a Rails application ends up with a messy template file. The separation of structure and style doesn&amp;#39;t always work out as intended. Frameworks like Bootstrap force you to use nested structures and lots of class attributes. The view code ends up with a lot of duplication and is hard to read as a result. You&amp;#39;ll get away with that for a while, constantly fearing the next redesign&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;</summary>
+    <content type="html">&lt;p&gt;More than once writing view code for a Rails application ends up with a messy template file. The separation of structure and style doesn&amp;#39;t always work out as intended. Frameworks like Bootstrap force you to use nested structures and lots of class attributes. The view code ends up with a lot of duplication and is hard to read as a result. You&amp;#39;ll get away with that for a while, constantly fearing the next redesign&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;To tackle this, you probably start writing helper methods. They help to remove logic out of the template and hide overly complex structures behind a nice interface. Unfortunately some view components are more complex to implement and require more than just a single method. This is even more true when you need to configure the view components in some way or another.&lt;/p&gt;
+
+&lt;h2 id="toc_0"&gt;Introducing ActionWidgets&lt;/h2&gt;
+
+&lt;p&gt;In the following, I&amp;#39;ll present you a different approach to this issue: &lt;a href="https://github.com/t6d/action_widget"&gt;ActionWidget&lt;/a&gt;. The gem by &lt;a href="https://twitter.com/t6d"&gt;Konstantin Tennhard&lt;/a&gt; takes helper methods to the next level. The basic idea is simple, instead of writing a complex helper method, you&amp;#39;ll write a class inheriting from &lt;code&gt;ActionWidget::Base&lt;/code&gt; and put it into the &lt;code&gt;app/widgets&lt;/code&gt; directory. The only method you have to implement is the &lt;code&gt;render&lt;/code&gt; method. The ActionWidget gem, will provide you with a simple helper method to use your widget automatically. Let me show you a simple example.&lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;A simple button widget&lt;/h3&gt;
+
+&lt;p&gt;To illustrate the basic usage of ActionWidget, let&amp;#39;s write a widget to represent a button. The button will have a title, a target, a type (default, primary, or danger) and a size (small, default, or large). For convenience, the gem provides a generator to get you started:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
+rails generate action_widget:widget button
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The generator creates a file called &lt;code&gt;app/widgets/button_widget.rb&lt;/code&gt; for you. This is where the implementation of the button widget lives. An example implementation might look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+# app/widgets/button_widget.rb
+class ButtonWidget &amp;lt; ActionWidget::Base
+
+  property :title,
+    :converts =&amp;gt; :to_s,
+    :required =&amp;gt; true
+
+  property :target,
+    :converts =&amp;gt; :to_s,
+    :required =&amp;gt; true
+
+  property :type,
+    :converts =&amp;gt; :to_sym,
+    :accepts  =&amp;gt; [:default, :primary, :danger],
+    :default  =&amp;gt; :default
+
+  property :size,
+    :converts =&amp;gt; :to_sym,
+    :accepts  =&amp;gt; [:small, :default, :large],
+    :default  =&amp;gt; :default
+
+  def render
+    content_tag(:a, title, :href =&amp;gt; target, :class =&amp;gt; css_classes)  
+  end
+
+protected
+
+  def css_classes
+    css_classes = [&amp;#39;btn&amp;#39;]
+    css_classes &amp;lt;&amp;lt; &amp;quot;btn-#{size}&amp;quot; unless size == :default
+    css_classes &amp;lt;&amp;lt; &amp;quot;btn-#{type}&amp;quot; unless type == :default
+    css_classes
+  end
+
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The ActionWidget gem depends on &lt;a href="https://github.com/t6d/smart_properties"&gt;Smart Properties&lt;/a&gt; to provide the &lt;code&gt;property&lt;/code&gt; macro method. This allows you to add simple configuration values to your widget. It&amp;#39;ll also do conversion and input validation for you. With the implementation above, you&amp;#39;ll be forced to always provide a title and a target attribute for every button. Otherwise the widget will complain with an exception. &lt;/p&gt;
+
+&lt;p&gt;Using the button widget in your view is as simple as a call to the (automatically generated) &lt;code&gt;button_widget&lt;/code&gt; method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+button_widget :title =&amp;gt; &amp;#39;Sign Up&amp;#39;,
+  :target =&amp;gt; signup_path,
+  :type =&amp;gt; :primary,
+  :size =&amp;gt; :large
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that you have a basic understanding of the idea behind ActionWidgets, let&amp;#39;s dive into a more complex example. &lt;/p&gt;
+
+&lt;h3 id="toc_2"&gt;A more advanced example&lt;/h3&gt;
+
+&lt;p&gt;Tabs are a pretty common user interface element and their implementation is pretty straight forward. Let&amp;#39;s look at the implementation of tabs, on a site using Twitter Bootstrap: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::html
+&amp;lt;ul class=&amp;quot;nav nav-tabs&amp;quot; id=&amp;quot;myTab&amp;quot;&amp;gt;
+  &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#first&amp;quot;&amp;gt;First&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;li class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#second&amp;quot;&amp;gt;Second&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#third&amp;quot;&amp;gt;Third&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;div class=&amp;quot;tab-content&amp;quot;&amp;gt;
+  &amp;lt;div class=&amp;quot;tab-pane&amp;quot; id=&amp;quot;first&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;tab-pane active&amp;quot; id=&amp;quot;second&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;tab-pane&amp;quot; id=&amp;quot;third&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To implement the tabs, you need a list with links for each tab and a collection of tab panes. For every &lt;code&gt;href&lt;/code&gt; attribute of each link, there must be a corresponding tab pane with its &lt;code&gt;id&lt;/code&gt; attribute set accordingly. Additionally, the &lt;code&gt;active&lt;/code&gt; class has to match, or your users will be a bit confused when clicking through the tabs. Of course when adding the tabs to one of your pages, you&amp;#39;ll have to remember all the details of the markup that&amp;#39;s required. There has to be both the &lt;code&gt;nav&lt;/code&gt; and &lt;code&gt;nav-tabs&lt;/code&gt; class in the &lt;code&gt;ul&lt;/code&gt; tag, and don&amp;#39;t forget the wrapping &lt;code&gt;div&lt;/code&gt; tag with class &lt;code&gt;tab-content&lt;/code&gt; around all the &lt;code&gt;tab-pane&lt;/code&gt; elements. That&amp;#39;s a lot to remember, and a lot to mess up. If you don&amp;#39;t screw it up now, then probably later when you try to change something quickly. To make your life a little easier, I&amp;#39;ll show you how to use ActionWidgets to hide the markup behind this expressive interface.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+= tabs_widget do |t|
+  = t.tab &amp;#39;First&amp;#39; do
+    Content of the first tab
+
+  = t.tab &amp;#39;Second&amp;#39;, :active =&amp;gt; true do
+    Content of the second tab
+
+  = t.tab &amp;#39;Third&amp;#39; do
+    Content of the third tab
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;#39;m using Haml in this example, but that&amp;#39;s not a requirement. ActionWidgets work with all of your templates, as long as they support helper methods.&lt;/p&gt;
+
+&lt;h4 id="toc_3"&gt;Building the TabsWidget&lt;/h4&gt;
+
+&lt;p&gt;Let&amp;#39;s start by generating the &lt;code&gt;TabsWidget&lt;/code&gt; class. Again, it&amp;#39;s as simple as creating a file called &lt;code&gt;app/widgets/tabs_widget.rb&lt;/code&gt; or running the generator.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+class TabsWidget &amp;lt; ActionWidget::Base
+
+  def render(&amp;amp;block)
+    navigation = content_tag(:ul, :class =&amp;gt; [&amp;#39;nav&amp;#39;, &amp;#39;nav-tabs&amp;#39;]) do
+      capture(self, &amp;amp;block)
+    end
+
+    contents = content_tag(:div, :class =&amp;gt; [&amp;#39;tab-content&amp;#39;]) do
+      tabs.each do |tab|
+        concat(tab.render)
+      end
+    end
+
+    navigation + contents
+  end
+
+  def tab(*args)
+    # We&amp;#39;ll implement this soon...
+  end
+
+private
+
+  def tabs
+    @tabs ||= []
+  end
+
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Every ActionWidget has to implement a &lt;code&gt;render&lt;/code&gt; method. If the generated helper method gets passed a block, it will be handed to this method as well. Every ActionWidget has delegators to all the methods in your view. We use this to our advantage and use &lt;code&gt;capture&lt;/code&gt; to get the contents of the block. We also pass &lt;code&gt;self&lt;/code&gt;, which makes it possible to call the widget&amp;#39;s &lt;code&gt;tab&lt;/code&gt; method from within the block. The captured contents get wrapped in the necessary &lt;code&gt;ul&lt;/code&gt; tag.&lt;/p&gt;
+
+&lt;p&gt;Next we create a &lt;code&gt;div&lt;/code&gt; tag to wrap the tab contents. We iterate over the collection of tabs and render each one. By using &lt;code&gt;concat&lt;/code&gt; we make sure, that the rendered tab-pane actually gets appended to the view.&lt;/p&gt;
+
+&lt;p&gt;With this code in place, we don&amp;#39;t get an error when trying to view the page we&amp;#39;re embedding the tabs widget in, but we don&amp;#39;t see the tabs either.&lt;/p&gt;
+
+&lt;h4 id="toc_4"&gt;Adding a nested TabWidget&lt;/h4&gt;
+
+&lt;p&gt;The general idea behind ActionWidget is to use objects instead of a set of methods to generate markup code. In this spirit, let&amp;#39;s add another ActionWidget to represent a single tab. It&amp;#39;s pretty useless without the wrapping tabs widget, so let&amp;#39;s add it as a nested class:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+class TabsWidget &amp;lt; ActionWidget::Base
+
+  class Tab &amp;lt; ActionWidget::Base
+
+    property :name,
+      :required =&amp;gt; true,
+      :converts =&amp;gt; :to_s
+
+    property :active,
+      :accepts =&amp;gt; [true, false],
+      :default =&amp;gt; false
+
+    property :target,
+      :converts =&amp;gt; :to_s
+
+
+    property :content,
+      :required =&amp;gt; true
+
+    def render
+      content_tag(:div, :id =&amp;gt; target, :class =&amp;gt; [&amp;#39;tab-pane&amp;#39;] + css_classes, &amp;amp;content)
+    end
+
+    def render_navigation
+      content_tag(:li, :class =&amp;gt; [&amp;#39;tab&amp;#39;] + css_classes) do
+        link_to(name, &amp;#39;#&amp;#39; + target)
+      end
+    end
+
+    def target
+      super || name.parameterize
+    end
+
+  private
+
+    def css_classes
+      css_classes = []
+      css_classes &amp;lt;&amp;lt; &amp;#39;active&amp;#39; if active
+      css_classes
+    end
+
+  end
+
+  # ...
+
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, the class is quite simple. Apart from defining a set of properties, it has two render methods. One to render the tab pane, and another one to render the navigation link. They both make use of the &lt;code&gt;target&lt;/code&gt; method so the link&amp;#39;s &lt;code&gt;href&lt;/code&gt; attribute matches the tab pane&amp;#39;s &lt;code&gt;id&lt;/code&gt; attribute. The private &lt;code&gt;css_classes&lt;/code&gt; method makes sure, both elements get the &lt;code&gt;active&lt;/code&gt; class when the tab is active.&lt;/p&gt;
+
+&lt;p&gt;Now everything we need to do is to tie the &lt;code&gt;TabsWidget&lt;/code&gt; and the &lt;code&gt;TabsWidget::Tab&lt;/code&gt; together, usin the &lt;code&gt;TabsWidget#tab&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::ruby
+def tab(name, options = {}, &amp;amp;block)
+  options.merge!({
+    :name =&amp;gt; name,
+    :content =&amp;gt; block
+  })
+
+  tab = Tab.new(view, options)
+  tabs &amp;lt;&amp;lt; tab
+  tab.render_navigation
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This method creates a new instance of the &lt;code&gt;TabsWidget::Tab&lt;/code&gt; widget, while passing both the view context and a options hash to it. Afterwards it adds the tab to the collection and renders the navigation link.&lt;/p&gt;
+
+&lt;p&gt;Now we have everything in place to render tab widgets with a few lines of nice and expressive code. Should you ever need to change the implementation of all tab widgets on your website, you now have a single place to do this.&lt;/p&gt;
+
+&lt;h2 id="toc_5"&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;ActionWidget allows you to separate the concept of a view component from the actual implementation. In contrast to the presenter pattern, the widgets don&amp;#39;t necessarily need to wrap a model object. As they are implemented in classes, it&amp;#39;s easy to extend them. Additionally the possibility to use private methods internally makes their code easier to maintain than standard helper methods.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this short introduction made you curious about the ActionWidget approach and gives you some pointers to implement some (or all?) of your user interface components using this gem. Unfortunately there&amp;#39;s no documentation for it yet, but as the &lt;a href="https://github.com/t6d/action_widget"&gt;gem&amp;#39;s code&lt;/a&gt; is pretty simple and I covered the basic idea in this article, you should be able to get started easily.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>I'm going freelance</title>
     <link rel="alternate" href="/2013/02/i-am-going-freelance/"/>
@@ -856,95 +1094,6 @@ Effect.Emerge = function(element) {
 
 &lt;p&gt;Basically it’s just a modified version of &lt;code&gt;Effect.DropOut&lt;/code&gt; toreverse the effect. Try it in compination with
 &lt;a href="http://github.com/madrobby/scriptaculous/wikis/effect-multiple"&gt;&lt;code&gt;Effect.multiple&lt;/code&gt;&lt;/a&gt;!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Using RSpactor with Linux</title>
-    <link rel="alternate" href="/2008/04/using-rspactor-with-linux/"/>
-    <id>/2008/04/using-rspactor-with-linux/</id>
-    <published>2008-04-10T00:00:00Z</published>
-    <updated>2008-04-10T00:00:00Z</updated>
-    <author>
-      <name>Benedikt Deicke</name>
-    </author>
-    <summary type="html">&lt;p&gt;&lt;a href="http://rubyphunk.com/"&gt;Andreas Wolff&lt;/a&gt; recently released
-&lt;a href="http://rubyphunk.com/2008/3/11/hello-world-introducing-rspactor"&gt;RSpactor&lt;/a&gt;,
-a (up to now) command line tool similar to
-&lt;a href="http://www.zenspider.com/ZSS/Products/ZenTest/"&gt;autotest&lt;/a&gt;. Nevertheless
-it differs from autotest in two points. First it's focused on
-&lt;a href="http://rspec.info/"&gt;RSpec&lt;/a&gt; and secondly it’s using Mac OS' FSEvents to
-monitor file changes. According to this it only runs on Mac OS. 
-To get it running on Linux you'll have to change RSpactor's Listener
-class to use Linux' equivalent to FSEvents called...&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;&lt;a href="http://rubyphunk.com/"&gt;Andreas Wolff&lt;/a&gt; recently released
-&lt;a href="http://rubyphunk.com/2008/3/11/hello-world-introducing-rspactor"&gt;RSpactor&lt;/a&gt;,
-a (up to now) command line tool similar to
-&lt;a href="http://www.zenspider.com/ZSS/Products/ZenTest/"&gt;autotest&lt;/a&gt;. Nevertheless
-it differs from autotest in two points. First it&amp;#39;s focused on
-&lt;a href="http://rspec.info/"&gt;RSpec&lt;/a&gt; and secondly it’s using Mac OS&amp;#39; FSEvents to
-monitor file changes. According to this it only runs on Mac OS. 
-To get it running on Linux you&amp;#39;ll have to change RSpactor&amp;#39;s Listener
-class to use Linux&amp;#39; equivalent to FSEvents called
-&lt;a href="http://en.wikipedia.org/wiki/Inotify"&gt;inotify&lt;/a&gt;. Luckily there&amp;#39;s a gem
-called &lt;a href="http://rubyforge.org/projects/rinotify/"&gt;RInotify&lt;/a&gt; which
-introduces a simple class to access the inotify events within ruby. I
-rewrote the Listeners class yesterday to get it running on my Linux
-notebook:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::ruby
-# inotify_listener.rb
-class Listener
-  def initialize(&amp;amp;block)
-    require &amp;#39;rinotify&amp;#39;
-    begin
-      @spec_run_time = Time.now
-      @watching      = {}
-
-      notify = RInotify.new
-      Dir.glob(File.join(Dir.pwd, &amp;#39;**&amp;#39;)).each do |dir|
-        watch_desc = notify.add_watch(dir, RInotify::MODIFY | RInotify::CREATE | RInotify::DELETE)
-        @watching[watch_desc] = dir
-      end
-
-      while true do
-        changed_files = []
-        notify.each_event do |event|
-          changed_files &amp;lt;&amp;lt; build_path_from_event(event)
-        end
-        changed_files.uniq!
-        unless changed_files.empty?
-          @spec_run_time = Time.now
-          yield changed_files
-        end
-        sleep(5)
-      end
-    rescue Interrupt
-      @watching.each_key { |key| notify.rm_watch(key) }
-    end
-  end
-
-  def build_path_from_event(event)
-    File.join(@watching[event.watch_descriptor], event.name || &amp;#39;&amp;#39;)
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To get it running you simply have to install the RInotify gem and change
-one line in &lt;code&gt;bin/rspactor&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::ruby
-# from
-require File.join(File.dirname(__FILE__), &amp;#39;..&amp;#39;, &amp;#39;lib&amp;#39;, &amp;#39;listener&amp;#39;)
-# to
-require File.join(File.dirname(__FILE__), &amp;#39;..&amp;#39;, &amp;#39;lib&amp;#39;, &amp;#39;inotify_listener&amp;#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That’s it! RSpactor should be running on Linux now and consuming much
-less CPU than autotest.&lt;/p&gt;
-
-&lt;p&gt;(You might also want to change the &lt;code&gt;system&lt;/code&gt;-call in
-&lt;code&gt;lib/resulting.rb&lt;/code&gt; as it’s currently using Growl to notify you about the
-test results.)&lt;/p&gt;
 </content>
   </entry>
 </feed>
