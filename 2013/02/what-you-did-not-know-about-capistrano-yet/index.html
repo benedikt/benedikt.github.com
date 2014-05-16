@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>What you did not know about Capistrano, yet | Benedikt Deicke - Software Engineer</title>
-<link href="http://feeds.feedburner.com/benediktdeicke" rel="alternate" title="Atom Feed" type="application/atom+xml">
-<link href="http://benediktdeicke.com/2013/02/what-you-did-not-know-about-capistrano-yet/" rel="canonical">
-<link href="https://plus.google.com/u/0/104775472587527890320?rel=author" rel="author">
-<meta content='&lt;p&gt;Like any other build process, deploying Rails applications should be a quick and easy task. You should be able to deploy everything to your server with just one command. There are several tools available for this task. One of them is &lt;a href="https://github.com/capistrano/capistrano"&gt;Capistrano&lt;/a&gt;, which is probably the oldest and by far the most popular deployment tool in the Rails community. Unfortunately the &lt;a href="https://github.com/capistrano/capistrano/wiki"&gt;documentation&lt;/a&gt; is still not great and...&lt;/p&gt;' property="description">
-<meta content="What you did not know about Capistrano, yet | Benedikt Deicke - Software Engineer" property="og:title">
-<meta content="http://benediktdeicke.com/2013/02/what-you-did-not-know-about-capistrano-yet/" property="og:url">
-<meta content="website" property="og:type">
-<link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script><script src="../../../javascripts/application.js" type="text/javascript"></script>
-</head>
-<body class="2013 articles">
-    <header><div id="logo">
+    <title>What you did not know about Capistrano, yet | Benedikt Deicke - Software Engineer</title>
+    <link href="http://feeds.feedburner.com/benediktdeicke" rel="alternate" title="Atom Feed" type="application/atom+xml">
+    <link href="http://benediktdeicke.com/2013/02/what-you-did-not-know-about-capistrano-yet/" rel="canonical">
+    <link href="https://plus.google.com/u/0/104775472587527890320?rel=author" rel="author">
+    <meta content='&lt;p&gt;Like any other build process, deploying Rails applications should be a quick and easy task. You should be able to deploy everything to your server with just one command. There are several tools available for this task. One of them is &lt;a href="https://github.com/capistrano/capistrano"&gt;Capistrano&lt;/a&gt;, which is probably the oldest and by far the most popular deployment tool in the Rails community. Unfortunately the &lt;a href="https://github.com/capistrano/capistrano/wiki"&gt;documentation&lt;/a&gt; is still not great and...&lt;/p&gt;' property="description">
+    <meta content="What you did not know about Capistrano, yet | Benedikt Deicke - Software Engineer" property="og:title">
+    <meta content="http://benediktdeicke.com/2013/02/what-you-did-not-know-about-capistrano-yet/" property="og:url">
+    <meta content="website" property="og:type">
+    <link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../javascripts/application.js" type="text/javascript"></script>
+  </head>
+  <body class="2013 articles">
+    <header>
+      <div id="logo">
         <a href="/">Benedikt Deicke</a>
         <span>(Software Engineer)</span>
       </div>
-      <nav><ul>
-<li><a href="/">Home</a></li>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
           <li><a href="/services">Services</a></li>
           <li><a href="/portfolio">Portfolio</a></li>
           <li><a href="/archives">Archives</a></li>
           <li><a href="/contact">Contact</a></li>
-        </ul></nav></header><section><div class="wrapper">
-        <aside><header>About</header><p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <div class="wrapper">
+        <aside>
+  <header>About</header>
+  <p>I'm <a href="https://twitter.com/benediktdeicke">Benedikt Deicke</a> and
   I'm building user focused web applications using
   Ruby on Rails and JavaScript. Additionally I'm developing
   several <a href="https://github.com/benedikt">Open Source</a> projects
   and enjoying photography in my spare time.
   Feel free to <a href="/contact">get in touch with me</a>!</p>
-  <header>Recent articles</header><ul class="recent">
-<li><a href="/2013/05/action-widgets-rails-helpers-on-steroids/">ActionWidgets: Rails helpers on steroids</a></li>
+  <header>Recent articles</header>
+  <ul class="recent">
+    <li><a href="/2013/05/action-widgets-rails-helpers-on-steroids/">ActionWidgets: Rails helpers on steroids</a></li>
     <li><a href="/2013/02/i-am-going-freelance/">I'm going freelance</a></li>
     <li><a href="/2013/02/what-you-did-not-know-about-capistrano-yet/">What you did not know about Capistrano, yet</a></li>
     <li><a href="/2013/01/custom-rspec-example-groups/">Cleaner specs with custom RSpec example groups</a></li>
     <li><a href="/2010/11/i-m-joining-flinc-as-a-rails-developer/">I'm joining flinc as a Rails developer</a></li>
   </ul>
-<header>Tags</header><ul class="tags">
-<li><a rel="tag" href="/linux/">Linux</a></li>
+  <header>Tags</header>
+  <ul class="tags">
+    <li><a rel="tag" href="/linux/">Linux</a></li>
     <li><a rel="tag" href="/server/">Server</a></li>
     <li><a rel="tag" href="/howto/">HowTo</a></li>
     <li><a rel="tag" href="/ruby/">Ruby</a></li>
@@ -51,7 +62,10 @@
     <li><a rel="tag" href="/touch/">Touch</a></li>
     <li><a rel="tag" href="/other/">Other</a></li>
     <li><a rel="tag" href="/capistrano/">Capistrano</a></li>
-  </ul></aside><article class="hentry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><h1 class="entry-title" itemprop="name"><a title="What you did not know about Capistrano, yet" itemprop="url" rel="bookmark" href="/2013/02/what-you-did-not-know-about-capistrano-yet/">What you did not know about Capistrano, yet</a></h1>
+  </ul>
+</aside>
+<article class="hentry" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <h1 class="entry-title" itemprop="name"><a title="What you did not know about Capistrano, yet" itemprop="url" rel="bookmark" href="/2013/02/what-you-did-not-know-about-capistrano-yet/">What you did not know about Capistrano, yet</a></h1>
   <div class="meta">
     <time class="updated published" datetime="2013-02-14T00:00:00Z" itemprop="datePublished">Posted on February 14, 2013</time>
     — Tagged with:
@@ -183,21 +197,26 @@ before <span class="String"><span class="String">'</span>deploy:migrations<span 
 
 <p>This is – of course – only a small subset of the useful features Capistrano provides. I hope I showed you one or two you haven't known before. I encourage you to read through Capistrano's <a href="https://github.com/capistrano/capistrano">source code</a> and <a href="http://rubydoc.info/github/capistrano/capistrano/master/frames">API documentation</a> to find more of these hidden features. </p>
 </div>
-  <footer><img width="60" height="60" src="../../../images/me.png"><p>Did you enjoy this article? Follow me on <a href="https://twitter.com/benediktdeicke">Twitter</a> or subscribe to the <a href="http://feeds.feedburner.com/benediktdeicke">feed</a>!<br>
+  <footer>
+    <img width="60" height="60" src="../../../images/me.png">
+    <p>Did you enjoy this article? Follow me on <a href="https://twitter.com/benediktdeicke">Twitter</a> or subscribe to the <a href="http://feeds.feedburner.com/benediktdeicke">feed</a>!<br>
     Do you have any feedback, suggestions or comments? Feel free to <a href="/contact">contact me</a>!</p>
-  </footer></article>
-</div>
-    </section><footer><div class="wrapper">
+  </footer>
+</article>
+      </div>
+    </section>
+    <footer>
+      <div class="wrapper">
         <ul>
-<li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
+          <li><a href="https://twitter.com/benediktdeicke">Twitter</a></li>
           <li><a href="https://github.com/benedikt">GitHub</a></li>
           <li><a href="https://xing.com/profile/Benedikt_Deicke">Xing</a></li>
           <li><a href="http://coderwall.com/benedikt">CoderWall</a></li>
           <li><a href="https://speakerdeck.com/u/benedikt">Speaker Deck</a></li>
           <li><a href="http://stackoverflow.com/users/1109852/benedikt-deicke">Stack Overflow</a></li>
         </ul>
-<p class="vcard" itemscope="itemscope" itemtype="http://schema.org/Person">
-          © 2013
+        <p class="vcard" itemscope="itemscope" itemtype="http://schema.org/Person">
+          © 2014
 <span itemprop="name" class="fn">Benedikt Deicke</span>,
 <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="adr">
   <span itemprop="streetAddress" class="street-address">Haardtring 230a</span>,
@@ -207,7 +226,8 @@ before <span class="String"><span class="String">'</span>deploy:migrations<span 
           <a href="/imprint">Imprint</a>
         </p>
       </div>
-    </footer><script>
+    </footer>
+    <script>
       var _gaq = _gaq || [];
       _gaq.push(['_require', 'inpage_linkid', '//www.google-analytics.com/plugins/ga/inpage_linkid.js']);
       _gaq.push(['_setAccount', 'UA-2590585-3']);
@@ -225,5 +245,5 @@ before <span class="String"><span class="String">'</span>deploy:migrations<span 
       ht.type='text/javascript';ht.src = '//101768.hittail.com/mlt.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ht, s);})();
     </script>
-</body>
+  </body>
 </html>
