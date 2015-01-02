@@ -130,6 +130,14 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>http://benediktdeicke.com/resources/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://benediktdeicke.com/2014/01/reading-list-2014/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>http://benediktdeicke.com/2013/05/action-widgets-rails-helpers-on-steroids/</loc>
     <priority>0.7</priority>
   </url>
