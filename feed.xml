@@ -4,16 +4,185 @@
   <id>http://benediktdeicke.com/</id>
   <link href="http://benediktdeicke.com/"/>
   <link href="http://feeds.feedburner.com/benediktdeicke" rel="self"/>
-  <updated>2015-01-02T00:00:00Z</updated>
+  <updated>2015-01-30T00:00:00+00:00</updated>
   <author>
     <name>Benedikt Deicke</name>
   </author>
   <entry>
+    <title>The tools that help me build my product</title>
+    <link rel="alternate" href="/2015/01/the-tools-that-help-me-build-my-product/"/>
+    <id>/2015/01/the-tools-that-help-me-build-my-product/</id>
+    <published>2015-01-30T00:00:00+00:00</published>
+    <updated>2015-01-30T00:00:00+00:00</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;As a single founder, my time is valuable. I have to split my time between working for consulting clients, doing paperwork and acquisition, and working on my product &lt;a href="http://stagecms.com"&gt;Stage&lt;/a&gt;. I wouldn’t get anything done, without several tools I heavily rely on. &lt;/p&gt;
+
+&lt;p&gt;In the following, I want to share the most important products, that help me bootstrap my own product. Hopefully, you’ll get some insights into my toolset...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;As a single founder, my time is valuable. I have to split my time between working for consulting clients, doing paperwork and acquisition, and working on my product &lt;a href="http://stagecms.com"&gt;Stage&lt;/a&gt;. I wouldn’t get anything done, without several tools I heavily rely on. &lt;/p&gt;
+
+&lt;p&gt;In the following, I want to share the most important products, that help me bootstrap my own product. Hopefully, you’ll get some insights into my toolset and discover one or two products you didn’t know about, yet.  &lt;/p&gt;
+
+&lt;h2 id="toc_0"&gt;Sales and Marketing&lt;/h2&gt;
+
+&lt;p&gt;Let’s get started with the tools I use for marketing. At the moment, Stage is not launched publicly. Nonetheless, a few bands use it already, and I’m slowly adding more customers to it. As I’m slowly getting closer to the public launch, I expect this list to grow quite a bit over time.&lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;&lt;a href="http://trello.com"&gt;Trello&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;To manage the sales funnel, I’m using a Trello board. Each Lead gets a card that is tagged with a plan I’m trying to sign them up to. The card then moves from &lt;em&gt;New&lt;/em&gt;, to &lt;em&gt;Doing&lt;/em&gt; , to &lt;em&gt;Won&lt;/em&gt; or &lt;em&gt;Lost&lt;/em&gt;. It’s very simple but helps to keep things organized. &lt;/p&gt;
+
+&lt;h3 id="toc_2"&gt;&lt;a href="http://bufferapp.com"&gt;Buffer&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;From time to time, I come across interesting content about music business and band websites in particular. In order to share them with people following Stage on Twitter and Facebook, I’m using Buffer to queue up posts. Buffer will then publish them, based on a predefined schedule.&lt;/p&gt;
+
+&lt;h3 id="toc_3"&gt;&lt;a href="http://getdrip.com"&gt;Drip&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;For now, the only thing you can do when visiting Stage’s website, is to sign up to a mailing list. This list is currently hosted on Drip. I used to use &lt;a href="http://mailchimp.com"&gt;Mailchimp&lt;/a&gt; for this. However, in order to get e-mail marketing automation in every customer lifetime phase (lead, trial, paying), switched to drip just a few days ago.&lt;/p&gt;
+
+&lt;h2 id="toc_4"&gt;Development and Operations&lt;/h2&gt;
+
+&lt;p&gt;Of course, to run a SaaS product, there’s also infrastructure involved. At the moment, I rely on these providers: &lt;/p&gt;
+
+&lt;h3 id="toc_5"&gt;&lt;a href="http://shellycloud.com"&gt;Shelly Cloud&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Stage is hosted on Shelly Cloud, a Platform as a Service provider focused on Ruby applications. The main reason I chose them is because they allow storing files on disk and provide decent front-end caching out of the box. On top of that, they’re are a bit cheaper compared to similar other services and provide incredible customer support. &lt;/p&gt;
+
+&lt;h3 id="toc_6"&gt;&lt;a href="http://dnsimple.com"&gt;DNSimple&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;To manage DNS records I rely heavily on DNSimple. Their service is targeted to developers and makes it very easy to get things done without getting lost in strange user interfaces. Additionally they also sell SSL certificates at a reasonable price. &lt;/p&gt;
+
+&lt;h3 id="toc_7"&gt;&lt;a href="http://stripe.com"&gt;Stripe&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;For credit card processing and subscription management, I rely on Stripe. Their service makes it easy to get set up quickly and start earning money. During the last couple of years, the eco-system around it has also evolved quite a bit. There are a ton of tools for analytics, invoicing, or churn prevention, all of them set up with a few clicks. &lt;/p&gt;
+
+&lt;h3 id="toc_8"&gt;&lt;a href="http://github.com"&gt;GitHub&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;I’m hosting all of Stage’s code on GitHub. In my opinion it’s the best tool out there to work and collaborate on software. Their pull-requests feature makes it easy to keep things organized and discuss changes to the codebase. I’m also using GitHub’s issue tracker to manage the bug fixing process, as well as improvements to existing features.&lt;/p&gt;
+
+&lt;h3 id="toc_9"&gt;&lt;a href="http://codeship.com"&gt;Codeship&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;I’m a huge fan of continuos integration and continuos deployment. I set up Codeship to automatically run Stage’s test suite every time I push to its GitHub repository. As soon as the tests pass, the master branch is also deployed to Shelly Cloud. This workflow has several benefits for me: &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Because everything is automated, I don’t accidentally forget a step during deployment.&lt;/li&gt;
+&lt;li&gt;It forces me to write proper tests. Everything is deployed automatically, so I really want to make sure that I’ve got everything tested and things don’t break in production.&lt;/li&gt;
+&lt;li&gt;I’ll make sure I don’t hack stuff together in the repositories master branch. Every feature get’s developed in a separate branch and only merged when it is finished. This way, the master branch is always clean and ready to deploy.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id="toc_10"&gt;Monitoring and Analytics&lt;/h2&gt;
+
+&lt;p&gt;To keep track of what’s happening, I rely on several monitoring and analytics tools. &lt;/p&gt;
+
+&lt;h3 id="toc_11"&gt;&lt;a href="http://appsignal.com"&gt;AppSignal&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;To monitor errors and performance of the application, I rely on AppSignal. Their service is easy to set up and gives great insights into performance issues. The exception notification feature sends all the data required to fix a problem without spamming my inbox. In contrast to other solutions out there, they charge based on the requests the application handles instead of the number of hosts it runs on.  &lt;/p&gt;
+
+&lt;h3 id="toc_12"&gt;&lt;a href="http://pingdom.com"&gt;Pingdom&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Sometimes a problem is not directly related to the application itself, but to the infrastructure that runs it. In order to get notified about downtimes &lt;em&gt;before&lt;/em&gt; my customers notice them, I’m using Pingdom. Every minute, their service checks several websites running on Stage. As soon as one of them is not reachable, it sends an email and also tries to figure out the root cause of the problem automatically. &lt;/p&gt;
+
+&lt;h3 id="toc_13"&gt;&lt;a href="http://hookfeed.com"&gt;Hookfeed&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Hookfeed automatically sends notifications for all Stripe related events. Everytime a credit card is charged, a customer subscribes to a plan, or a charge failed, I instantly get notified about it. As a plus, it also provides simple metrics such as Customer Life Time Value or Monthly Recurring Revenue. &lt;/p&gt;
+
+&lt;h3 id="toc_14"&gt;&lt;a href="http://google.com/analytics"&gt;Google Analytics&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Google Analytics is probably the go-to solution for statistics about website visitors. I use it mostly to keep track of traffic sources and to monitor email signup conversions on the current landing page of Stage. &lt;/p&gt;
+
+&lt;h2 id="toc_15"&gt;Misc&lt;/h2&gt;
+
+&lt;h3 id="toc_16"&gt;&lt;a href="http://flowdock.com"&gt;Flowdock&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Almost all of the tools I use send notifications to a Flowdock chat. In a way, it’s the aggregating inbox for everything that happens with Stage. From time to time, I also use it to discuss Stage-related features and problems with friends.&lt;/p&gt;
+
+&lt;h2 id="toc_17"&gt;Open Source&lt;/h2&gt;
+
+&lt;p&gt;To build Stage itself, I heavily rely on open source software. There would be no way for me to create a product like Stage without the basis hundreds of developers created and shared with the world. The application uses so many open source tools, that it’s impossible to count them all. Therefore I singled out just two of them.  &lt;/p&gt;
+
+&lt;h3 id="toc_18"&gt;&lt;a href="http://rubyonrails.org"&gt;Ruby on Rails&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;The backend of Stage is written in &lt;a href="http://ruby-lang.org"&gt;Ruby&lt;/a&gt; using the Ruby on Rails framework. This simply was the natural choice for me. It’s the toolset I’m most familiar with and it’s therefore the most efficient to work with.&lt;/p&gt;
+
+&lt;h3 id="toc_19"&gt;&lt;a href="http://emberjs.com"&gt;Ember.js&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;I chose Ember.js as a framework to create the user interface of the content management part of Stage. The framework is targeted to ambitious web applications, and that’s exactly what the user interface of Stage is. Also, the core ideas and values behind Ember.js resonate with me as a developer. &lt;/p&gt;
+
+&lt;h2 id="toc_20"&gt;Costs&lt;/h2&gt;
+
+&lt;p&gt;Great tools come at a price, however not all of the products listed above are paid. Some of them offer free plans that are a good fit when you’re just starting out. Just check their pricing pages carefully, it might have a small link to a free plan somewhere.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Service&lt;/th&gt;
+&lt;th align="right"&gt;Cost&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Buffer&lt;/td&gt;
+&lt;td align="right"&gt;$102/year&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Drip&lt;/td&gt;
+&lt;td align="right"&gt;$49/month&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNSimple&lt;/td&gt;
+&lt;td align="right"&gt;$110/year&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GitHub&lt;/td&gt;
+&lt;td align="right"&gt;$22/month&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Stripe&lt;/td&gt;
+&lt;td align="right"&gt;2.9% + $0.30&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shelly Cloud&lt;/td&gt;
+&lt;td align="right"&gt;80€/month&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AppSignal&lt;/td&gt;
+&lt;td align="right"&gt;39€/month&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pingdom&lt;/td&gt;
+&lt;td align="right"&gt;12.95€/month&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Google Analytics&lt;/td&gt;
+&lt;td align="right"&gt;Free&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Trello&lt;/td&gt;
+&lt;td align="right"&gt;Free&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Codeship&lt;/td&gt;
+&lt;td align="right"&gt;Free&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hookfeed&lt;/td&gt;
+&lt;td align="right"&gt;Free&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Flowdock&lt;/td&gt;
+&lt;td align="right"&gt;Free&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;Of course, I work with several more tools every day, especially several desktop applications. However, the list above covers the most important SaaS tools involved in running my product.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This article is part of a &lt;a href="http://blog.linksspy.com/tools-founders-use-for-world-domination"&gt;series&lt;/a&gt; where fellow bootstrappers share the tools they use to build their products.&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>Reading List 2014</title>
     <link rel="alternate" href="/2015/01/reading-list-2014/"/>
     <id>/2015/01/reading-list-2014/</id>
-    <published>2015-01-02T00:00:00Z</published>
-    <updated>2015-01-02T00:00:00Z</updated>
+    <published>2015-01-02T00:00:00+00:00</published>
+    <updated>2015-01-02T00:00:00+00:00</updated>
     <author>
       <name>Benedikt Deicke</name>
     </author>
@@ -81,8 +250,8 @@
     <title>ActionWidgets: Rails helpers on steroids</title>
     <link rel="alternate" href="/2013/05/action-widgets-rails-helpers-on-steroids/"/>
     <id>/2013/05/action-widgets-rails-helpers-on-steroids/</id>
-    <published>2013-05-21T00:00:00Z</published>
-    <updated>2013-05-21T00:00:00Z</updated>
+    <published>2013-05-21T00:00:00+00:00</published>
+    <updated>2013-05-21T00:00:00+00:00</updated>
     <author>
       <name>Benedikt Deicke</name>
     </author>
@@ -319,8 +488,8 @@ end
     <title>I'm going freelance</title>
     <link rel="alternate" href="/2013/02/i-am-going-freelance/"/>
     <id>/2013/02/i-am-going-freelance/</id>
-    <published>2013-02-25T00:00:00Z</published>
-    <updated>2013-02-25T00:00:00Z</updated>
+    <published>2013-02-25T00:00:00+00:00</published>
+    <updated>2013-02-25T00:00:00+00:00</updated>
     <author>
       <name>Benedikt Deicke</name>
     </author>
@@ -338,8 +507,8 @@ end
     <title>What you did not know about Capistrano, yet</title>
     <link rel="alternate" href="/2013/02/what-you-did-not-know-about-capistrano-yet/"/>
     <id>/2013/02/what-you-did-not-know-about-capistrano-yet/</id>
-    <published>2013-02-14T00:00:00Z</published>
-    <updated>2013-02-14T00:00:00Z</updated>
+    <published>2013-02-14T00:00:00+00:00</published>
+    <updated>2013-02-14T00:00:00+00:00</updated>
     <author>
       <name>Benedikt Deicke</name>
     </author>
@@ -997,123 +1166,6 @@ rails application and start up processes as needed. You can check it&amp;#39;s
 status and stats using the &lt;code&gt;passenger-status&lt;/code&gt; and
 &lt;code&gt;passenger-memory-stats&lt;/code&gt; commands. For more details on
 mod_rails, take a look at it&amp;#39;s &lt;a href="http://modrails.com/documentation.html"&gt;documentation&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>My day-to-day resources on Ruby and Rails</title>
-    <link rel="alternate" href="/2008/08/my-day-to-day-resources-on-ruby-and-rails/"/>
-    <id>/2008/08/my-day-to-day-resources-on-ruby-and-rails/</id>
-    <published>2008-08-04T00:00:00Z</published>
-    <updated>2008-08-04T00:00:00Z</updated>
-    <author>
-      <name>Benedikt Deicke</name>
-    </author>
-    <summary type="html">&lt;h2 id="toc_0"&gt;News&lt;/h2&gt;
-
-&lt;p&gt;I try to keep up with Ruby and Ruby on Rails, even if I’m not working
-with one of them at the moment. These are the three feeds helping me to
-get the latest news:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/assets/2008/08/planetrubyonrails.png" alt="image"&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;PlanetRubyOnRails.com, not to be mixed up with
-PlanetRubyOnRails.**org**, is a simple feed aggregator with a set of
-quite informative blogs. Including the official &lt;a href="http://blog.rubyonrails.com"&gt;Riding
-Rails&lt;/a&gt; Blog, &lt;a href="http://www.rubyinside.com"&gt;Ruby
-Inside&lt;/a&gt;, and...&lt;/p&gt;</summary>
-    <content type="html">&lt;h2 id="toc_0"&gt;News&lt;/h2&gt;
-
-&lt;p&gt;I try to keep up with Ruby and Ruby on Rails, even if I’m not working
-with one of them at the moment. These are the three feeds helping me to
-get the latest news:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/assets/2008/08/planetrubyonrails.png" alt="image"&gt;:&lt;a href="http://planetrubyonrails.com"&gt;http://planetrubyonrails.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;PlanetRubyOnRails.com, not to be mixed up with
-PlanetRubyOnRails.**org**, is a simple feed aggregator with a set of
-quite informative blogs. Including the official &lt;a href="http://blog.rubyonrails.com"&gt;Riding
-Rails&lt;/a&gt; Blog, &lt;a href="http://www.rubyinside.com"&gt;Ruby
-Inside&lt;/a&gt;, and &lt;a href="http://www.infoq.com"&gt;InfoQ&lt;/a&gt;.
-Unfortunately it doesn’t provide an RSS-Feed anymore, but thanks to
-&lt;a href="http://feed43.com/"&gt;Feed43&lt;/a&gt; it’s easy to build one on your own.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/assets/2008/08/rails_envy_logo.gif" alt="image"&gt;:&lt;a href="http://railsenvy.com"&gt;http://railsenvy.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Every Wednesday Gregg Pollack and Jason Seifer of &lt;a href="http://www.railsenvy.com"&gt;Rails
-Envy&lt;/a&gt; publish their Rails Envy Podcast,
-covering last week’s most important topics in the Ruby and Rails
-community. They’re giving a short summary for every topic, together with
-a link in their &lt;em&gt;shownotes&lt;/em&gt; and usually are fooling around. The
-podcast’s length is usually between 10 to 15 minutes.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://planet.rubyonrails-ug.de/"&gt;&lt;strong&gt;RubyOnRails-Ug Planet&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Just like PlanetRubyOnRails, the planet of the german ruby on rails
-usergroup is a feed aggregator, except it includes blogs of members of
-the german Ruby on Rails community. (Yes, mine too …) Its far from being
-as active as the international one, but usually includes interesting
-posts.&lt;/p&gt;
-
-&lt;h2 id="toc_1"&gt;Documentation&lt;/h2&gt;
-
-&lt;p&gt;When I’m working on Ruby and Ruby on Rails code, I use there resources
-to quickly look up documentation:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/assets/2008/08/rubydoc.png" alt="image"&gt;:&lt;a href="http://ruby-doc.org"&gt;http://ruby-doc.org&lt;/a&gt;/&lt;/p&gt;
-
-&lt;p&gt;Ruby-Doc.org provides the documentation for both Ruby’s
-&lt;a href="http://ruby-doc.org/core"&gt;Core&lt;/a&gt; and
-&lt;a href="http://ruby-doc.org/stdlib"&gt;Stdlib&lt;/a&gt;. The documentation is in the
-default RDoc format, so I usually end up hitting [Strg]+[F] and using my
-browsers search function to quickly get to the relevant sections.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://api.rubyonrails.com/"&gt;&lt;strong&gt;api.rubyonrails.com&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;What Ruby-Doc.org is for ruby,
-&lt;a href="http://api.rubyonrails.com/"&gt;api.rubyonrails.com&lt;/a&gt; is for rails. It’s
-the standard rails documentation in the default RDoc format. As with
-Ruby-Doc.org I use my browsers search to quickly find what I’m looking
-for.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/assets/2008/08/rails-doc.png" alt="image"&gt;:&lt;a href="http://rails-doc.org"&gt;http://rails-doc.org&lt;/a&gt;/&lt;/p&gt;
-
-&lt;p&gt;Rails-Doc.org is a quite new site providing the full rails
-documentation. Unlike the default API documentation site (see above) it
-also includes documentation of older rails versions. Additionally it has
-a nice search engine, and adds the ability to post notes. There are
-other sites providing similar functionality for the rails documentation,
-but somehow Rails-Doc.org just feels right and I’m using more and more.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Gem Server&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Did you know the fabulous &lt;a href="http://www.rubygems.org/"&gt;RubyGem-Tools&lt;/a&gt;
-provide a server including the documentation for all your installed
-gems? Simple run &lt;code&gt;gem server&lt;/code&gt; on the console, fire up your
-browser and navigate to &lt;a href="http://localhost:8808"&gt;http://localhost:8808&lt;/a&gt;.
-Okay, it’s just the standard RDoc documentation for each gem, without
-any fancy search or anything … but who cares if you’re somewhere in the
-middle of nowhere with no internet connection? :-)&lt;/p&gt;
-
-&lt;h2 id="toc_2"&gt;Other&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src="/assets/2008/08/railscasts.png" alt="image"&gt;:&lt;a href="http://www.railscasts.com"&gt;http://www.railscasts.com&lt;/a&gt;/&lt;/p&gt;
-
-&lt;p&gt;Last but definitely not least, are the RailsCasts by Ryan Bates. Every
-Monday he publishes a approx. 5 to 10 minute screencast on a variety of
-topics related to rails development. If you haven’t seen one of them
-yet, don’t hesitate any longer. Ryan’s explanations are concise and
-based on practical examples.&lt;/p&gt;
-
-&lt;p&gt;What are your resources on Ruby / Rails? Which blogs are you reading to
-stay up-to-date? Which documentation are you using? I’m interested in
-your comments (there are way to few anyways … ;-))!&lt;/p&gt;
-
-&lt;h2 id="toc_3"&gt;Update (Aug 15.)&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href="http://blog.nodeta.fi/"&gt;Nodeta&lt;/a&gt;, creators of Rails-Doc.org, released
-&lt;a href="http://www.apidock.com/"&gt;APIdock&lt;/a&gt; yesterday. APIdock extends the
-Rails-Doc.org concept to multiple projects. Currently Rails, Ruby and
-RSpec are included.&lt;/p&gt;
 </content>
   </entry>
 </feed>
