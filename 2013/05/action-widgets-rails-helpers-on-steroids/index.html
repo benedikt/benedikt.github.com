@@ -13,7 +13,7 @@
     <meta content="http://benediktdeicke.com/2013/05/action-widgets-rails-helpers-on-steroids/" property="og:url">
     <meta content="website" property="og:type">
     <link href="../../../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
     <script src="../../../javascripts/application.js" type="text/javascript"></script>
   </head>
   <body class="2013 articles">
@@ -301,8 +301,21 @@
 </div>
   <footer>
     <img width="60" height="60" src="../../../images/me.png">
-    <p>Did you enjoy this article? Follow me on <a href="https://twitter.com/benediktdeicke">Twitter</a> or subscribe to the <a href="http://feeds.feedburner.com/benediktdeicke">feed</a>!<br>
-    Do you have any feedback, suggestions or comments? Feel free to <a href="/contact">contact me</a>!</p>
+    <form action="https://www.getdrip.com/forms/1016006/submissions" data-drip-embedded-form="1016006" method="post" target="_blank">
+      <p>Do you have any feedback, suggestions or comments? Feel free to <a href="/contact">contact me</a>!</p>
+      <p data-drip-attribute="description">
+        Did you enjoy this article? Follow me on <a href="https://twitter.com/benediktdeicke">Twitter</a> or subscribe to the <a href="http://feeds.feedburner.com/benediktdeicke">feed</a>!
+      </p>
+      <div>
+        <input name="fields[first_name]" placeholder="First name" type="text" value="">
+      </div>
+      <div>
+        <input name="fields[email]" placeholder="Email Address" type="email" value="">
+      </div>
+      <div>
+        <input data-drip-attribute="sign-up-button" name="submit" type="submit" value="Sign Up">
+      </div>
+    </form>
   </footer>
 </article>
       </div>
@@ -342,7 +355,8 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-      
+    </script>
+    <script>
       var _dcq = _dcq || [];
       var _dcs = _dcs || {};
       _dcs.account = '6112910';

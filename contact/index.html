@@ -11,7 +11,7 @@
     <meta content="http://benediktdeicke.com/contact/" property="og:url">
     <meta content="website" property="og:type">
     <link href="../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
     <script src="../javascripts/application.js" type="text/javascript"></script>
   </head>
   <body class="contact index">
@@ -36,7 +36,7 @@
   <section class="shadowed">
     <h1>Feel free to contact me!</h1>
     <iframe src="http://a.tiles.mapbox.com/v3/benedikt.map-9tl6sgsz.html#10/49.872699999999995/8.648999999999974"></iframe>
-    <p>In case you have any <strong>questions</strong>, want to <strong>hire me</strong> or just <strong>say 'Hi!'</strong> please don't hesitate to <strong>get in touch with me</strong>:</p>
+    <p>In case you have any <strong>questions</strong> or just <strong>say 'Hi!'</strong> please don't hesitate to <strong>get in touch with me</strong>:</p>
     <dl>
       <dt>Name</dt>
       <dd>Benedikt Deicke</dd>
@@ -67,6 +67,41 @@
         </ul>
       </dd>
     </dl>
+  </section>
+  <section class="shadowed" id="hire-me">
+    <h2>Hire me</h2>
+    <p>Do you have a <strong>project in mind</strong>? I'd love to hear about it.<br>
+    Please fill out this form, and <strong>I'll get back to you</strong> as soon as possible.</p>
+    <form accept-charset="UTF-8" action="https://formkeep.com/f/2c87d7209bac" method="POST">
+      <input name="utf8" type="hidden" value="✓">
+      <div>
+        <label>Your name</label>
+        <input name="name" required type="text">
+      </div>
+      <div>
+        <label>Your E-Mail Address</label>
+        <input name="email" required type="email">
+      </div>
+      <div>
+        <label>What is your project about?</label>
+        <textarea name="description" required></textarea>
+      </div>
+      <div>
+        <label>What's your budget?</label>
+        <select name="Budget" required>
+          <option>Less than 10.000 €</option>
+          <option>10.000 € - 25.000 €</option>
+          <option>More than 25.000 €</option>
+        </select>
+      </div>
+      <div>
+        <label>How did you hear about me?</label>
+        <input name="source" type="text">
+      </div>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
   </section>
 </article>
       </div>
@@ -106,7 +141,8 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-      
+    </script>
+    <script>
       var _dcq = _dcq || [];
       var _dcs = _dcs || {};
       _dcs.account = '6112910';
