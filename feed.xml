@@ -4,10 +4,82 @@
   <id>http://benediktdeicke.com/</id>
   <link href="http://benediktdeicke.com/"/>
   <link href="http://feeds.feedburner.com/benediktdeicke" rel="self"/>
-  <updated>2015-01-30T00:00:00+00:00</updated>
+  <updated>2015-07-15T00:00:00+00:00</updated>
   <author>
     <name>Benedikt Deicke</name>
   </author>
+  <entry>
+    <title>Launching a product, in just 3652 days</title>
+    <link rel="alternate" href="/2015/07/launching-a-product/"/>
+    <id>/2015/07/launching-a-product/</id>
+    <published>2015-07-15T00:00:00+00:00</published>
+    <updated>2015-07-15T00:00:00+00:00</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;Today, I launched &lt;a href="http://stagecms.com"&gt;Stage&lt;/a&gt;, a content management system, designed for band websites. As of today, it’s out there for everyone to see and use. It’s already making 307€ in monthly recurring revenue and hosting the websites of five bands, including those of internationally known bands like &lt;a href="http://nightwish.com"&gt;Nightwish&lt;/a&gt;, &lt;a href="http://epica.nl"&gt;Epica&lt;/a&gt;, and &lt;a href="http://sonataarctica.info"&gt;Sonata Arctica&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a pretty huge deal for me personally. I love building software products...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Today, I launched &lt;a href="http://stagecms.com"&gt;Stage&lt;/a&gt;, a content management system, designed for band websites. As of today, it’s out there for everyone to see and use. It’s already making 307€ in monthly recurring revenue and hosting the websites of five bands, including those of internationally known bands like &lt;a href="http://nightwish.com"&gt;Nightwish&lt;/a&gt;, &lt;a href="http://epica.nl"&gt;Epica&lt;/a&gt;, and &lt;a href="http://sonataarctica.info"&gt;Sonata Arctica&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a pretty huge deal for me personally. I love building software products, but usually fail to launch them. My list of unfinished side projects is long, and I’ve got my own little collection of domain names that I registered, but never really used.&lt;/p&gt;
+
+&lt;p&gt;Looking back, the history of Stage started a little over eleven years ago. Back then, I was just out of high school and only had few of years experience with programming and building websites. It was also the time when I started listening to metal music and growing my hair. Nightwish was one of my favorite bands at the time, so one day I wrote an e-mail to their webmasters and offered my help. To my surprise, I actually got a reply and a short while later started building a CMS for their band website. The website launched on April 1st, 2005.&lt;/p&gt;
+
+&lt;p&gt;I used the CMS for one or two other websites, but it was a pain on so many levels. I had no idea what I was doing. I haven’t had heard about “version control systems”, or “tests”, or “object oriented design” so it quickly became an unmaintainable mess.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile, I started studying computer science and started working as a freelance developer on the side. Eventually, I learned Ruby and Ruby on Rails, which is now my language and framework of choice. Every now and then, I’d start building a new side project. Sometimes alone, sometimes with friends: A location based database of metal shows of your favorite bands in your area; A website to find new people nearby for leisure time activities; A website with online menus (and reviews) for your universities canteen; A service that analyzed tweets to get the weather for a given location (Yeah, that was more of a fun project); An app to manage your recipes and grocery lists on a tablet mounted in your kitchen (This was even before the iPad existed… We thought about hacking interactive photo frames for this); A web application to discover the location of your band/movie/product’s fans; as well as several others, including the ones I forgot about…&lt;/p&gt;
+
+&lt;p&gt;Every single time I was excited. “This is awesome! This will be the next big thing!”, I told myself. As you can probably guess by now… none of them made it to anything substantial. &lt;strong&gt;I’d work on them for a few weeks, sometimes even months, but eventually I’d lose motivation and never get back to it.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Over the years, alongside my studies and work, I also made several attempts to rebuild the CMS. I had learned a lot over the years, and I knew I could do better.&lt;/p&gt;
+
+&lt;p&gt;The first time I started rewriting it from scratch I started by designing a beautiful user interface. I’d implement a sophisticated authentication and authorization system that would allow different roles and permissions. The new system also had a very useful activity feed, but the thing was… you couldn’t manage your website’s content. &lt;strong&gt;I got carried away by superfluous features&lt;/strong&gt; and lost motivation before even getting to the core feature.&lt;/p&gt;
+
+&lt;p&gt;The next time I started from scratch, focusing on the core features first. I started to implement all the amazing features I had in mind for the content managing part of the system. The plan was to have all the features of the old version in there, as well as several new ones. I had about two months so we could relaunch the Nightwish website using the new system. There was a lot to do, so I started working on several features in parallel. Pushing forward on all of them, but &lt;strong&gt;never finishing just one&lt;/strong&gt;. As a result, I couldn’t hold the deadline. We had to use the old CMS one more time, I lost motivation and abandoned the rewrite project.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile, I finished college and started working in my first job. I knew that if I ever wanted to successfully build my own product, I had to learn about VC, investors and funding. So getting a job in a startup was the only logical choice. I was working as a developer and never was involved with pitching the product to investors. Nonetheless, I tried to watch, listen and learn about the process. I experienced the struggles startups encounter when they constantly need outside investment to survive.&lt;/p&gt;
+
+&lt;p&gt;I was still working on side-projects from time to time, but like  before, they never really got anywhere. I even gave the CMS another try, but having a full-time job at an early stage startup didn&amp;#39;t leave much time to actually work on it. I’d get to it every few weeks and spend a weekend updating dependencies so everything was up-to-date. More often than not, things would break and I’d spend the rest of the weekend with fixing stuff. &lt;strong&gt;It became pretty clear that my approach to building products had a flaw.&lt;/strong&gt; At the same time, I started to realize that outside funding wasn’t the only way to build a business. Watching companies like 37signals, GitHub and Travis CI bootstrap from small teams into successful businesses was motivating.&lt;/p&gt;
+
+&lt;p&gt;In 2012 a &lt;a href="http://www.it-engelhardt.de"&gt;friend&lt;/a&gt; recommended &lt;a href="http://www.startupbook.net"&gt;Rob Walling’s “Start Small, Stay Small: A Developer’s Guide to Launching a Startup”&lt;/a&gt; to me. To say it changed my life is probably an exaggeration, but it was an eye-opener nonetheless. It definitely put things into a new perspective. I learned about “Micropreneurship” and that starting and staying small might actually be a good thing. &lt;strong&gt;A successful startup doesn’t have to be “the next big thing”&lt;/strong&gt; and sell to some large company for an incredibly huge amount. It taught me about the importance of finding a niche, why it’s better to sell to businesses instead of customers, why marketing is the most important thing, and much, much more.&lt;/p&gt;
+
+&lt;p&gt;A few months later, I quit my job and started working as a freelance software engineer. I had several reasons for it, but one was definitely to be able to carve out more time to work on Stage. This time, I approached things differently.&lt;/p&gt;
+
+&lt;p&gt;I once again got rid of all the code I had written before, but didn’t start programming again. Instead, I started writing copy for a landing page and put it online. I signed up for Google AdWords and spent about 100€ to send traffic to this page. It took a while, but about 50 people actually signed up for the launch notification mailing list I had set up. &lt;strong&gt;While I didn’t really validate my idea this way, it was a huge boost in motivation.&lt;/strong&gt; Before actually getting back into building the product, I reached out to a smaller band, pitching them my product and actually naming a price. They agreed to start paying as soon as the product is ready and they’re making some money by selling records and merchandize. To me, this was enough to have a reason to start writing code. I started implementing the product, so it would fit the needs of this one, small, single-page band website (the “Newcomer” plan).&lt;/p&gt;
+
+&lt;p&gt;I managed to set aside one day per week to focus on building the CMS. It took about 4 months, but in early 2014 it was up and running, hosting this one small band website. &lt;strong&gt;Holy shit, I actually managed to ship something!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It still didn’t earn any money, and it still wasn’t launched to the public - but it was online and had users other than myself. Around the same time, I got lucky and started talking to two other bands about redoing their band websites.&lt;/p&gt;
+
+&lt;p&gt;Both were significantly larger and definitely would need a few more features (the “Professional” plan). I managed to get them both to commit to paying for the new system.&lt;/p&gt;
+
+&lt;p&gt;So I started implementing the missing features, always having those to websites in mind. I’d build everything they’d need, but nothing else. Again, a few months later, both websites went live, using StageCMS.&lt;/p&gt;
+
+&lt;p&gt;I had three bands using the CMS for their band websites. All of them committed to pay for it on a recurring basis. So in August, I integrated payments into the system and asked them to start paying. This was one of the scariest things in the whole journey.&lt;/p&gt;
+
+&lt;p&gt;Asking those customers to enter their credit card info and start paying. Boy was I relieved when they did so, and everything worked! &lt;strong&gt;I actually started earning money! With my own product!&lt;/strong&gt; You could see me smiling for the rest of the day…&lt;/p&gt;
+
+&lt;p&gt;I probably could have launched by then, but there was one thing I still wanted to do get done: Get the Nightwish website on Stage. They’d still need a few more features (i.e. Internationalization) and it would at least double the traffic the system would have to handle. Once again, I started by talking to the band, trying to get them to commit to paying for the new CMS and only after they did, started working on the new features (the “Rockstar” plan). The website launched in March and they started paying just a few weeks after.&lt;/p&gt;
+
+&lt;p&gt;Fast forward to today: I launched Stage to the public. I’m still embarrassed, because there a lot of things missing and it has some rough edges here and there. I could have waited with the launch until I polished everything, but as you probably know, there’s always something else coming up. So instead, I took Reid Hoffman&amp;#39;s famous quote (&amp;ldquo;If you are not embarrassed by the first version of your product, you’ve launched too late.&amp;rdquo;) by heart and here it is!&lt;/p&gt;
+
+&lt;p&gt;As you can see, I learned a lot of things about building products the hard way. &lt;strong&gt;In hindsight it’s ridiculous how I could work on this for almost ten years.&lt;/strong&gt; Especially, since there is no proof that this will eventually lead to something. It’s still far from being a successful product, and &lt;em&gt;the path ahead is definitely a tough one&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;To sum this up, here are a few things I learned over the years:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Start small&lt;/strong&gt;, you can always build up from there. Just take one small step after the other.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Focus on the core of your product.&lt;/strong&gt; Don’t get distracted by fluffy details around the core.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Launch a landing page&lt;/strong&gt; that describes your product and has a way for people to sign up for a mailing list. It helps a lot with motivation to see a sign-up notification from time to time.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Talk to people.&lt;/strong&gt; Talk to your potential customers and people around you.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Marketing is important.&lt;/strong&gt; It doesn’t help to build a cool product if people don’t know about it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Don’t be afraid of sales.&lt;/strong&gt; Your product is solving a problem, it’s only fair that your customers pay money for it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Be persistent.&lt;/strong&gt; I had several chances to just give up, but I didn’t. There are rough times, but you can push through them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stay focused.&lt;/strong&gt; I stopped working on new side-projects, just focusing on this one product. This helped me make actual progress.&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+  </entry>
   <entry>
     <title>The tools that help me build my product</title>
     <link rel="alternate" href="/2015/01/the-tools-that-help-me-build-my-product/"/>
@@ -1090,82 +1162,6 @@ end
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;There are still some rough edges, but in general it works pretty well.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>HowTo: Phusion Passenger aka mod_rails for Apache</title>
-    <link rel="alternate" href="/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/"/>
-    <id>/2008/08/howto-phusion-passenger-aka-mod_rails-for-apache/</id>
-    <published>2008-08-08T00:00:00Z</published>
-    <updated>2008-08-08T00:00:00Z</updated>
-    <author>
-      <name>Benedikt Deicke</name>
-    </author>
-    <summary type="html">&lt;p&gt;Yesterday I decided to give &lt;a href="http://www.modrails.com"&gt;Phusion Passenger aka
-mod_rails&lt;/a&gt; a try and installed it. It was dead
-simple to set it up and to deploy rails applications with it. I'm now
-using it for several “small” applications, for which the whole overhead
-of setting up a cluster of mongrels and a proxy doesn't seem to be
-adequate. I'll give you a short summary on how to install mod_rails for
-apache2 on Debian Etch...&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;Yesterday I decided to give &lt;a href="http://www.modrails.com"&gt;Phusion Passenger aka
-mod_rails&lt;/a&gt; a try and installed it. It was dead
-simple to set it up and to deploy rails applications with it. I&amp;#39;m now
-using it for several &amp;ldquo;small&amp;rdquo; applications, for which the whole overhead
-of setting up a cluster of mongrels and a proxy doesn&amp;#39;t seem to be
-adequate. I&amp;#39;ll give you a short summary on how to install mod_rails for
-apache2 on Debian Etch.&lt;/p&gt;
-
-&lt;p&gt;First, install the passenger gem using
-&lt;a href="http://www.rubygems.org/"&gt;RubyGems&lt;/a&gt; (if you don&amp;#39;t have Ruby and
-RubyGems running on your server, install them first - of course):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
-gem install passenger
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Afterwards, run the passenger apache2 module installer using this
-command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
-passenger-install-apache2-module
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It&amp;#39;ll check for the required software to install the module, compile it
-and copy it to the correct folders. If some software is missing install
-it using &lt;code&gt;aptitude&lt;/code&gt; (ie. &lt;code&gt;aptitude install g++&lt;/code&gt; if
-you&amp;#39;re missing the GNU C++ Compiler).&lt;/p&gt;
-
-&lt;p&gt;Next, create two new files in the
-&lt;code&gt;/etc/apache2/mods-available&lt;/code&gt; directory. One called
-&lt;code&gt;mod_rails.load&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::apache
-LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-2.0.2/ext/apache2/mod_passenger.so
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;hellip; and the other one called &lt;code&gt;mod_rails.conf&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::apache
-PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger–2.0.2
-PassengerRuby /usr/bin/ruby1.8
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now you can enable the module using &lt;code&gt;a2enmod&lt;/code&gt; and restart
-apache.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::shell-unix-generic
-a2enmod mod_rails
-apache2ctl restart
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That&amp;#39;s it! Now simply deploy your rails application, just make sure
-apache&amp;#39;s document root is pointing to your applications
-&lt;code&gt;public&lt;/code&gt; folder. Passenger will automatically detect your
-rails application and start up processes as needed. You can check it&amp;#39;s
-status and stats using the &lt;code&gt;passenger-status&lt;/code&gt; and
-&lt;code&gt;passenger-memory-stats&lt;/code&gt; commands. For more details on
-mod_rails, take a look at it&amp;#39;s &lt;a href="http://modrails.com/documentation.html"&gt;documentation&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
