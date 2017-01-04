@@ -4,10 +4,125 @@
   <id>http://benediktdeicke.com/</id>
   <link href="http://benediktdeicke.com/"/>
   <link href="http://feeds.feedburner.com/benediktdeicke" rel="self"/>
-  <updated>2016-01-04T00:00:00+00:00</updated>
+  <updated>2017-01-04T00:00:00+00:00</updated>
   <author>
     <name>Benedikt Deicke</name>
   </author>
+  <entry>
+    <title>2016 in Review</title>
+    <link rel="alternate" href="/2017/01/year-in-review/"/>
+    <id>/2017/01/year-in-review/</id>
+    <published>2017-01-04T00:00:00+00:00</published>
+    <updated>2017-01-04T00:00:00+00:00</updated>
+    <author>
+      <name>Benedikt Deicke</name>
+    </author>
+    <summary type="html">&lt;p&gt;A year ago, I published my first &lt;a href="http://benediktdeicke.com/2016/01/year-in-review/"&gt;Year in Review&lt;/a&gt; post. I did not  publish anything since that review and therefore was a little hesitant about writing one for 2016. It was a tweet by Jamie Lawrence that convinced me to write this review:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Year in review” posts are great way of rewriting history, and a terrible way to compare yourself with others – &lt;a href="https://twitter.com/ideasasylum/status/814447889351143424"&gt;Jamie Lawrence&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;However, my intention isn't to...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A year ago, I published my first &lt;a href="http://benediktdeicke.com/2016/01/year-in-review/"&gt;Year in Review&lt;/a&gt; post. I did not  publish anything since that review and therefore was a little hesitant about writing one for 2016. It was a tweet by Jamie Lawrence that convinced me to write this review:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Year in review” posts are great way of rewriting history, and a terrible way to compare yourself with others &amp;ndash; &lt;a href="https://twitter.com/ideasasylum/status/814447889351143424"&gt;Jamie Lawrence&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;However, my intention isn&amp;#39;t to rewrite history. Instead, I want to preserve the things (both good and bad) that happened this year.&lt;/p&gt;
+
+&lt;p&gt;To give you some perspective, please allow me to introduce myself. I&amp;#39;m Benedikt Deicke, a software engineer and consultant who launched &lt;a href="http://stagecms.com"&gt;Stage&lt;/a&gt;, a content management system for bands, as a side project in 2015.&lt;/p&gt;
+
+&lt;h2 id="toc_0"&gt;The year in general&lt;/h2&gt;
+
+&lt;p&gt;Looking back at 2016, I&amp;#39;m a little disappointed, even though I shouldn&amp;#39;t be. My goals for the year included &lt;em&gt;increasing my revenue&lt;/em&gt;, &lt;em&gt;growing Stage to 1,000€ MRR&lt;/em&gt;, and &lt;em&gt;launching a productized consulting offering&lt;/em&gt;. I only count the revenue goal as a success, but more on that below.&lt;/p&gt;
+
+&lt;h2 id="toc_1"&gt;The consulting business&lt;/h2&gt;
+
+&lt;p&gt;In contrast to 2015, the consulting business was a smooth ride. I was able to hit my revenue goal for the year by consulting alone, and even a few months early. I had the pleasure of working on interesting projects, together with people I like and admire.&lt;/p&gt;
+
+&lt;p&gt;The lessons learned in previous years definitely helped to make this possible.&lt;/p&gt;
+
+&lt;p&gt;I also sold some coaching and mentoring retainer packages. While this was part of my goals for the year, I only call it half a success, because I never announced them publicly.&lt;/p&gt;
+
+&lt;h2 id="toc_2"&gt;The SaaS business&lt;/h2&gt;
+
+&lt;p&gt;One of my biggest goals this year, was to grow Stage to 1.000€ in monthly recurring revenue. I started the year with a baseline of 357€ MRR. Unfortunately, I quickly realized that adding 643€ was going to be tough. My target audience (professional musicians) are hard to reach online and don&amp;#39;t care about their websites that much. In the end, I managed to close two deals, adding 58€ in revenue. A third deal I closed in 2016 will start adding another 79€ in MRR this February. So, depending on how you count it, I&amp;#39;m at least 506€ short of my goal.&lt;/p&gt;
+
+&lt;p&gt;Here are the things I tried to grow Stage this year:&lt;/p&gt;
+
+&lt;h3 id="toc_3"&gt;Lead generation&lt;/h3&gt;
+
+&lt;p&gt;To help achieve my MRR goal, I hired a lead generation service. The goal was to get prequalified leads for one-on-one product demos. This was one of the worst experiences this year. While happily taking my money, they failed to deliver &lt;em&gt;at all&lt;/em&gt;. Instead I got put off with empty promises for the first few weeks, until they finally decided to stop responding to messages at all. It took several weeks to get both the subscription cancelled and my money back. The service has been shut down completely since.&lt;/p&gt;
+
+&lt;h3 id="toc_4"&gt;Doing cold outreach&lt;/h3&gt;
+
+&lt;p&gt;In another effort, I hired a virtual assistant to help me with researching potential leads. It was a great experience and my virtual assistant was a great help. She went through several record label websites, compiled lists of bands, and researched their managers.&lt;/p&gt;
+
+&lt;p&gt;I later used that list and emailed potential customers. While I got a pretty good response rate, none of them were interested in the product.&lt;/p&gt;
+
+&lt;p&gt;In addition, I tried reaching out to record labels. Thanks to a friend, I even got an in-person meeting with a major record label. Unfortunately they also were not interested in my offerings.&lt;/p&gt;
+
+&lt;p&gt;The three deals I closed this year, all came via referrals from friends and people I met in previous years. So, to sum it up, it was a great learning experience with no effect on growth at all.&lt;/p&gt;
+
+&lt;h3 id="toc_5"&gt;Bye, bye profit…&lt;/h3&gt;
+
+&lt;p&gt;To make things worse, the hosting provider I was using for Stage,  shut down in early 2016. They were a perfect fit for the requirements Stage had. Also they were quite cheap compared to the alternatives. In hindsight that should have been a warning sign.&lt;/p&gt;
+
+&lt;p&gt;They were kind enough to announce the end of their service several months in advance. Still, I had to move to multiple new providers (they were the only ones that combined all of my needs in one service) and the costs skyrocketed. What once was a profitable (read: making a bit more than 0€) product was now losing several hundred euros per month. Most of it was fixed costs, though. Having my MRR goal in mind I had some hopes to make it up in added revenue, but as you know that never happened.&lt;/p&gt;
+
+&lt;p&gt;For 2017, I&amp;#39;m hoping to be able restructure parts of the product  to be able to cut costs down to a level where it stops draining my bank account.&lt;/p&gt;
+
+&lt;h2 id="toc_6"&gt;New endeavors&lt;/h2&gt;
+
+&lt;p&gt;In previous years, I tried to focus on Stage as my one and only side project. In the second half of the year, I allowed myself to think about new ideas.&lt;/p&gt;
+
+&lt;p&gt;One result of this was &lt;a href="http://evgadgets.com"&gt;EVGadgets&lt;/a&gt;, an affiliate website for electric vehicle accessories. The plan was to outsource the writing on Upwork, publish a lot of reviews, get picked up by Google and earn a lot of money using affiliate links.&lt;/p&gt;
+
+&lt;p&gt;I totally underestimated how hard it is to find good people on Upwork, though. None of the reviews I got was great and all had to be edited quite a bit. A few of the reviews were so bad, it didn&amp;#39;t even make sense to edit them.&lt;/p&gt;
+
+&lt;p&gt;What really kicked all my motivation out of me, was dealing with the accounting and legal side of hiring through Upwork. The amount of work I had to put in to be on the safe side made it unbearable.&lt;/p&gt;
+
+&lt;p&gt;Right now, the site is still up and I&amp;#39;m not ruling out giving it another try. But it&amp;#39;s definitely not going to make any money anytime soon.&lt;/p&gt;
+
+&lt;h2 id="toc_7"&gt;The Podcast&lt;/h2&gt;
+
+&lt;p&gt;In 2016, Christoph Engelhardt and I continued recording episodes for our (German) podcast &lt;a href="http://nebenberufstartup.de"&gt;Nebenberuf Startup&lt;/a&gt;. In total, we published 17 episodes. It&amp;#39;s fewer episodes than we set out to publish. We failed to stick to our bi-weekly schedule because of our other commitments. Still, it was fun to record episodes with people like Steli Efti, Åke Brattberg, and Daniel Alm.&lt;/p&gt;
+
+&lt;h3 id="toc_8"&gt;FemtoConf&lt;/h3&gt;
+
+&lt;p&gt;The most exciting thing coming out of the podcast this year is &lt;a href="http://femtoconf.com"&gt;FemtoConf 2017&lt;/a&gt;. What was meant as a meetup with some of our listeners, turned into an international mini conference. People form Germany, Finland, Czech Republic, Spain, France, Slovenia, Russia, and even the US bought a ticket to be part of it. Check back in a year to learn how it went.&lt;/p&gt;
+
+&lt;h2 id="toc_9"&gt;Rails Girls Summer of Code and Refugees on Rails&lt;/h2&gt;
+
+&lt;p&gt;There was no &lt;a href="http://railsgirls.com/frankfurt"&gt;Rails Girls Frankfurt&lt;/a&gt; event in 2016. Instead I joined &lt;a href="https://www.facebook.com/roraschaffenburg/"&gt;Refugees on Rails Aschaffenburg&lt;/a&gt; as a coach and &lt;a href="http://railsgirlssummerofcode.org"&gt;Rails Girls Summer of Code&lt;/a&gt; as a supervisor. As always, I loved meeting new people while teaching how to become a software developer.&lt;/p&gt;
+
+&lt;h2 id="toc_10"&gt;Goals for 2017&lt;/h2&gt;
+
+&lt;h3 id="toc_11"&gt;Maintain overall revenue&lt;/h3&gt;
+
+&lt;p&gt;While I&amp;#39;m a little wary about the usefulness of this goal, I&amp;#39;d like to maintain my revenue generated in 2016. While it helps to have a clear number in mind, it also makes it easy to choose the quicker ways to make money over the ones that take time to grow.&lt;/p&gt;
+
+&lt;h3 id="toc_12"&gt;Relaunch my website with productized consulting offerings&lt;/h3&gt;
+
+&lt;p&gt;I definitely want to relaunch my website this year. For one, I&amp;#39;m getting a bit tired by the design. More importantly though, I finally want to focus on offering productized consulting packages.&lt;/p&gt;
+
+&lt;h3 id="toc_13"&gt;Launch a new product or relaunch Stage with a twist&lt;/h3&gt;
+
+&lt;p&gt;During 2016, it became clear that Stage is a tough product to sell. Maybe it&amp;#39;s the target audience, the product, or me just being bad at selling. For 2017, I want to come up with something new and launch it. That might be a new product, or a new major feature of Stage. Whatever it&amp;#39;ll be, I want to make sure, it&amp;#39;ll fix a pain people are having, making it easier to sell it.&lt;/p&gt;
+
+&lt;h3 id="toc_14"&gt;Move into a new apartment&lt;/h3&gt;
+
+&lt;p&gt;On the personal side of things, I want to move into a new apartment. We&amp;#39;ve been kinda looking for a new one for a while now, but it was never a serious undertaking. Promoting this to a goal for the year will help to make it happen.&lt;/p&gt;
+
+&lt;h2 id="toc_15"&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;As mentioned earlier, I&amp;#39;m a bit disappointed about 2016. I was wishing for a better result when it comes to Stage. Nonetheless, I learned a lot of things while trying to make it work. Most importantly: There are no silver bullets for anything.&lt;/p&gt;
+
+&lt;p&gt;I hope you got some value out of reading this. I tried to include all business related ups and downs I had this year. Thanks for reading and a &lt;strong&gt;Happy New Year 2017&lt;/strong&gt;!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>2015 in Review</title>
     <link rel="alternate" href="/2016/01/year-in-review/"/>
@@ -1166,40 +1281,6 @@ Events&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt; &lt;a href="http://mir.aculo.us/2010/06/04/making-an-ipad-html5-app-making-it-really-fast/"&gt;Making an iPad HTML5 App &amp;amp; making it really
 fast&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</content>
-  </entry>
-  <entry>
-    <title>RSpec and Rails Helpers using the output buffer</title>
-    <link rel="alternate" href="/2009/08/rspec-and-rails-helpers-using-the-output-buffer/"/>
-    <id>/2009/08/rspec-and-rails-helpers-using-the-output-buffer/</id>
-    <published>2009-08-25T00:00:00Z</published>
-    <updated>2009-08-25T00:00:00Z</updated>
-    <author>
-      <name>Benedikt Deicke</name>
-    </author>
-    <summary type="html">&lt;p&gt;When testing helper methods that use Rails&amp;#39; output buffer (for example
-by calling &lt;code&gt;concat&lt;/code&gt;) with RSpec, be sure to add this to your specs:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::ruby
-before (:each) do 
-  helper.output_buffer = &amp;quot;&amp;quot;
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Took me a while to figure this one out. Apparently RSpec doesn&amp;#39;t
-initialize the output buffer and you end up with a &lt;code&gt;NoMethodError&lt;/code&gt; on &lt;code&gt;nil&lt;/code&gt;.&lt;/p&gt;
-</summary>
-    <content type="html">&lt;p&gt;When testing helper methods that use Rails&amp;#39; output buffer (for example
-by calling &lt;code&gt;concat&lt;/code&gt;) with RSpec, be sure to add this to your specs:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:::ruby
-before (:each) do 
-  helper.output_buffer = &amp;quot;&amp;quot;
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Took me a while to figure this one out. Apparently RSpec doesn&amp;#39;t
-initialize the output buffer and you end up with a &lt;code&gt;NoMethodError&lt;/code&gt; on &lt;code&gt;nil&lt;/code&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
